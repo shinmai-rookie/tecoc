@@ -1,9 +1,12 @@
 #!/bin/sh
+# This script runs tools to make the source code more pre-ANSI-C compliant
 
-sed 's/^#.*//' < preansifunc.sed > paf_nc.sed
+PREANSI="preansifunc.sed"
+PREANSI_FILTER="paf_nc.sed"
+sed 's/^#.*//' < $PREANSI > $PREANSI_FILTER
 
 for src_file in "$@"; do
-    sed -f paf_nc.sed < $src_file
+    sed -f $PREANSI_FILTER < $src_file
 done
 
-rm preansifunc_old.sed
+rm $PREANSI_FILTER
