@@ -11,7 +11,8 @@ open files are closed and memory is freed.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-VVOID ClenUp (VVOID)		/* cleanup for TECO-C abort */
+void
+ClenUp (void)		/* cleanup for TECO-C abort */
 {
 	QRptr	QRp;
 	int	i;

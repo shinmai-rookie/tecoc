@@ -15,7 +15,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeP()			/* execute a P or PW command */
+DEFAULT ExeP(void)		/* execute a P or PW command */
 {
 	BOOLEAN	SavEof;
 

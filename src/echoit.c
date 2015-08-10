@@ -12,7 +12,7 @@ as CH, ^CH, or [CH].
 #include "defext.h"		/* define external global identifiers */
 #include "dchars.h"		/* define identifiers for characters */
 
-VVOID EchoIt(Charac)
+void EchoIt(Charac)
 unsigned char Charac;
 {
 	if (Charac > USCHAR && Charac < DELETE) {	/* displayable? */

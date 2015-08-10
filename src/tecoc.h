@@ -244,13 +244,13 @@ struct MStck {
 #if USE_PROTOTYPES
 
 #if CHECKSUM_CODE
-VVOID	init_code_checksums(void);
-VVOID	check_code_checksums(void);
+void	init_code_checksums(void);
+void	check_code_checksums(void);
 #endif
 
 #if CONSISTENCY_CHECKING
-VVOID	init_consistency_check(void);
-VVOID	check_consistency(void);
+void	init_consistency_check(void);
+void	check_consistency(void);
 #endif
 
 DEFAULT	BakSrc(void);		/* backwards search to match 1st character */
@@ -258,46 +258,46 @@ DEFAULT BldStr(			/* build a string */
 	charptr XBfBeg,		/* beginning of build-string buffer */
 	charptr XBfEnd,		/* end of build-string buffer */
 	charptr (*XBfPtr));	/* pointer into build-string buffer */
-VVOID	ClenUp(void);		/* clean up for TECO-C abort */
+void	ClenUp(void);		/* clean up for TECO-C abort */
 DEFAULT	CMatch(			/* match a character */
 	BOOLEAN *SamChr);	/* returned match indicator */
 #if DEBUGGING
 DEFAULT	DbgDsp(void);		/* debugging, control debugging display (^P) */
-VVOID	DbgFEn(			/* debugging, function entry */
+void	DbgFEn(			/* debugging, function entry */
 	int DbgFLv,             /*   function display level */
 	char *DbgFNm,		/*   function name */
 	char *DbgMsg);		/*   an entry message, usually parameters */
-VVOID	DbgFEx(			/* debugging, function exit */
+void	DbgFEx(			/* debugging, function exit */
 	int DbgFLv,		/*   function display level */
 	char *DbgFNm,		/*   function name */
 	char *DbgMsg);		/*   an exit message, usually return value */
-VVOID	DbgFMs(			/* debugging, function message */
+void	DbgFMs(			/* debugging, function message */
 	int DbgFLv,		/*   function display level */
 	char *DbgFNm,		/*   function name */
 	char *DbgMsg);		/*   an message */
 #endif
 DEFAULT	DoCJR(			/* do C, J or R stuff */
 	LONG HowFar);		/* positive or negative displacement */
-VVOID	DoEvEs(			/* do an EV or ES mode control flag function */
+void	DoEvEs(			/* do an EV or ES mode control flag function */
 	WORD Flag);
 DEFAULT	DoFlag(			/* handle mode control flag */
 	WORD *Flag);
-VVOID	EchoIt(			/* echo a character to to terminal */
+void	EchoIt(			/* echo a character to to terminal */
 	unsigned char Charac);
-VVOID	ErrChr(			/* display error message with character arg */
+void	ErrChr(			/* display error message with character arg */
 	WORD ErrNum,		/* the error number */
 	unsigned char EChr);	/* character to imbed in message */
-VVOID	ErrMsg(			/* display error message */
+void	ErrMsg(			/* display error message */
 	WORD ErrNum);		/* the error number */
-VVOID	ErrPSt(			/* display error message with string arg */
+void	ErrPSt(			/* display error message with string arg */
 	WORD ErrNum,		/* the error number */
 	charptr EBeg,		/* string to imbed in message */
 	charptr EPtr);		/* ptr to end-of-string, plus one */
-VVOID	ErrStr(			/* display error message with string arg */
+void	ErrStr(			/* display error message with string arg */
 	WORD ErrNum,		/* the error number */
 	char *EStr);		/* string to imbed in message */
-VVOID	ErrUTC(void);		/* unterminated command or macro */
-VVOID	ErrVrb(			/* display a verbose error message */
+void	ErrUTC(void);		/* unterminated command or macro */
+void	ErrVrb(			/* display a verbose error message */
 	WORD ErrNum);		/* error message number */
 DEFAULT	ExeA(void);		/* execute an A command */
 DEFAULT	ExeAtS(void);		/* execute an at-sign (@) command */
@@ -385,7 +385,7 @@ DEFAULT	FlowEL(void);		/* flow to end of loop */
 DEFAULT	GetAra(void);		/* get m,n area */
 DEFAULT	GetNmA(void);		/* get numeric argument */
 DEFAULT	IncCBP(void);		/* increment CBfPtr */
-VVOID	Init(			/* initialize TECO-C */
+void	Init(			/* initialize TECO-C */
 	int argc,
 	char *argv[]);
 DEFAULT	InsStr(			/* insert string into edit buffer */
@@ -395,7 +395,7 @@ BOOLEAN	IsRadx(			/* is the character in the radix set? */
 	unsigned char Charac);
 LONG	Ln2Chr(			/* convert line offset to character offset */
 	LONG Value);
-VVOID	MakDBf(			/* make digit buffer */
+void	MakDBf(			/* make digit buffer */
 	LONG Binary,		/* binary number to be converted */
 	DEFAULT NRadix);	/* radix to be used: 8, 10 or 16 */
 DEFAULT	MakRom(			/* make room in q-register */
@@ -410,7 +410,7 @@ DEFAULT	PushEx(			/* push onto expression stack */
 DEFAULT	RdLine(			/* read a line */
 	BOOLEAN *EBfFul);	/* returned "edit buffer is full" indicator */
 DEFAULT	RdPage(void);		/* read a page from a file */
-VVOID	ReadCS(void);		/* read command string */
+void	ReadCS(void);		/* read command string */
 DEFAULT	Replac(void);		/* replace a string */
 DEFAULT	Search(			/* top level search */
 	BOOLEAN	RepCmd);	/* TRUE if the command has two arguments */
@@ -418,15 +418,15 @@ DEFAULT	SinglP(void);		/* execute a single P function */
 DEFAULT	SkpCmd(void);		/* skip a single command */
 DEFAULT	SrcLop(void);		/* search loop */
 DEFAULT	SSerch(void);		/* single search */
-VVOID	TAbort(			/* terminate TECO-C */
+void	TAbort(			/* terminate TECO-C */
 	DEFAULT tstat);
-VVOID	TypBuf(			/* type a buffer on the terminal */
+void	TypBuf(			/* type a buffer on the terminal */
 	charptr YBfBeg,
 	charptr YBfEnd);
-VVOID	TAbort(			/* cleanup for TECO-C abort */
+void	TAbort(			/* cleanup for TECO-C abort */
 	DEFAULT tstat);
-VVOID	TypESt(void);		/* type error string on terminal */
-VVOID	UMinus(void);		/* handle unary minus */
+void	TypESt(void);		/* type error string on terminal */
+void	UMinus(void);		/* handle unary minus */
 DEFAULT	WrPage(			/* write to output file */
 	DEFAULT	OfIndx,		/* index into OFiles array */
 	charptr OBfBeg,		/* address of output buffer beginning */
@@ -434,44 +434,44 @@ DEFAULT	WrPage(			/* write to output file */
 	LONG AddFF);		/* -1 means add form feed, 0 means don't */
 voidptr ZAlloc(			/* like standard malloc function */
 	SIZE_T MemSiz);
-VVOID	ZBell(void);		/* ring the terminal bell */
+void	ZBell(void);		/* ring the terminal bell */
 DEFAULT ZChIn(			/* input a character from the terminal */
 	BOOLEAN	NoWait);	/* return immediately? */
 LONG	ZClnEG(			/* execute special :EG command */
 	DEFAULT EGWhat,		/* what to get/set/clear: MEM, LIB, etc. */
 	DEFAULT EGOper,		/* operation: get, set or clear */
 	charptr TxtPtr);	/* if setting,  value to set */
-VVOID	ZClnUp(void);		/* cleanup for TECO-C abort */
+void	ZClnUp(void);		/* cleanup for TECO-C abort */
 #if DEBUGGING || CONSISTENCY_CHECKING
 ULONG	Zcp2ul(			/* convert voidptr to unsigned long */
 	voidptr cp);
 #endif
-VVOID	ZDoCmd(			/* terminate and pass command string to OS */
+void	ZDoCmd(			/* terminate and pass command string to OS */
 	charptr GBfBeg,
 	charptr GBfPtr);	
-VVOID	ZDspBf(			/* output a buffer to the terminal */
+void	ZDspBf(			/* output a buffer to the terminal */
 	charptr buffer,
 	SIZE_T length);
-VVOID	ZDspCh(			/* display a character */
+void	ZDspCh(			/* display a character */
 	char Charac);
 DEFAULT	ZExCtB(void);		/* execute a ^B command */
 DEFAULT	ZExCtH(void);		/* execute a ^H command */
 DEFAULT	ZExeEJ(void);		/* execute an EJ command */
-VVOID	ZExit(			/* terminate TECO-C */
+void	ZExit(			/* terminate TECO-C */
 	DEFAULT estat);
-VVOID	ZFree(			/* like standard free() function */
+void	ZFree(			/* like standard free() function */
 	voidptr pointer);
 DEFAULT	ZFrSrc(void);		/* forward search to match 1st character */
-VVOID	ZHelp(			/* display a help message */
+void	ZHelp(			/* display a help message */
 	charptr HlpBeg,		/* first char of help request */
 	charptr HlpEnd,		/* last character of help request */
 	BOOLEAN SysLib,		/* use default HELP library? */
 	BOOLEAN	Prompt);	/* enter interactive help mode? */
-VVOID	ZIClos(			/* close input file */
+void	ZIClos(			/* close input file */
 	DEFAULT	IfIndx);	/* index into IFiles array */
-VVOID	ZOClDe(			/* close and delete output file */
+void	ZOClDe(			/* close and delete output file */
 	DEFAULT	OfIndx);	/* index into OFiles array */
-VVOID	ZOClos(			/* close output file */
+void	ZOClos(			/* close output file */
 	DEFAULT	OfIndx);	/* index into OFiles array */
 DEFAULT	ZOpInp(			/* open input file */
 	DEFAULT IfIndx,		/* index into file data block array IFiles */
@@ -481,7 +481,7 @@ DEFAULT ZOpOut(			/* open output file */
 	DEFAULT	OfIndx,		/* output file indicator */
 	BOOLEAN RepErr,		/* report errors? */
 	BOOLEAN Backup);	/* create backup? TAA MOD */
-VVOID	ZPrsCL(			/* parse the command line */
+void	ZPrsCL(			/* parse the command line */
 	int argc,
 	char **argv);
 DEFAULT	ZPWild(void);		/* preset the wildcard lookup filespec */
@@ -493,14 +493,14 @@ DEFAULT ZRdLin(			/* read a line */
 	ptrdiff_t ibuflen,	/* max length of buf */
 	int IfIndx,		/* index into IFiles[] */
 	DEFAULT *retlen);	/* returned length of string */
-VVOID	ZScrOp(			/* do a screen operation */
+void	ZScrOp(			/* do a screen operation */
 	int OpCode);		/* code for operation */
 DEFAULT	ZSetTT(			/* set a terminal parameter */
 	DEFAULT TTWhat,		/* what terminal parameter to set */
 	DEFAULT TTVal);		/* new value for the terminal parameter */
 DEFAULT	ZSWild(void);		/* search for next wildcard filename */
-VVOID	ZTrmnl(void);		/* open terminal input and output */
-VVOID	ZVrbos(			/* display verbose form of an error message */
+void	ZTrmnl(void);		/* open terminal input and output */
+void	ZVrbos(			/* display verbose form of an error message */
 	WORD ErrNum,		/* error number (see DEFERR.h) */
 	char *ErMnem);		/* error mnemonic */
 DEFAULT	ZWrBfr(			/* write a buffer */
@@ -512,35 +512,35 @@ DEFAULT	ZWrBfr(			/* write a buffer */
 #else				/* else (not USE_PROTOTYPES) */
 
 #if CHECKSUM_CODE
-VVOID	init_code_checksums ();
-VVOID	check_code_checksums ();
+void	init_code_checksums ();
+void	check_code_checksums ();
 #endif
 
 #if CONSISTENCY_CHECKING
-VVOID	init_consistency_check();
-VVOID	check_consistency();
+void	init_consistency_check();
+void	check_consistency();
 #endif
 
 DEFAULT	BakSrc();	/* backwards search to match 1st character */
 DEFAULT	BldStr();	/* build a string */
-VVOID	ClenUp();	/* clean up for TECO-C abort */
+void	ClenUp();	/* clean up for TECO-C abort */
 DEFAULT	CMatch();	/* match a character */
 #if DEBUGGING
 DEFAULT	DbgDsp();	/* debugging, control debugging display */
-VVOID	DbgFEn();	/* debugging, function entry */
-VVOID	DbgFEx();	/* debugging, function exit */
-VVOID	DbgFMs();	/* debugging, function message */
+void	DbgFEn();	/* debugging, function entry */
+void	DbgFEx();	/* debugging, function exit */
+void	DbgFMs();	/* debugging, function message */
 #endif
 DEFAULT	DoCJR();	/* do C, J or R stuff */
-VVOID	DoEvEs();	/* do an EV or ES mode control flag function */
+void	DoEvEs();	/* do an EV or ES mode control flag function */
 DEFAULT	DoFlag();	/* handle mode control flag */
-VVOID	EchoIt();	/* echo a character to to terminal */
-VVOID	ErrChr();	/* display error message with character argument */
-VVOID	ErrMsg();	/* display error message */
-VVOID	ErrPSt();	/* display error message with string argument */
-VVOID	ErrStr();	/* display error message with string argument */
-VVOID	ErrUTC();	/* unterminated command or macro */
-VVOID	ErrVrb();	/* display a verbose error message */
+void	EchoIt();	/* echo a character to to terminal */
+void	ErrChr();	/* display error message with character argument */
+void	ErrMsg();	/* display error message */
+void	ErrPSt();	/* display error message with string argument */
+void	ErrStr();	/* display error message with string argument */
+void	ErrUTC();	/* unterminated command or macro */
+void	ErrVrb();	/* display a verbose error message */
 DEFAULT	ExeA();		/* execute an A command */
 DEFAULT	ExeAtS();	/* execute an at-sign (@) command */
 DEFAULT	ExeB();		/* execute a B command */
@@ -626,61 +626,61 @@ DEFAULT	FlowEL();	/* flow to end of loop */
 DEFAULT	GetAra();	/* get m,n area */
 DEFAULT	GetNmA();	/* get numeric argument */
 DEFAULT	IncCBP();	/* increment CBfPtr */
-VVOID	Init();		/* initialize TECO-C */
+void	Init();		/* initialize TECO-C */
 DEFAULT	InsStr();	/* insert string into edit buffer */
 BOOLEAN	IsRadx();	/* is the character in the radix set? */
 LONG	Ln2Chr();	/* convert line offset to character offset */
-VVOID	MakDBf();	/* make digit buffer */
+void	MakDBf();	/* make digit buffer */
 DEFAULT	MakRom();	/* make room in q-register */
 DEFAULT	PopMac();	/* pop variables after macro call */
 DEFAULT	PshMac();	/* push variables for macro call */
 DEFAULT	PushEx();	/* push onto expression stack */
 DEFAULT	RdLine();	/* read a line */
 DEFAULT	RdPage();	/* read a page from a file */
-VVOID	ReadCS();	/* read command string */
+void	ReadCS();	/* read command string */
 DEFAULT	Replac();	/* replace a string */
 DEFAULT	Search();	/* top level search */
 DEFAULT	SinglP();	/* execute a single P function */
 DEFAULT	SkpCmd();	/* skip a single command */
 DEFAULT	SrcLop();	/* search loop */
 DEFAULT	SSerch();	/* single search */
-VVOID	TAbort();	/* terminate TECO-C */
-VVOID	TypBuf();	/* type a buffer on the terminal */
-VVOID	TypESt();	/* type error string on terminal */
-VVOID	UMinus();	/* handle unary minus */
+void	TAbort();	/* terminate TECO-C */
+void	TypBuf();	/* type a buffer on the terminal */
+void	TypESt();	/* type error string on terminal */
+void	UMinus();	/* handle unary minus */
 DEFAULT	WrPage();	/* write to output file */
 voidptr ZAlloc();	/* like standard malloc function */
-VVOID	ZBell();	/* ring the terminal bell */
+void	ZBell();	/* ring the terminal bell */
 DEFAULT ZChIn();	/* input a character from the terminal */
 LONG	ZClnEG();	/* execute special :EG command */
-VVOID	ZClnUp();	/* cleanup for TECO-C abort */
+void	ZClnUp();	/* cleanup for TECO-C abort */
 #if DEBUGGING || CONSISTENCY_CHECKING
 ULONG	Zcp2ul();	/* convert charptr to unsigned long */
 #endif
-VVOID	ZDoCmd();	/* terminate and pass command string to OS */
-VVOID	ZDspBf();	/* output a buffer to the terminal */
-VVOID	ZDspCh();	/* display a character */
+void	ZDoCmd();	/* terminate and pass command string to OS */
+void	ZDspBf();	/* output a buffer to the terminal */
+void	ZDspCh();	/* display a character */
 DEFAULT	ZExCtB();	/* execute a ^B command */
 DEFAULT	ZExCtH();	/* execute a ^H command */
 DEFAULT	ZExeEJ();	/* execute an EJ command */
-VVOID	ZExit();	/* terminate TECO-C */
-VVOID	ZFree();	/* like standard free() function */
+void	ZExit();	/* terminate TECO-C */
+void	ZFree();	/* like standard free() function */
 DEFAULT	ZFrSrc();	/* forward search to match 1st character */
-VVOID	ZHelp();	/* display a help message */
-VVOID	ZIClos();	/* close input file */
-VVOID	ZOClDe();	/* close and delete output file */
-VVOID	ZOClos();	/* close output file */
+void	ZHelp();	/* display a help message */
+void	ZIClos();	/* close input file */
+void	ZOClDe();	/* close and delete output file */
+void	ZOClos();	/* close output file */
 DEFAULT	ZOpInp();	/* open input file */
 DEFAULT ZOpOut();	/* open output file */
-VVOID	ZPrsCL();	/* parse the command line */
+void	ZPrsCL();	/* parse the command line */
 DEFAULT	ZPWild();	/* preset the wildcard lookup filespec */
 voidptr	ZRaloc();	/* re-allocate memory*/
 DEFAULT	ZRdLin();	/* read a line */
-VVOID	ZScrOp();	/* do a screen operation */
+void	ZScrOp();	/* do a screen operation */
 DEFAULT	ZSetTT();	/* set a terminal parameter */
 DEFAULT	ZSWild();	/* search for next wildcard filename */
-VVOID	ZTrmnl();	/* open terminal input and output */
-VVOID	ZVrbos();	/* display verbose form of an error message */
+void	ZTrmnl();	/* open terminal input and output */
+void	ZVrbos();	/* display verbose form of an error message */
 DEFAULT	ZWrBfr();	/* write line to file */
 #endif
 #if CURSES

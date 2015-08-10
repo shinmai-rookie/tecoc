@@ -994,3 +994,11 @@ baseline version as of Fall Decus Symposium, Anaheim
 4. Fixed error in the way the EI command reads files.  If the file being
    read was too large for the buffer, memory was getting stomped.  Thanks
    to Mark Henderson for reporting the bug in detail and suggesting a fix.
+
+
+10-August-2015 to XX-August-2015 version 147
+0. Removed VVOID; changed it to void (if not accepted by the compiler, `void'
+   is defined as `')
+1. Same as (0) with GLOBAL
+2. Some changes to makefile
+3. General formatting changes

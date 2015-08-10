@@ -69,8 +69,8 @@ instance,  when the command 10,25T is executed,  the GetAra function is called
 to set these pointers,  which are then used to display the text.
 *****************************************************************************/
 
-GLOBAL	charptr	AraBeg;		/* start of m,n area */
-GLOBAL	charptr	AraEnd;		/* end of m,n area */
+global	charptr	AraBeg;		/* start of m,n area */
+global	charptr	AraEnd;		/* end of m,n area */
 
 /*****************************************************************************
 	ArgPtr points to the first character of the text argument associated
@@ -81,7 +81,7 @@ to the end of the text argument,  and remembers where the beginning was using
 ArgPtr.
 *****************************************************************************/
 
-GLOBAL	charptr	ArgPtr;		/* start of text argument of a cmd */
+global	charptr	ArgPtr;		/* start of text argument of a cmd */
 
 /*****************************************************************************
 	These variables point to the beginning and end of the command string
@@ -90,8 +90,8 @@ function.  CBfBeg always points to this buffer,  but CStBeg changes when an M
 or EI command is executed.
 *****************************************************************************/
 
-GLOBAL	charptr	CBfBeg;		/* command buffer beginning */
-GLOBAL	charptr	CBfEnd;		/* command buffer end */
+global	charptr	CBfBeg;		/* command buffer beginning */
+global	charptr	CBfEnd;		/* command buffer end */
 
 /*****************************************************************************
 	CBfPtr is the command string buffer pointer,  which moves across a
@@ -100,7 +100,7 @@ string buffer pointed to by CBfBeg,  but it points elsewhere when an M or EI
 command is being executed.
 *****************************************************************************/
 
-GLOBAL	charptr	CBfPtr;		/* command buffer pointer */
+global	charptr	CBfPtr;		/* command buffer pointer */
 
 /*****************************************************************************
 	When TECO-C is executing a command string,  it looks at each command
@@ -113,7 +113,7 @@ modifiers.  There is also a bit which indicates that a command has 2 numeric
 arguments separated by a comma.
 *****************************************************************************/
 
-GLOBAL	char	CmdMod;
+global	char	CmdMod;
 
 /*****************************************************************************
 	These variables point to the beginning and end of the executing
@@ -121,8 +121,8 @@ command string,  whether that command string is in the command buffer, a
 q-register or the EI buffer.
 *****************************************************************************/
 
-GLOBAL	charptr	CStBeg;		/* start of command string */
-GLOBAL	charptr	CStEnd;		/* end of command string */
+global	charptr	CStBeg;		/* start of command string */
+global	charptr	CStEnd;		/* end of command string */
 
 /*****************************************************************************
 	CurInp and CurOut are indices into the IFiles and OFiles arrays,
@@ -130,8 +130,8 @@ respectively.  They indicate the entries for the current input stream and
 current output stream.
 *****************************************************************************/
 
-GLOBAL	DEFAULT	CurInp = PINPFL;
-GLOBAL	DEFAULT	CurOut = POUTFL;
+global	DEFAULT	CurInp = PINPFL;
+global	DEFAULT	CurOut = POUTFL;
 
 /*****************************************************************************
 	These variables point to the digit buffer.  When TECO-C needs to
@@ -140,16 +140,16 @@ buffer.  The buffer is large enough to hold the largest integer represented
 by 32 bits,  plus an optional sign and maybe a carriage-return/line-feed pair.
 *****************************************************************************/
 
-GLOBAL	charptr	DBfBeg;		/* digit buffer */
-GLOBAL	charptr	DBfPtr;		/* digit buffer pointer */
+global	charptr	DBfBeg;		/* digit buffer */
+global	charptr	DBfPtr;		/* digit buffer pointer */
 
 /*****************************************************************************
 	These variables point to the first and last characters in the edit
 buffer.  See file PG.MEM for a description of memory management.
 *****************************************************************************/
 
-GLOBAL	charptr	EBfBeg;		/* first character in edit buffer */
-GLOBAL	charptr	EBfEnd;		/* last character in edit buffer */
+global	charptr	EBfBeg;		/* first character in edit buffer */
+global	charptr	EBfEnd;		/* last character in edit buffer */
 
 /*****************************************************************************
 	EBPtr1 is used when a search is being performed.  It is adjusted when
@@ -158,7 +158,7 @@ When a search command succeeds,  this pointer is left pointing to the first
 character of the found string.
 *****************************************************************************/
 
-GLOBAL	charptr	EBPtr1;
+global	charptr	EBPtr1;
 
 /*****************************************************************************
 	EBPtr2 is used when a search is being performed.  After a character
@@ -168,7 +168,7 @@ the edit buffer.  When a search command succeeds,  this pointer is left
 pointing to the last character of the found string.
 *****************************************************************************/
 
-GLOBAL	charptr	EBPtr2;
+global	charptr	EBPtr2;
 
 /*****************************************************************************
 	Bits within EdFlag have the following meanings:
@@ -180,7 +180,7 @@ GLOBAL	charptr	EBPtr2;
         64   only move dot by one on multiple occurrence searches
 *****************************************************************************/
 
-GLOBAL	WORD	EdFlag = 0;		/* ED mode control flag */
+global	WORD	EdFlag = 0;		/* ED mode control flag */
 
 /*****************************************************************************
 	Bits within EhFlag have the following meanings:
@@ -189,14 +189,14 @@ GLOBAL	WORD	EdFlag = 0;		/* ED mode control flag */
         4    display failing command string after errors
 *****************************************************************************/
 
-GLOBAL	WORD	EhFlag = 0;		/* EH mode control flag */
+global	WORD	EhFlag = 0;		/* EH mode control flag */
 
 /*****************************************************************************
 	EndSAr is used by search code to point to the end of the area to be
 searched.
 *****************************************************************************/
 
-GLOBAL	charptr	EndSAr;			/* end of search area */
+global	charptr	EndSAr;			/* end of search area */
 
 /*****************************************************************************
 	Several TECO error messages take an argument.  For instance,  the
@@ -205,7 +205,7 @@ these kinds of messages are required,  ErrTxt is used to send the text
 of the argument to the error display function (ErrMsg).
 *****************************************************************************/
 
-GLOBAL	char	ErrTxt[6];		/* holds part of error message */
+global	char	ErrTxt[6];		/* holds part of error message */
 
 /*****************************************************************************
 	The EsFlag flag controls what is displayed on the terminal after every
@@ -223,7 +223,7 @@ successful search command completes.  EsFlag has the following meanings:
                   displayed.
 *****************************************************************************/
 
-GLOBAL	WORD	EsFlag = 0;		/* ES mode control flag */
+global	WORD	EsFlag = 0;		/* ES mode control flag */
 
 /*****************************************************************************
 	The expression stack contains the components of TECO's numeric
@@ -231,9 +231,9 @@ expressions.  Each entry on the expression stack is either an OPERAND or
 an OPERATOR (like +, -, /, *).
 *****************************************************************************/
 
-GLOBAL	struct	EStck EStack[EXS_SIZE]; /* expression stack */
-GLOBAL	WORD	EStBot;			/* expression stack bottom */
-GLOBAL	WORD	EStTop;			/* top of expression stack */
+global	struct	EStck EStack[EXS_SIZE]; /* expression stack */
+global	WORD	EStBot;			/* expression stack bottom */
+global	WORD	EStTop;			/* top of expression stack */
 
 /*****************************************************************************
 	Bits in EtFlag control TECO's handling of the terminal.  Definitions
@@ -242,7 +242,7 @@ Bits in EtFlag are initialized when the terminal is set up in the ZTrmnl
 function.
 *****************************************************************************/
 
-GLOBAL	WORD	EtFlag = 0;		/* ET mode control flag */
+global	WORD	EtFlag = 0;		/* ET mode control flag */
 
 /*****************************************************************************
 	The EuFlag is TECO's case mode control flag.  This flag allows TECO to
@@ -255,7 +255,7 @@ are converted to uppercase on type-out,  but uppercase characters are
 preceded by a ' character.
 *****************************************************************************/
 
-GLOBAL	WORD	EuFlag = EU_NONE;	/* EU mode control flag */
+global	WORD	EuFlag = EU_NONE;	/* EU mode control flag */
 
 /*****************************************************************************
 	The EV mode control flag controls what is displayed on the terminal
@@ -274,15 +274,15 @@ displayed (EV is 0).  EV has the following meanings:
                   displayed.
 *****************************************************************************/
 
-GLOBAL	WORD	EvFlag = 0;		/* EV mode control flag */
+global	WORD	EvFlag = 0;		/* EV mode control flag */
 
 /*****************************************************************************
 	These variables point to the filename buffer.
 *****************************************************************************/
 
-GLOBAL	charptr	FBfBeg;			/* first char of filename buffer */
-GLOBAL	charptr	FBfEnd;			/* last chr (+1) of filename buffer */
-GLOBAL	charptr	FBfPtr;			/* pointer into file spec buffer */
+global	charptr	FBfBeg;			/* first char of filename buffer */
+global	charptr	FBfEnd;			/* last chr (+1) of filename buffer */
+global	charptr	FBfPtr;			/* pointer into file spec buffer */
 
 /*****************************************************************************
 	Bits in the EzFlag are system-specific.  See the system-specific
@@ -290,7 +290,7 @@ file for each operating system (like ZVMS.C, ZUNIX.C, etc) for the meanings
 of these bits.
 *****************************************************************************/
 
-GLOBAL	WORD	EzFlag = 0;		/* EZ mode control flag */
+global	WORD	EzFlag = 0;		/* EZ mode control flag */
 
 /*****************************************************************************
 	FFPage is the value which is returned by the ^E command.  It is -1 if
@@ -302,15 +302,15 @@ related operations to determine if a form feed should be appended to the
 contents of the buffer when it is output.
 *****************************************************************************/
 
-GLOBAL	LONG	FFPage = 0;		/* form feed flag (see ^E command) */
+global	LONG	FFPage = 0;		/* form feed flag (see ^E command) */
 
 /*****************************************************************************
 	These variables point to the first and last characters in the edit
 buffer gap.  See file PG.MEM for a description of memory management.
 *****************************************************************************/
 
-GLOBAL	charptr	GapBeg;			/* first char in edit buffer gap */
-GLOBAL	charptr	GapEnd;			/* last char in edit buffer gap */
+global	charptr	GapBeg;			/* first char in edit buffer gap */
+global	charptr	GapEnd;			/* last char in edit buffer gap */
 
 /*****************************************************************************
 	GotCtC indicates that the user has interrupted the normal execution
@@ -320,14 +320,14 @@ cleared before a command string is entered.  It is tested each time a command
 terminates and when certain commands execute time-consuming loops.
 *****************************************************************************/
 
-GLOBALV	BOOLEAN	GotCtC = FALSE;
+volatile BOOLEAN GotCtC = FALSE;
 
 /*****************************************************************************
 	IBfEnd is the end of the input buffer.  See file PG.MEM for a
 description of memory management.
 *****************************************************************************/
 
-GLOBAL	charptr	IBfEnd;
+global	charptr	IBfEnd;
 
 /*****************************************************************************
 	IniSrM is the initial search mode.  It is used when parsing search
@@ -337,7 +337,7 @@ characters in a string.  It can take on the values LOWER, UPPER or NONE,
 which are defined in TECOC.H.
 *****************************************************************************/
 
-GLOBAL	int	IniSrM = NONE;
+global	int	IniSrM = NONE;
 
 /*****************************************************************************
 	IsOpnI and IsOpnO contain indicators about the status of the file
@@ -347,9 +347,9 @@ IsEofI indicates that the corresponding element of IFiles reflects a file
 that has reached the end.
 *****************************************************************************/
 
-GLOBAL	BOOLEAN	IsEofI[NIFDBS];
-GLOBAL	BOOLEAN	IsOpnI[NIFDBS];
-GLOBAL	BOOLEAN	IsOpnO[NOFDBS];
+global	BOOLEAN	IsEofI[NIFDBS];
+global	BOOLEAN	IsOpnI[NIFDBS];
+global	BOOLEAN	IsOpnO[NOFDBS];
 
 /*****************************************************************************
 	LstErr holds the code for the last error reported by TECO-C.  It is
@@ -358,7 +358,7 @@ the ? or / immediate mode commands,  to print out more information about the
 last error that occurred.
 *****************************************************************************/
 
-GLOBAL	WORD	LstErr = ERR_XXX;	/* number of last error message */
+global	WORD	LstErr = ERR_XXX;	/* number of last error message */
 
 /*****************************************************************************
 	The loop stack maintains pointers to the first character of each loop
@@ -370,9 +370,9 @@ saved on the macro stack,  and LStBot is set to LStTop,  so that LStBot
 defines the bottom of the LStack frame for the new macro level.
 *****************************************************************************/
 
-GLOBAL	WORD	LStBot;			/* bottom of loop stack */
-GLOBAL	struct	LStck LStack[LPS_SIZE]; /* loop stack */
-GLOBAL	WORD	LStTop;			/* top of loop stack */
+global	WORD	LStBot;			/* bottom of loop stack */
+global	struct	LStck LStack[LPS_SIZE]; /* loop stack */
+global	WORD	LStTop;			/* top of loop stack */
 
 /*****************************************************************************
 	MArgmt contains the m part of an m,n argument pair that precedes a
@@ -380,14 +380,14 @@ TECO command.  For instance,  MArgmt would contain 10 when the command
 10,45T is being executed.
 *****************************************************************************/
 
-GLOBAL	LONG	MArgmt;			/* m part of m,n numeric arguments */
+global	LONG	MArgmt;			/* m part of m,n numeric arguments */
 
 /*****************************************************************************
 	MAtchd is used to indicate that a match has been found for a search
 string.  It is only used when a search command is being executed.
 *****************************************************************************/
 
-GLOBAL	BOOLEAN	Matchd;			/* indicates successful search */
+global	BOOLEAN	Matchd;			/* indicates successful search */
 
 /*****************************************************************************
 	These variables implement the macro stack.  When TECO executes a
@@ -396,8 +396,8 @@ restored when the macro has finished executing.  Each entry in the macro
 stack preserves the critical variables for one macro call.
 *****************************************************************************/
 
-GLOBAL	struct	MStck MStack[MCS_SIZE]; /* macro stack */
-GLOBAL	WORD	MStTop = -1;		/* top of macro stack */
+global	struct	MStck MStack[MCS_SIZE]; /* macro stack */
+global	WORD	MStTop = -1;		/* top of macro stack */
 
 /*****************************************************************************
 	NArgmt holds the numeric argument that precedes a command.  It is set
@@ -405,7 +405,7 @@ by a call to the GetNmA function.  When the command is preceded by an m,n
 argument pair,  NArgmt holds the value of the n argument.
 *****************************************************************************/
 
-GLOBAL	LONG	NArgmt;			/* n argument (n part of m,n) */
+global	LONG	NArgmt;			/* n argument (n part of m,n) */
 
 /*****************************************************************************
 	QR is a pointer to a structure which defines a q-register.
@@ -413,7 +413,7 @@ It is set by calling the FindQR function.  Whenever a command that uses a
 q-register is executed,  FindQR is called first to set QR.
 *****************************************************************************/
 
-GLOBAL	QRptr	QR;
+global	QRptr	QR;
 
 /*****************************************************************************
 	The structures in the QRgstr array represent the global and main-level
@@ -425,28 +425,28 @@ the 10-35 elements are for global alphabetic q-registers (a-z or A-Z),  the
 allocated dynamically.
 *****************************************************************************/
 
-GLOBAL	struct	QReg QRgstr[72];
+global	struct	QReg QRgstr[72];
 
 /*****************************************************************************
 	QStack is the q-register stack,  accessed via the [ and ] commands.
 *****************************************************************************/
 
-GLOBAL	struct	QReg QStack[QRS_SIZE];	/* q-register stack */
-GLOBAL	WORD	QStTop = -1;		/* top of q-register stack */
+global	struct	QReg QStack[QRS_SIZE];	/* q-register stack */
+global	WORD	QStTop = -1;		/* top of q-register stack */
 
 /*****************************************************************************
 	RefLen is the length of the last inserted string or found search
 string.  It is accessed by the ^S command.
 *****************************************************************************/
 
-GLOBAL	LONG	RefLen = 0;		/* returned by ^S */
+global	LONG	RefLen = 0;		/* returned by ^S */
 
 /*****************************************************************************
 	Radix is TECO's radix,  usually 10.  It is set by the ^D, ^O and ^R
 commands.
 *****************************************************************************/
 
-GLOBAL	DEFAULT	Radix = 10;		/* TECO's current radix */
+global	DEFAULT	Radix = 10;		/* TECO's current radix */
 
 /*****************************************************************************
 	When searching,  this pointer points to the farthest-right character
@@ -455,16 +455,16 @@ has been found,  to indicate the limit of the area in the edit buffer that
 should be checked against the remaining characters in the search string.
 *****************************************************************************/
 
-GLOBAL	charptr	RhtSid;
+global	charptr	RhtSid;
 
 /*****************************************************************************
 	These variables point to the search string buffer.  The search buffer
 is allocated by function MemIni.
 *****************************************************************************/
 
-GLOBAL	charptr	SBfBeg = NULL;		/* start of search buffer */
-GLOBAL	charptr	SBfEnd;			/* end search buffer */
-GLOBAL	charptr	SBfPtr;			/* end of search string buffer */
+global	charptr	SBfBeg = NULL;		/* start of search buffer */
+global	charptr	SBfEnd;			/* end search buffer */
+global	charptr	SBfPtr;			/* end of search string buffer */
 
 /*****************************************************************************
 	SIncrm is the value added to the search pointer when the edit buffer
@@ -474,14 +474,14 @@ direction.  By using this variable,  the rather complex code that implements
 searching can easily be used to search in either direction.
 *****************************************************************************/
 
-GLOBAL	LONG	SIncrm;			/* search increment */
+global	LONG	SIncrm;			/* search increment */
 
 /*****************************************************************************
 	SMFlag is TECOC's search mode flag,  and controls case sensitivity
 during searches.  This variable holds the value of the ^X command.
 *****************************************************************************/
 
-GLOBAL	WORD	SMFlag = 0;		/* search mode control flag (^X) */
+global	WORD	SMFlag = 0;		/* search mode control flag (^X) */
 
 /*****************************************************************************
 	SrcTyp is used to "remember" the kind of search command that we're
@@ -490,14 +490,14 @@ each search command is slightly different than the others.  The common
 search code tests this variable to implement the differences.
 *****************************************************************************/
 
-GLOBAL	WORD	SrcTyp;			/* type of search (E_SEARCH, etc) */
+global	WORD	SrcTyp;			/* type of search (E_SEARCH, etc) */
 
 /*****************************************************************************
 	SStPtr points into the search buffer,  and is used only by the search
 code.
 *****************************************************************************/
 
-GLOBAL	charptr	SStPtr;		/* search string pointer */
+global	charptr	SStPtr;		/* search string pointer */
 
 /*****************************************************************************
 	This table serves two functions.  It is used by the character macros
@@ -668,7 +668,7 @@ is toggled by the ? command.
 ZPrsCL(), set this to TRUE; otherwise, set it to FALSE.
 *****************************************************************************/
 
-GLOBAL	BOOLEAN	TraceM = FALSE;		/* trace mode flag */
+global	BOOLEAN	TraceM = FALSE;		/* trace mode flag */
 
 /*****************************************************************************
 	CrType is the terminal type.  It is used by the ZScrOp function to
@@ -676,19 +676,19 @@ drive the few screen capabilities of TECOC.  See ZScrOp for a list of the
 values that CrType can take.
 *****************************************************************************/
 
-GLOBAL	DEFAULT	CrType = UNTERM;	/* terminal type */
+global	DEFAULT	CrType = UNTERM;	/* terminal type */
 
 #if VIDEO
-GLOBAL DEFAULT	HldFlg;			/* value of 5:W (hold mode flag) */
-GLOBAL DEFAULT	HtSize;			/* value of 1:W (screen width) */
-GLOBAL DEFAULT	MrkFlg;			/* value of 4:W */
-GLOBAL DEFAULT	ScroLn;			/* value of 7:W */
-GLOBAL DEFAULT	SeeAll;			/* value of 3:W */
-GLOBAL DEFAULT	TopDot;			/* value of 6:W */
-GLOBAL DEFAULT	VtSize;			/* value of 2:W (screen height) */
+global DEFAULT	HldFlg;			/* value of 5:W (hold mode flag) */
+global DEFAULT	HtSize;			/* value of 1:W (screen width) */
+global DEFAULT	MrkFlg;			/* value of 4:W */
+global DEFAULT	ScroLn;			/* value of 7:W */
+global DEFAULT	SeeAll;			/* value of 3:W */
+global DEFAULT	TopDot;			/* value of 6:W */
+global DEFAULT	VtSize;			/* value of 2:W (screen height) */
 #if CURSES
-GLOBAL DEFAULT	SpcMrk = 0;		/* value of 8:W */
-GLOBAL DEFAULT	KeyPad;			/* value of 9:W */
+global DEFAULT	SpcMrk = 0;		/* value of 8:W */
+global DEFAULT	KeyPad;			/* value of 9:W */
 #endif
 #endif
 
@@ -741,25 +741,25 @@ static	DEFAULT	DbgLvl = 0;	/* debugging message level */
 
 #define DBGSBF	4000		/* huge buffer to avoid overruns */
 
-GLOBAL	char DbgSBf[DBGSBF+1];	/* sprintf() buffer for debugging messages */
+global	char DbgSBf[DBGSBF+1];	/* sprintf() buffer for debugging messages */
 
 #if USE_PROTOTYPES
-static VVOID DbgDMs(		/* debugging, display message */
+static void DbgDMs(		/* debugging, display message */
 	int DbgFLv,		/*   function display level */
 	char *DbgFNm,		/*   function name */
 	char *DbgWht,		/*   "called", "returning", or blank */
 	char *DbgMsg);		/*   message to display */
-static VVOID DbgDsA(void);	/* display address variables */
-static VVOID DbgEBf(void);	/* display edit buffer details */
-static VVOID DbgHlp(void);	/* display help message */
-static VVOID DbgLSt(void);	/* display loop stack details */
-static VVOID DbgMSt(void);	/* display macro stack details */
-static VVOID DbgPrP(		/* display a pointer */
+static void DbgDsA(void);	/* display address variables */
+static void DbgEBf(void);	/* display edit buffer details */
+static void DbgHlp(void);	/* display help message */
+static void DbgLSt(void);	/* display loop stack details */
+static void DbgMSt(void);	/* display macro stack details */
+static void DbgPrP(		/* display a pointer */
 	char *s,
 	voidptr ptr);
-static VVOID DbgQRg(void);	/* display Q-register's */
-static VVOID DbgQSt(void);	/* display Q-register stack */
-static VVOID DbgSLv(void);	/* set debugging message level */
+static void DbgQRg(void);	/* display Q-register's */
+static void DbgQSt(void);	/* display Q-register stack */
+static void DbgSLv(void);	/* set debugging message level */
 #endif
 
 /*****************************************************************************
@@ -771,7 +771,7 @@ static VVOID DbgSLv(void);	/* set debugging message level */
 *****************************************************************************/
 
 
-static VVOID DbgPrP (s, ptr)	/* display a pointer */
+static void DbgPrP (s, ptr)	/* display a pointer */
 char *s;
 voidptr ptr;
 {
@@ -779,7 +779,7 @@ voidptr ptr;
 }
 
 
-static VVOID DbgDsA()
+static void DbgDsA()
 {
 	int	length;
 
@@ -830,7 +830,7 @@ static VVOID DbgDsA()
 
 *****************************************************************************/
 
-static VVOID DbgEBf()
+static void DbgEBf()
 {
 	charptr	DbgPtr;
 
@@ -874,7 +874,7 @@ static VVOID DbgEBf()
 
 *****************************************************************************/
 
-static VVOID DbgHlp()
+static void DbgHlp()
 {
 	puts("\r\n\tArguments to ^P have the following meanings:\r\n");
 	puts("\t\t^P\tno arguments - display help about ^P\r");
@@ -895,7 +895,7 @@ static VVOID DbgHlp()
 
 *****************************************************************************/
 
-static VVOID DbgLSt()
+static void DbgLSt()
 {
 	int	i;
 
@@ -926,7 +926,7 @@ check_code_checksums() routines while debugging.
 
 *****************************************************************************/
 
-static VVOID DbgDMs(DbgFLv, DbgFNm, DbgWht, DbgMsg)
+static void DbgDMs(DbgFLv, DbgFNm, DbgWht, DbgMsg)
 int DbgFLv;				/* function display level */
 char *DbgFNm;				/* function name */
 char *DbgWht;				/* "called", "returning", or blank */
@@ -974,7 +974,7 @@ char *DbgMsg;				/* message to display */
 
 *****************************************************************************/
 
-VVOID DbgFEn(DbgFLv, DbgFNm, DbgMsg)	/* debugging, function entry */
+void DbgFEn(DbgFLv, DbgFNm, DbgMsg)	/* debugging, function entry */
 int DbgFLv;				/*   function display level */
 char *DbgFNm;				/*   function name */
 char *DbgMsg;				/*   a function entry message */
@@ -991,7 +991,7 @@ char *DbgMsg;				/*   a function entry message */
 
 *****************************************************************************/
 
-VVOID DbgFEx(DbgFLv, DbgFNm, DbgMsg)
+void DbgFEx(DbgFLv, DbgFNm, DbgMsg)
 int DbgFLv;
 char *DbgFNm;
 char *DbgMsg;
@@ -1009,7 +1009,7 @@ has something special to say.
 
 *****************************************************************************/
 
-VVOID DbgFMs(DbgFLv, DbgFNm, DbgMsg)	/* debugging, function message */
+void DbgFMs(DbgFLv, DbgFNm, DbgMsg)	/* debugging, function message */
 int DbgFLv;				/*   function display level */
 char *DbgFNm;				/*   function name */
 char *DbgMsg;				/*   a debugging message */
@@ -1025,7 +1025,7 @@ char *DbgMsg;				/*   a debugging message */
 
 *****************************************************************************/
 
-static VVOID DbgMSt()
+static void DbgMSt()
 {
 	int	i;
 	MSptr	MSp;
@@ -1056,7 +1056,7 @@ static VVOID DbgMSt()
 
 *****************************************************************************/
 
-static VVOID DbgQRg()
+static void DbgQRg()
 {
 	int	i;
 	int	length;
@@ -1107,7 +1107,7 @@ static VVOID DbgQRg()
 
 *****************************************************************************/
 
-static VVOID DbgQSt()
+static void DbgQSt()
 {
 	int	i;
 	int	length;
@@ -1167,7 +1167,7 @@ in order to debug it can be left in the code so they're useful later.
 
 *****************************************************************************/
 
-static VVOID DbgSLv()
+static void DbgSLv()
 {
 	DbgLvl = (DEFAULT)MArgmt;
 }
@@ -1260,7 +1260,7 @@ static	charptr	ss_FBfEnd;
 static	charptr	ss_SBfBeg;
 static	charptr	ss_SBfEnd;
 
-VVOID init_consistency_check()
+void init_consistency_check()
 {
 	ss_CBfBeg = CBfBeg;
 	ss_CBfEnd = CBfEnd;
@@ -1285,7 +1285,7 @@ voidptr p2;
 #include <alloc.h>		/* prototype for heapcheck() */
 #endif
 
-VVOID check_consistency()
+void check_consistency()
 {
     int ex = EXIT_SUCCESS;
 

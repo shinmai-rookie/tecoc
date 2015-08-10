@@ -21,8 +21,8 @@
 #include <string.h>		/* prototype for strlen() */
 
 #if USE_PROTOTYPES
-static	VVOID	ErrDsp(WORD ErrNum, unsigned char *ELine);
-static	VVOID	ToErr(unsigned char Charac, charptr *PtrPtr);
+static	void	ErrDsp(WORD ErrNum, unsigned char *ELine);
+static	void	ToErr(unsigned char Charac, charptr *PtrPtr);
 #endif
 
 
@@ -98,7 +98,7 @@ ERR_UTM (unterminated macro) depending on whether we're in a macro or not.
 
 *****************************************************************************/
 
-VVOID ErrUTC()
+void ErrUTC()
 {
 	ErrMsg((MStTop < 0) ? ERR_UTC : ERR_UTM);
 }
@@ -119,7 +119,7 @@ calls ZHelp to display the verbose messages.
 
 *****************************************************************************/
 
-VVOID ErrVrb(ErrNum)		/* display verbose error message */
+void ErrVrb(ErrNum)		/* display verbose error message */
 WORD ErrNum;			/* error message number */
 {
 	DBGFEN(3,"ErrVrb",NULL);
@@ -149,7 +149,7 @@ to and including the erroneous command to be displayed.
 *****************************************************************************/
 
 
-static VVOID ErrDsp(ErrNum, ELine)
+static void ErrDsp(ErrNum, ELine)
 WORD ErrNum;			/* the error number */
 unsigned char *ELine;		/* error message text */
 {
@@ -184,7 +184,7 @@ is the character itself.
 
 *****************************************************************************/
 
-static VVOID ToErr(Charac, PtrPtr)
+static void ToErr(Charac, PtrPtr)
 unsigned char Charac;
 charptr *PtrPtr;
 {
@@ -227,7 +227,7 @@ charptr *PtrPtr;
 /*****************************************************************************
 *****************************************************************************/
 
-VVOID ErrChr(ErrNum, EChr)	/* display error message with character arg */
+void ErrChr(ErrNum, EChr)	/* display error message with character arg */
 WORD ErrNum;			/* the error number */
 unsigned char EChr;		/* character to imbed in message */
 {
@@ -254,7 +254,7 @@ unsigned char EChr;		/* character to imbed in message */
 /*****************************************************************************
 *****************************************************************************/
 
-VVOID ErrMsg(ErrNum)		/* display error message */
+void ErrMsg(ErrNum)		/* display error message */
 WORD ErrNum;			/* the error number */
 {
 	char *TmpPtr;
@@ -274,7 +274,7 @@ WORD ErrNum;			/* the error number */
 /*****************************************************************************
 *****************************************************************************/
 
-VVOID ErrStr(ErrNum, EStr)	/* display error message with string arg */
+void ErrStr(ErrNum, EStr)	/* display error message with string arg */
 WORD ErrNum;			/* the error number */
 char *EStr;			/* string to imbed in message */
 {
@@ -303,7 +303,7 @@ char *EStr;			/* string to imbed in message */
 /*****************************************************************************
 *****************************************************************************/
 
-VVOID ErrPSt(ErrNum, EBeg, EEnd) /* display error message with string arg */
+void ErrPSt(ErrNum, EBeg, EEnd) /* display error message with string arg */
 WORD ErrNum;			/* the error number */
 charptr EBeg;			/* string to imbed in message */
 charptr EEnd;			/* ptr to char after last char */

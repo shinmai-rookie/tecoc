@@ -1,0 +1,9 @@
+#!/bin/sh
+
+sed 's/^#.*//' < preansifunc.sed > paf_nc.sed
+
+for src_file in "$@"; do
+    sed -f paf_nc.sed < $src_file
+done
+
+rm preansifunc_old.sed

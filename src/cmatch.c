@@ -40,8 +40,9 @@ indicate the limit past which EBPtr2 should not be incremented.
 #include "chmacs.h"		/* define character processing macros */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT CMatch(SamChr)		/* match a character */
-BOOLEAN *SamChr;		/* returned match indicator */
+DEFAULT
+CMatch(BOOLEAN* SamChr)		/* match a character */
+/* BOOLEAN *SamChr;		 returned match indicator */
 {
     BOOLEAN	ChrMat;		/* character match indicator */
     char	OtCase;		/* "other" case character */

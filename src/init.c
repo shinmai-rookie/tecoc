@@ -10,7 +10,7 @@
 #include "deferr.h"		/* define identifiers for error messages */
 
 #if USE_PROTOTYPES
-static VVOID MemIni(void);
+static void MemIni(void);
 #endif
 
 /*****************************************************************************
@@ -23,7 +23,7 @@ variables are also initialized by this function.
 
 *****************************************************************************/
 
-static VVOID MemIni()
+static void MemIni()
 {
 	WORD	i;
 	QRptr	QRp;
@@ -179,7 +179,7 @@ function,  a message is displayed and the program terminates.
 
 *****************************************************************************/
 
-VVOID Init(argc, argv)		/* initialize TECO-C */
+void Init(argc, argv)		/* initialize TECO-C */
 int argc;
 char **argv;
 {

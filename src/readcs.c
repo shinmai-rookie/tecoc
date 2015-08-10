@@ -21,7 +21,7 @@
 #include "dscren.h"		/* define identifiers for screen i/o */
 
 #if USE_PROTOTYPES
-static VVOID InpDel(void);
+static void InpDel(void);
 static unsigned char FirstChar(void);
 static BOOLEAN ChkHlp(charptr HlpEnd);
 #endif
@@ -53,7 +53,7 @@ character is.  This function displays the required character(s).
 
 *****************************************************************************/
 
-static VVOID InpDel()
+static void InpDel()
 {
     int i;
     charptr TmpPtr;				/* temporary pointer */
@@ -374,7 +374,7 @@ handles the following special things:
 #define PRV_Z1		5	/* previous character was one control-Z */
 #define PRV_Z2		6	/* previous character was two control-Z */
 
-VVOID ReadCS()
+void ReadCS()
 {
     BOOLEAN         BadSeq;	/* bad escape sequence indicator */
     unsigned char   ctrstr[3];	/* temp buffer to display ^chars as string */

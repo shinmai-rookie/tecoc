@@ -97,7 +97,7 @@ system and imbedded in a TECO-style message with the SYS mnemonic.
 
 *****************************************************************************/
 
-static VVOID ZErMsg()
+static void ZErMsg()
 {
 	if (errno < sys_nerr)
 		ErrStr(ERR_SYS, sys_errlist[errno]);
@@ -130,7 +130,7 @@ this function controls the signal generator directly.
 
 *****************************************************************************/
 
-VVOID ZBell(VVOID)
+void ZBell(VVOID)
 {
 	ZDspCh('\7');
 }
@@ -289,7 +289,7 @@ stored in /tmp so it gets deleted when the system boots.
   function.
 *****************************************************************************/
 
-VVOID ZCpyBl(Destin, Source, Length)
+void ZCpyBl(Destin, Source, Length)
 charptr Destin;
 charptr Source;
 SIZE_T Length;
@@ -323,7 +323,7 @@ voidptr cp;
 
 *****************************************************************************/
 
-VVOID ZClnUp(VVOID)			/* cleanup for TECO-C abort */
+void ZClnUp(VVOID)			/* cleanup for TECO-C abort */
 {
 	DBGFEN(3,"ZClnUp","closing terminal channels and exiting");
 	if (tty_set == TRUE)
@@ -341,7 +341,7 @@ function.
 
 *****************************************************************************/
 
-VVOID ZDoCmd(charptr GBfBeg, charptr GBfPtr)	/* die and pass command to OS */
+void ZDoCmd(charptr GBfBeg, charptr GBfPtr)	/* die and pass command to OS */
 {
 	char	buf[128+1];
 	char	*space_p;
@@ -387,7 +387,7 @@ in the buffer.
 
 *****************************************************************************/
 
-VVOID ZDspBf(buffer, length)		/* output a buffer to terminal */
+void ZDspBf(buffer, length)		/* output a buffer to terminal */
 charptr buffer;
 SIZE_T length;
 {
@@ -405,7 +405,7 @@ SIZE_T length;
 
 *****************************************************************************/
 
-VVOID ZDspCh(Charac)		/* output a character to terminal */
+void ZDspCh(Charac)		/* output a character to terminal */
 char Charac;
 {
 	if (write(fileno(stdout), &Charac, 1) == -1) {
@@ -530,7 +530,7 @@ DEFAULT ZExeEJ()			/* execute an EJ command */
 
 *****************************************************************************/
 
-VVOID ZExit(estat)		/* terminate TECO-C */
+void ZExit(estat)		/* terminate TECO-C */
 DEFAULT estat;
 {
 	ZClnUp();
@@ -546,7 +546,7 @@ function.
 
 *****************************************************************************/
 
-VVOID ZFree(pointer)		/* free memory allocated by ZAlloc */
+void ZFree(pointer)		/* free memory allocated by ZAlloc */
 voidptr pointer;
 {
 	free(pointer);
@@ -563,7 +563,7 @@ help text.
 
 *****************************************************************************/
 
-VVOID ZHelp(HlpBeg, HlpEnd, SysLib, Prompt)
+void ZHelp(HlpBeg, HlpEnd, SysLib, Prompt)
 charptr HlpBeg;		/* first char of help request */
 charptr HlpEnd;		/* last character of help request */
 BOOLEAN SysLib;		/* use default HELP library? */
@@ -584,7 +584,7 @@ BOOLEAN	Prompt;		/* enter interactive help mode? */
 
 *****************************************************************************/
 
-VVOID ZIClos(IfIndx)			/* close input file */
+void ZIClos(IfIndx)			/* close input file */
 DEFAULT	IfIndx;				/* index into IFiles array */
 {
 	DBGFEN(2,"ZIClos",NULL);
@@ -612,7 +612,7 @@ DEFAULT	IfIndx;				/* index into IFiles array */
 
 *****************************************************************************/
 
-VVOID ZOClDe(OfIndx)			/* close and delete output file */
+void ZOClDe(OfIndx)			/* close and delete output file */
 DEFAULT	OfIndx;				/* index into OFiles array */
 {
 	DBGFEN(2,"ZOClDe",NULL);
@@ -646,7 +646,7 @@ when an output stream is defined.  It must
 
 *****************************************************************************/
 
-VVOID ZOClos(OfIndx)		/* close output file */
+void ZOClos(OfIndx)		/* close output file */
 DEFAULT	OfIndx;			/* index into OFiles array */
 {
 	int ver;
@@ -997,7 +997,7 @@ BOOLEAN Backup;				/* TAA Added */
 
 *****************************************************************************/
 
-VVOID ZPrsCL(argc, argv)		/* parse a TECOC command line */
+void ZPrsCL(argc, argv)		/* parse a TECOC command line */
 int argc;
 char *argv[];
 {
@@ -1262,7 +1262,7 @@ DEFAULT *retlen;		/* returned length of string */
 
 *****************************************************************************/
 
-VVOID ZScrOp(OpCode)		/* do a screen operation */
+void ZScrOp(OpCode)		/* do a screen operation */
 int OpCode;			/* code for operation */
 
 {
@@ -1369,7 +1369,7 @@ to what they were before we changed them.
 
 *****************************************************************************/
 
-static VVOID CntrlC()
+static void CntrlC()
 {
     signal(SIGINT, SIG_IGN);
     SupGotCtC = 0;
@@ -1410,7 +1410,7 @@ static void sigstop()
 /*
  * ZTrmnl - set up terminal modes
  */
-VVOID ZTrmnl()			/* set up I/O to the terminal */
+void ZTrmnl()			/* set up I/O to the terminal */
 {
 	EtFlag = ET_READ_LOWER |	/* guess: term has lowercase and */
 		 ET_EIGHTBIT |          /* terminal uses 8-bit characters */
@@ -1471,7 +1471,7 @@ VVOID ZTrmnl()			/* set up I/O to the terminal */
 
 *****************************************************************************/
 
-VVOID ZVrbos(ErrNum, ErMnem)
+void ZVrbos(ErrNum, ErMnem)
 WORD ErrNum;
 char *ErMnem;
 {

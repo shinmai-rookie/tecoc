@@ -1404,7 +1404,7 @@ It uses the character following the "E" to index into a table of functions.
 DEFAULT	ExeE()				/* execute an E command */
 {
 	unsigned char TmpChr;
-	static DEFAULT (*FEAray[])(VVOID) = {
+	static DEFAULT (*FEAray[])(void) = {
 		/* A */ ExeEA,    /* B */ ExeEB,
 		/* C */ ExeEC,    /* D */ ExeED,
 		/* E */ ExeIll,   /* F */ ExeEF,

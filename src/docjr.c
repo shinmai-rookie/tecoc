@@ -12,8 +12,9 @@ commands.  It is called by ExeC, ExeJ and ExeR only.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT DoCJR(HowFar)		/* do C, J or R stuff */
-LONG HowFar;			/* positive or negative displacement */
+DEFAULT
+DoCJR(LONG HowFar)		/* do C, J or R stuff */
+/* LONG HowFar;			 positive or negative displacement */
 {
 	LONG	InRange;
 	BOOLEAN	ColonMod;

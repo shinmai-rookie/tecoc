@@ -18,7 +18,7 @@ caret-A.
 DEFAULT ExeCrt()		/* execute a ^ (caret) command */
 {
 	unsigned char TmpChr;
-	static DEFAULT (*FCAray[])(VVOID) = {
+	static DEFAULT (*FCAray[])(void) = {
 		/* ^A*/ ExeCtA,   /* ^B*/ ZExCtB,   /* ^C*/ ExeCtC,
 		/* ^D*/ ExeCtD,   /* ^E*/ ExeCtE,   /* ^F*/ ExeNYI,
 		/* ^G*/ ExeIll,   /* ^H*/ ZExCtH,   /*TAB*/ ExeCtI,

@@ -15,7 +15,7 @@ to by CBfPtr.  The last character in the string is pointed to by CStEnd.
 DEFAULT ExeCSt()		/* execute command string */
 {
 	DEFAULT status;
-	static DEFAULT (*FArray[])(VVOID) = {
+	static DEFAULT (*FArray[])(void) = {
 /*NUL*/ ExeNul,   /* ^A*/ ExeCtA,   /* ^B*/ ZExCtB,   /* ^C*/ ExeCtC,
 /* ^D*/ ExeCtD,   /* ^E*/ ExeCtE,   /* ^F*/ ExeNYI,   /* ^G*/ ExeIll,
 /* ^H*/ ZExCtH,   /* ^I*/ ExeCtI,   /* LF*/ ExeNul,   /* VT*/ ExeIll,

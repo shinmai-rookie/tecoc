@@ -1,57 +1,28 @@
-#
+#############################################################################
 # This makefile builds TECOC on Linux
-# Before running it,  inspect the lines between here and the line containing
-# all #'s to select the way you want TECO-C built.
-
-# If you want to compile with built-in debugging support,  uncomment the
-# following line.  When debugging is compiled in,  the control-P command
-# can be used to turn on function tracing or get views of internal data
-# structures (see the DbgDsp function in tecoc.c). Compiling in this support
-# makes TECO-C larger and a little slower,  so you should only use this
-# when you're debugging TECO-C.
-
-#DEBG = -DDEBUGGING
-
-# If you're debugging TECO-C,  use this option to compile in a consistency
-# checking function called after each command executes.  The function checks
-# the sanity of TECO-C's internal variables.  This obviously slows things
-# down a little.
-
-#CCHEK = -DCONSISTENCY_CHECKING
-
-# If you want to use gcc,  uncomment the following lines,  which override the
-# COMPILE.c macro so it doesn't stick in the -target option, which gcc
-# doesn't understand.
-
-CC= gcc
-#CFLAGS= ${OSVERS} ${DEBG} ${CCHEK} -O -Wall -Wshadow -Wpointer-arith -Wcast-qual -DLINUX
-CFLAGS= ${OSVERS} ${DEBG} ${CCHEK} -O  -DLINUX
-#TERMOBJS = -ltermcap
-COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) -c -g
-
 #############################################################################
 
-CFILES=	baksrc.c bldstr.c clenup.c cmatch.c docjr.c doeves.c doflag.c \
-	echoit.c err.c exea.c exeats.c exeb.c exebar.c exebsl.c exec.c \
-	execcc.c execln.c execom.c execrt.c execst.c execta.c exectc.c \
-	exectd.c execte.c execti.c exectl.c exectn.c execto.c exectp.c \
-	exectq.c exectr.c exects.c exectt.c exectu.c exectv.c exectw.c \
-	exectx.c execty.c exectz.c exed.c exedgt.c exedot.c exedqu.c \
-	exee.c exeequ.c exeesc.c exeexc.c exeey.c exef.c exefb.c exeg.c \
-	exegtr.c exeh.c exei.c exeill.c exej.c exek.c exel.c exelbr.c \
-	exelst.c exem.c exen.c exenul.c exenyi.c exeo.c exeopr.c exep.c \
-	exeprc.c exepw.c exeq.c exeqes.c exer.c exerbr.c exertp.c exes.c \
-	exescl.c exet.c exeu.c exeund.c exeusc.c exev.c exew.c exex.c \
-	exey.c exez.c findes.c findqr.c flowec.c flowee.c flowel.c \
-	getara.c getnma.c inccbp.c init.c insstr.c isradx.c ln2chr.c \
-	makdbf.c makrom.c popmac.c pshmac.c pushex.c rdline.c rdpage.c \
-	readcs.c replac.c search.c singlp.c skpcmd.c srclop.c sserch.c \
-	tabort.c typbuf.c typest.c uminus.c wrpage.c zfrsrc.c zlinux.c
+SRCS=baksrc.c bldstr.c clenup.c cmatch.c docjr.c  doeves.c doflag.c \
+     echoit.c err.c    exea.c   exeats.c exeb.c   exebar.c exebsl.c exec.c \
+     execcc.c execln.c execom.c execrt.c execst.c execta.c exectc.c \
+     exectd.c execte.c execti.c exectl.c exectn.c execto.c exectp.c \
+     exectq.c exectr.c exects.c exectt.c exectu.c exectv.c exectw.c \
+     exectx.c execty.c exectz.c exed.c   exedgt.c exedot.c exedqu.c \
+     exee.c   exeequ.c exeesc.c exeexc.c exeey.c  exef.c   exefb.c  exeg.c \
+     exegtr.c exeh.c   exei.c   exeill.c exej.c   exek.c   exel.c   exelbr.c \
+     exelst.c exem.c   exen.c   exenul.c exenyi.c exeo.c   exeopr.c exep.c \
+     exeprc.c exepw.c  exeq.c   exeqes.c exer.c   exerbr.c exertp.c exes.c \
+     exescl.c exet.c   exeu.c   exeund.c exeusc.c exev.c   exew.c   exex.c \
+     exey.c   exez.c   findes.c findqr.c flowec.c flowee.c flowel.c \
+     getara.c getnma.c inccbp.c init.c   insstr.c isradx.c ln2chr.c \
+     makdbf.c makrom.c popmac.c pshmac.c pushex.c rdline.c rdpage.c \
+     readcs.c replac.c search.c singlp.c skpcmd.c srclop.c sserch.c \
+     tabort.c typbuf.c typest.c uminus.c wrpage.c zfrsrc.c zlinux.c
 
-OBJECTS= $(CFILES:.c=.o)
+OBJS=$(SRCS:.c=.o)
 
-tecoc: tecoc.o ${OBJECTS}
-	${LINK.c} -s -o $@ tecoc.o ${OBJECTS} ${TERMOBJS}
+tecoc: tecoc.o $(OBJS)
+	$(LINK.c) -s -o $@ tecoc.o $(OBJS) $(TERMOBJS)
 
 tecoc.o: tecoc.c zport.h tecoc.h deferr.h dchars.h chmacs.h
 
@@ -59,25 +30,25 @@ clpars.h: genclp clpars.tec
 	./genclp
 
 genclp: genclp.o
-	${LINK.c} -o $@ genclp.o
+	$(LINK.c) -o $@ genclp.o
 
 genclp.o: genclp.c
 
 clean:
-	@for i in makedep? ${OBJECTS} ; do \
+	@for i in makedep? $(OBJS) ; do \
 		if [ -f $$i ] ; then rm $$i ; fi ; \
 	done
-	rm -f tecoc tecoc.o core
+	rm -f tecoc tecoc.o core tags
 
 tags:
-	etags *.c *.h
+	$(TAGS) *.c *.h
 
 lint:
 # b = report unreachable break statements
 # c = complain about casts with questionable portability
 # h = apply heuristic tests
 # x = report unused externs
-	lint -bchx -DSUNOS4_0 tecoc.c ${CFILES}
+	lint -bchx -DSUNOS4_0 tecoc.c $(SRCS)
 
 
 #
@@ -99,8 +70,8 @@ depend: makedep
 makedep: FRC
 	@cat /dev/null >makedep5
 	@echo "generating include file dependency list..."
-	@-(for i in ${CFILES} ; do \
-		${CPP} -M $$i >> makedep1; done) 2>makedepe
+	@-(for i in $(SRCS) ; do \
+		$(CPP) -M $$i >> makedep1; done) 2>makedepe
 	@echo "generating new version of makefile..."
 	@sed -e 's|: ./|: |' makedep1 > makedep2
 	@awk ' { if ($$1 != prev)                              \

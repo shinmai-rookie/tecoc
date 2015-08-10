@@ -274,11 +274,11 @@ typedef size_t SIZE_T;		/* use size_t as defined above */
 
 EXTERN	usually "extern",  this identifier lets the more useful keyword
 	"globalref" be used to define an external variable in VAX C.
-GLOBAL	used for the single definition of a variable.  This identifier
+global	used for the single definition of a variable.  This identifier
 	allows the use of the keyword "globaldef" in VAX C.
 EXTERNV used only for GotCtC, this means "extern volatile" for compilers that
 	support the "volatile" keyword.
-GLOBALV used only for GotCtC, this means "volatile" for compilers that
+volatile used only for GotCtC, this means "volatile" for compilers that
 	support the "volatile" keyword.
 VVOID	if the compiler supports the keyword "void",  then this should be
 	defined as such,  else it should be meaningless.  It would be nice
@@ -316,7 +316,6 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #define EXTERN	globalref	/* to reference an external symbol */
 #define GLOBAL	globaldef	/* to define an external symbol */
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
-#define GLOBALV	volatile	/* to define an external volatile symbol */
 #define VVOID	void		/* Void function return */
 
 #define CBFINIT		20000	/* command buffer initial size */
@@ -343,19 +342,16 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #elif defined(__TURBOC__) || defined(__POWERC) || defined(unix) || defined(AMIGA)
 
 #define EXTERN	extern		/* to reference an external symbol */
-#define GLOBAL	/**/		/* to define an external symbol */
+#define global	/**/		/* to define an external symbol */
 #if defined(AMIGA) || defined(unix) && !defined(__GNUC__)
 #define EXTERNV	extern		/* to reference an external volatile symbol */
-#define GLOBALV	/**/		/* to define an external volatile symbol */
+#define volatile /**/		/* to define an external volatile symbol */
 #else
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
-#define GLOBALV	volatile	/* to define an external volatile symbol */
 #endif
 
-#if defined(__TURBOC__) || defined(__POWERC) || defined(__GNUC__) || defined(AMIGA)
-#define VVOID		void	/* Void function return */
-#else
-#define VVOID		/**/	/* Void function return */
+#if !defined(__TURBOC__) && !defined(__POWERC) && !defined(__GNUC__) && !defined(AMIGA)
+#define void		/**/	/* Void function return */
 #endif
 
 #if TC_SMALL_DATA
@@ -433,10 +429,8 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #elif defined(EMX)
 
 #define EXTERN	extern		/* to reference an external symbol */
-#define GLOBAL	/**/		/* to define an external symbol */
+#define global	/**/		/* to define an external symbol */
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
-#define GLOBALV	volatile	/* to define an external volatile symbol */
-#define VVOID	void		/* Void function return */
 
 #define CBFINIT		20000	/* command buffer initial size */
 #define EBFEXP		64000	/* edit buffer expansion value */
@@ -461,10 +455,8 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #elif defined(UNKNOWN)
 
 #define EXTERN	extern		/* to reference an external symbol */
-#define GLOBAL	/**/		/* to define an external symbol */
+#define global	/**/		/* to define an external symbol */
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
-#define GLOBALV	volatile	/* to define an external volatile symbol */
-#define VVOID	void		/* Void function return */
 
 #define CBFINIT		100	/* command buffer initial size */
 #define EBFEXP		100	/* edit buffer expansion value */
@@ -531,17 +523,17 @@ files.
 
 #if defined(sun)
 
-EXTERN VVOID bcopy();
+EXTERN void bcopy();
 #define MEMMOVE(dest,source,len) bcopy((source),(dest),(len))
 
 #elif defined(unix) || defined(AMIGA) || (defined(UNKNOWN) && !defined(__STDC__))
 
-EXTERN VVOID ZCpyBl();
+EXTERN void ZCpyBl();
 #define MEMMOVE(dest,source,len) ZCpyBl((dest),(source),(len))
 
 #elif defined(__TURBOC__) || defined(__POWERC)
 
-EXTERN VVOID ZCpyBl(charptr dest, charptr source, SIZE_T len);
+EXTERN void ZCpyBl(charptr dest, charptr source, SIZE_T len);
 #define MEMMOVE(dest,source,len) ZCpyBl((dest),(source),(len))
 
 #else

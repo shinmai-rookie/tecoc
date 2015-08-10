@@ -10,7 +10,7 @@
 #include "tecoc.h"		/* define general identifiers */
 
 
-VVOID TAbort(tstat)		/* terminate TECO-C */
+void TAbort(tstat)		/* terminate TECO-C */
 DEFAULT tstat;
 {
 	DBGFEN(2,"TAbort",NULL);

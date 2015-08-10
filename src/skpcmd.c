@@ -307,7 +307,7 @@ static DEFAULT SkpOne()		/* skip one command character */
 
 static DEFAULT SkpCrt()		/* skip a ^ (caret) command */
 {
-	static DEFAULT (*FCAray[])(VVOID) = {
+	static DEFAULT (*FCAray[])(void) = {
 /* ^A*/ SkpCtA,   /* ^B*/ SkpSkp,   /* ^C*/ SkpSkp,   /* ^D*/ SkpSkp,
 /* ^E*/ SkpSkp,   /* ^F*/ SkpSkp,   /* ^G*/ SkpSkp,   /* ^H*/ SkpSkp,
 /*TAB*/ SkpArg,   /* LF*/ ExeNul,   /* VT*/ SkpSkp,   /* FF*/ SkpSkp,
@@ -350,7 +350,7 @@ static DEFAULT SkpCrt()		/* skip a ^ (caret) command */
 static DEFAULT SkpE()			/* skip one of the E commands */
 {
 	unsigned char TmpChr;
-	static DEFAULT (*FEAray[])(VVOID) = {
+	static DEFAULT (*FEAray[])(void) = {
 /* A */ SkpSkp,    /* B */ SkpArg,    /* C */ SkpSkp,    /* D */ SkpSkp,
 /* E */ 0,         /* F */ SkpSkp,    /* G */ SkpArg,    /* H */ SkpSkp,
 /* I */ SkpArg,    /* J */ SkpSkp,    /* K */ SkpSkp,    /* L */ SkpArg,
@@ -406,7 +406,7 @@ case of a command like Stext<ESC>, CBfPtr is left pointing to the <ESC>.
 
 DEFAULT SkpCmd()		/* skip a "command" */
 {
-	static DEFAULT (*FSAray[])(VVOID) = {
+	static DEFAULT (*FSAray[])(void) = {
 /*NUL*/ ExeNul,   /* ^A*/ SkpCtA,   /* ^B*/ SkpSkp,   /* ^C*/ SkpSkp,
 /* ^D*/ SkpSkp,   /* ^E*/ SkpSkp,   /* ^F*/ SkpSkp,   /* ^G*/ SkpSkp,
 /* BS*/ SkpSkp,   /*TAB*/ SkpArg,   /* LF*/ ExeNul,   /* VT*/ SkpSkp,

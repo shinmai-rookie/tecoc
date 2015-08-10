@@ -35,7 +35,7 @@ for the special character,  and another group is started.
 #include "dchars.h"		/* define identifiers for characters */
 #include "chmacs.h"		/* define character processing macros */
 
-VVOID TypBuf(YBfBeg, YBfEnd)	/* type a buffer on the terminal */
+void TypBuf(YBfBeg, YBfEnd)	/* type a buffer on the terminal */
 charptr YBfBeg;
 charptr YBfEnd;
 {

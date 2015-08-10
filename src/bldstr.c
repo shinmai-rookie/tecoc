@@ -50,9 +50,10 @@ static charptr BBfPtr;			/* pointer into XBf */
 static int CaseCv;			/* case conversion */
 static unsigned char WVFlag;		/* ^W or ^V flag */
 
-static DEFAULT DoCtVW(EndArg, TmpChr)	/* do a control-V or control-W */
-charptr EndArg;				/* ptr to end of string argument */
-unsigned char TmpChr;			/* temporary character */
+static DEFAULT
+DoCtVW(charptr EndArg, unsigned char TmpChr)	/* do a control-V or control-W */
+/* charptr EndArg;			 ptr to end of string argument */
+/* unsigned char TmpChr;		 temporary character */
 {
     DBGFEN(3,"DoCtVW",NULL);
 
@@ -97,9 +98,10 @@ unsigned char TmpChr;			/* temporary character */
 }
 
 
-static DEFAULT DoCtE(EndArg, XBfEnd)	/* do a control-E */
-charptr EndArg;				/* ptr to end of string argument */
-charptr XBfEnd;				/* end of build-string buffer */
+static DEFAULT
+DoCtE(charptr EndArg, charptr XBfEnd)	/* do a control-E */
+/* charptr EndArg;			 ptr to end of string argument */
+/* charptr XBfEnd;			 end of build-string buffer */
 {
     DEFAULT	Status;			/* returned from FindQR */
     charptr	TCStEn;			/* temporary holder of CStEnd */
@@ -180,10 +182,11 @@ charptr XBfEnd;				/* end of build-string buffer */
 }
 
 
-DEFAULT BldStr(XBfBeg, XBfEnd, XBfPtr)		/* build a string */
-charptr XBfBeg;			/* beginning of build-string buffer */
-charptr XBfEnd;			/* end of build-string buffer */
-charptr (*XBfPtr);		/* pointer into build-string buffer */
+DEFAULT
+BldStr(charptr XBfBeg, charptr XBfEnd, charptr* XBfPtr)		/* build a string */
+/* charptr XBfBeg;		 beginning of build-string buffer */
+/* charptr XBfEnd;		 end of build-string buffer */
+/* charptr (*XBfPtr);		 pointer into build-string buffer */
 {
     charptr	EndArg;		/* end of input string, plus 1 */
     unsigned char TmpChr;	/* temporary character */

@@ -13,7 +13,7 @@ minus-sign operand.  It it does,  it is replaced with a -1 operator.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-VVOID UMinus()			/* turn '-' arg into -1 */
+void UMinus()			/* turn '-' arg into -1 */
 {
 	ESptr	ESp;
 

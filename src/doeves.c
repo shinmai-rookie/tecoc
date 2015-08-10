@@ -32,7 +32,8 @@ following meaning:
 #include "defext.h"		/* define external global variables */
 #include "dchars.h"		/* define identifiers for characters */
 
-VVOID DoEvEs(Flag)		/* EV or ES flag code */
+void
+DoEvEs(Flag)		/* EV or ES flag code */
 WORD Flag;
 {
     unsigned char PtChar;		/* special "CP" character */
