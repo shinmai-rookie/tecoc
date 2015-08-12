@@ -42,7 +42,7 @@ clean:
 	@for i in makedep? $(OBJS) ; do \
 		if [ -f $$i ] ; then rm $$i ; fi ; \
 	done
-	rm -f $(DEST)/tecoc tecoc.o $(DEST)/core tags
+	rm -f "$(DEST)/tecoc" "$(DEST)/teco" "$(DEST)/mung" "$(DEST)/Make" "$(DEST)/inspect" tecoc.o "$(DEST)/core" tags
 
 tags:
 	$(TAGS) *.c *.h

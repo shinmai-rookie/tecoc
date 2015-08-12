@@ -48,16 +48,14 @@ static DEFAULT DoCtE(charptr EndArg, charptr XBfEnd);
 
 static charptr BBfPtr;                        /* pointer into XBf */
 static int CaseCv;                        /* case conversion */
-static unsigned char WVFlag;                /* ^W or ^V flag */
 
 static DEFAULT
 DoCtVW(charptr EndArg, unsigned char TmpChr)        /* do a control-V or control-W */
 /* charptr EndArg;                         ptr to end of string argument */
 /* unsigned char TmpChr;                 temporary character */
 {
+    unsigned char WVFlag = TmpChr;                /* ^W or ^V flag */
     DBGFEN(3, "DoCtVW", NULL);
-
-    WVFlag = TmpChr;
 
     if (++CBfPtr == EndArg)                 /* move past ^W or ^V,  too far? */
     {
@@ -98,7 +96,6 @@ DoCtVW(charptr EndArg, unsigned char TmpChr)        /* do a control-V or control
         else
             *BBfPtr++ = To_Upper(TmpChr);
 
-    WVFlag = '\0';
     DBGFEX(2, DbgFNm, "SUCCESS");
     return SUCCESS;
 }
@@ -225,7 +222,6 @@ BldStr(charptr XBfBeg, charptr XBfEnd, charptr* XBfPtr)                /* build 
         return FAILURE;
     }
 
-    WVFlag = '\0';                /* initialize ^W and ^V flag */
     CaseCv = IniSrM;                /* initialize internal search mode */
     BBfPtr = XBfBeg;                /* initialize ptr into build-string buffer */
     EndArg = CBfPtr;                /* save pointer to end of argument */
