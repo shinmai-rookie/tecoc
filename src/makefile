@@ -22,7 +22,11 @@ SRCS=baksrc.c bldstr.c clenup.c cmatch.c docjr.c  doeves.c doflag.c \
 OBJS=$(SRCS:.c=.o)
 
 tecoc: tecoc.o $(OBJS)
-	$(LINK.c) -s -o $@ tecoc.o $(OBJS) $(TERMOBJS)
+	$(LINK.c) -s -o "$(DEST)/$@" tecoc.o $(OBJS) $(TERMOBJS)
+	@ln -fs "$(DEST)/$@" "$(DEST)/teco"
+	@ln -fs "$(DEST)/$@" "$(DEST)/Make"
+	@ln -fs "$(DEST)/$@" "$(DEST)/mung"
+	@ln -fs "$(DEST)/$@" "$(DEST)/inspect"
 
 tecoc.o: tecoc.c zport.h tecoc.h deferr.h dchars.h chmacs.h
 
@@ -38,7 +42,7 @@ clean:
 	@for i in makedep? $(OBJS) ; do \
 		if [ -f $$i ] ; then rm $$i ; fi ; \
 	done
-	rm -f tecoc tecoc.o core tags
+	rm -f $(DEST)/tecoc tecoc.o $(DEST)/core tags
 
 tags:
 	$(TAGS) *.c *.h
