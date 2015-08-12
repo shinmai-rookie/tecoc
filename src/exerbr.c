@@ -16,7 +16,7 @@ DEFAULT ExeRBr()                /* execute ] command */
 {
 	QRptr		TmpQRp;
 	ptrdiff_t	TmpSiz;
-	BOOLEAN		ColonMod;
+	bool		ColonMod;
 
 #if DEBUGGING
 	static char *DbgFNm = "ExeRBr";

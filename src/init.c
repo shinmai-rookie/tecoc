@@ -150,10 +150,10 @@ static void MemIni()
  */
 
 	for (i = 0; i < NIFDBS; i++) {
-		IsOpnI[i] = IsEofI[i] = FALSE;
+		IsOpnI[i] = IsEofI[i] = false;
 	}
 	for (i = 0; i < NOFDBS; i++) {
-		IsOpnO[i] = FALSE;
+		IsOpnO[i] = false;
 	}
 
 /*

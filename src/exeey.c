@@ -12,7 +12,7 @@
 
 DEFAULT ExeEY()			/* execute an EY command */
 {
-	BOOLEAN	ColonMod;
+	bool	ColonMod;
 
 	DBGFEN(1,"ExeEY",NULL);
 

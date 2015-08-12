@@ -16,7 +16,7 @@ DEFAULT Replac()
 {
 	DBGFEN(2,"Replac",NULL);
 
-	if (Search(TRUE) == FAILURE) {
+	if (Search(true) == FAILURE) {
 		DBGFEX(2,DbgFNm,"FAILURE");
 		return FAILURE;
 	}

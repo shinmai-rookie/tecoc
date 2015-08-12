@@ -23,7 +23,7 @@
 #if USE_PROTOTYPES
 static void InpDel(void);
 static unsigned char FirstChar(void);
-static BOOLEAN ChkHlp(charptr HlpEnd);
+static bool ChkHlp(charptr HlpEnd);
 #endif
 
 /*****************************************************************************
@@ -149,7 +149,7 @@ LF and BS immediate mode commands.
 
 static unsigned char FirstChar()
 {
-    BOOLEAN		ImdCmd;		/* TRUE if it's '?' or '*' or '/' */
+    bool		ImdCmd;		/* true if it's '?' or '*' or '/' */
     unsigned char	LclStr[2];	/* local string for * processing */
     DEFAULT		Status;		/* return value for FindQR() */
     charptr		TCBfPt;		/* temporary holder of CBfPtr */
@@ -179,7 +179,7 @@ static unsigned char FirstChar()
 	ccs();
 	keypad_on();
 l1:	getyx(stdscr,yy,xx); 
-	curses_char = ZChIn(FALSE); 
+	curses_char = ZChIn(false); 
 	TmpChr = curses_char;
 	if (curses_char == KEY_RIGHT) {
 	    do_right();
@@ -216,23 +216,23 @@ l1:	getyx(stdscr,yy,xx);
 	}
 	keypad_off();
 #else
-	TmpChr = ZChIn(FALSE);		/* get a character */
+	TmpChr = ZChIn(false);		/* get a character */
 #endif
 
-	ImdCmd = FALSE;			/* assume not an immediate command */
+	ImdCmd = false;			/* assume not an immediate command */
 
 	switch (TmpChr) {
 	    case DELETE:
 	    case CTRL_U:
 		ZDspCh(CRETRN);
-		ImdCmd = TRUE;
+		ImdCmd = true;
 		break;
 
 	    case '/':			/* display verbose error message */
 		if (LstErr != ERR_XXX) {
 		    ZDspCh('/');
 		    ErrVrb(LstErr);
-		    ImdCmd = TRUE;
+		    ImdCmd = true;
 		}
 		break;
 
@@ -240,15 +240,15 @@ l1:	getyx(stdscr,yy,xx);
 		if (LstErr != ERR_XXX) {  /* if there was an error */
 		    ZDspCh('?');
 		    TypESt();
-		    ImdCmd = TRUE;
+		    ImdCmd = true;
 		}
 		break;
 
 	    case '*':			/* store last cmd string in q-reg */
 		ZDspCh('*');		/* echo the "*" */
-		TmpChr = ZChIn(FALSE);	/* get a q-register name */
+		TmpChr = ZChIn(false);	/* get a q-register name */
 		if (GotCtC) {		/* user typed control-C? */
-		    GotCtC = FALSE;
+		    GotCtC = false;
 		    return CTRL_C;
 		}
 		switch (TmpChr) {
@@ -269,7 +269,7 @@ l1:	getyx(stdscr,yy,xx);
 			LclStr[0] = (unsigned char)TmpChr;
 			CBfPtr = &LclStr[0];
 			if (TmpChr == (DEFAULT)'.') {
-			    LclStr[1] = (unsigned char)ZChIn(FALSE);
+			    LclStr[1] = (unsigned char)ZChIn(false);
 			    EchoIt((unsigned char)TmpChr);
 			    CStEnd = &LclStr[1];
 			} else {
@@ -293,7 +293,7 @@ l1:	getyx(stdscr,yy,xx);
 			    ZDspBf("\r\n", 2);
 			}
 		} /* end switch */
-		ImdCmd = TRUE;
+		ImdCmd = true;
 		break;
 	} /* end switch */
     } while (ImdCmd);
@@ -308,8 +308,8 @@ l1:	getyx(stdscr,yy,xx);
 	ChkHlp()
 
 	This function checks if the command string buffer contains a HELP
-command.  If it does,  the help command is processed and a TRUE is returned.
-If the command buffer does not contain a HELP command,  a FALSE is returned.
+command.  If it does,  the help command is processed and a true is returned.
+If the command buffer does not contain a HELP command,  a false is returned.
 A HELP command must be the only command in the command string.  It takes
 the form
 
@@ -317,7 +317,7 @@ the form
 
 *****************************************************************************/
 
-static BOOLEAN ChkHlp(HlpEnd)		/* check for HELP command */
+static bool ChkHlp(HlpEnd)		/* check for HELP command */
 charptr HlpEnd;				/* end of help command */
 {
     DBGFEN(3, "ChkHlp", NULL);
@@ -327,19 +327,19 @@ charptr HlpEnd;				/* end of help command */
 	(*(CBfBeg+2) != 'L' && *(CBfBeg+2) != 'l') ||
 	(*(CBfBeg+3) != 'P' && *(CBfBeg+3) != 'p')) {
 	DBGFEX(3, DbgFNm, "FALSE");
-	return FALSE;
+	return false;
     }
 
     if ((*(CBfBeg+4) != '/') &&
 	(*(CBfBeg+5) != 'S') && (*(CBfBeg+5) != 's')) {
-	ZHelp(CBfBeg+4, HlpEnd-1, FALSE, TRUE);
+	ZHelp(CBfBeg+4, HlpEnd-1, false, true);
     } else {
-	ZHelp(CBfBeg+6, HlpEnd-1, TRUE, TRUE);
+	ZHelp(CBfBeg+6, HlpEnd-1, true, true);
     }
 
     DBGFEX(3, DbgFNm, "TRUE");
 
-    return TRUE;
+    return true;
 }
 
 
@@ -376,7 +376,7 @@ handles the following special things:
 
 void ReadCS()
 {
-    BOOLEAN         BadSeq;	/* bad escape sequence indicator */
+    bool         BadSeq;	/* bad escape sequence indicator */
     unsigned char   ctrstr[3];	/* temp buffer to display ^chars as string */
     LONG            HowFar;
     int             PrvChr;	/* previous character flags */
@@ -397,41 +397,41 @@ void ReadCS()
     FOREVER {
 	if (*CBfPtr == ESCAPE) {
 	    if (EtFlag & ET_VT200) {		/* if vt200 mode */
-		*CBfPtr = (unsigned char)ZChIn(FALSE);
-		BadSeq = FALSE;			/* initialize BadSeq */
+		*CBfPtr = (unsigned char)ZChIn(false);
+		BadSeq = false;			/* initialize BadSeq */
 		if (*CBfPtr != '[') {		/* if not ESC sequence */
-		    BadSeq = TRUE;
+		    BadSeq = true;
 		} else {
-		    *CBfPtr = (unsigned char)ZChIn(FALSE);
+		    *CBfPtr = (unsigned char)ZChIn(false);
 		    switch (*CBfPtr) {
 			case '2':		/* f9 - f16 */
-			    *CBfPtr = (unsigned char)ZChIn(FALSE);
+			    *CBfPtr = (unsigned char)ZChIn(false);
 			    if (*CBfPtr == '4') {
-				TmpChr = (unsigned char)ZChIn(FALSE);
+				TmpChr = (unsigned char)ZChIn(false);
 				if (TmpChr != '~') {
-				    BadSeq = TRUE;
+				    BadSeq = true;
 				} else {
 				    *CBfPtr = BAKSPC;
 				}
 			    } else if (*CBfPtr == '5') {
-				TmpChr = (unsigned char)ZChIn(FALSE);
+				TmpChr = (unsigned char)ZChIn(false);
 				if (TmpChr != '~') {
-				    BadSeq = TRUE;
+				    BadSeq = true;
 				} else {
 				    *CBfPtr = LINEFD;
 				}
 			    } else {
-				BadSeq = TRUE;
+				BadSeq = true;
 			    }
 			    break;
-#if FALSE
+#if 0
 			case 'A':		/* up arrow */
 			case 'B':		/* down arrow */
 			case 'C':		/* right arrow */
 			case 'D':		/* left arrow */
 #endif
 			default:
-			    BadSeq = TRUE;
+			    BadSeq = true;
 		    }			/* end of switch */
 		}				/* */
 		if (BadSeq) {
@@ -568,7 +568,7 @@ void ReadCS()
 		    break;
 
 		case RCS_CTC:			/* control-C */
-		    GotCtC = FALSE;		/* clear "stop soon" flag */
+		    GotCtC = false;		/* clear "stop soon" flag */
 		    ctrstr[1] = 'C';
 		    ZDspBf(ctrstr, 2);		/* display "^C" */
 		    if (PrvChr == PRV_CTC) {	/* if second control-C */
@@ -708,6 +708,6 @@ void ReadCS()
 	    ZDspBf("command buffer overflow\r\n", 25);	/* ??? */
 	    TAbort(EXIT_FAILURE);		/* exit TECO-C */
 	}
-	*CBfPtr = (unsigned char)ZChIn(FALSE);	/* read a character */
+	*CBfPtr = (unsigned char)ZChIn(false);	/* read a character */
     }						/* end of FOREVER loop */
 }

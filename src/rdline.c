@@ -20,14 +20,14 @@ last byte of allocated, unused memory at the end of the edit buffer.
  * gap,  then we can shuffle memory to steal some room from the gap.  If
  * there's still not enough room in the input buffer we re-allocate the
  * entire edit/input buffer and then adjust the pointers to reflect the
- * reallcatin.  If the reallocation fails,  set EBfFul to TRUE.
+ * reallcatin.  If the reallocation fails,  set EBfFul to true.
  */
 
 #if USE_PROTOTYPES
-static void expand_ibf(BOOLEAN *EBfFul)
+static void expand_ibf(bool *EBfFul)
 #else
 static void expand_ibf(EBfFul)
-BOOLEAN *EBfFul;			/* indicates edit buffer full */
+bool *EBfFul;			/* indicates edit buffer full */
 #endif
 {
     SIZE_T	TmpSiz;
@@ -68,7 +68,7 @@ BOOLEAN *EBfFul;			/* indicates edit buffer full */
 #endif
 	NewBeg = (charptr)ZRaloc(EBfBeg, NewSiz);
 	if (NewBeg == NULL) {
-	    *EBfFul = TRUE;		/* we're full: stop reading lines */
+	    *EBfFul = true;		/* we're full: stop reading lines */
 	} else {
 	    if (NewBeg != EBfBeg) {	/* if ZRaloc moved us, adjust ptrs */
 		GapBeg = NewBeg + (GapBeg - EBfBeg);
@@ -84,7 +84,7 @@ BOOLEAN *EBfFul;			/* indicates edit buffer full */
 
 
 DEFAULT RdLine(EBfFul)		/* read a line */
-BOOLEAN *EBfFul;
+bool *EBfFul;
 {
     DEFAULT length;
 
@@ -116,7 +116,7 @@ BOOLEAN *EBfFul;
 /*
  * Read the line from the input file.
  */
-    if (*EBfFul == FALSE) {
+    if (*EBfFul == false) {
 	if (ZRdLin(EBfEnd+1, IBfEnd-EBfEnd, CurInp, &length) == FAILURE) {
 	    ErrMsg(ERR_URL);		/* unable to read line */
 	    DBGFEX(3,DbgFNm,"FAILURE, ZRdLin() failed");

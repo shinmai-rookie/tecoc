@@ -33,7 +33,7 @@ DEFAULT ExeUnd()		/* execute a _ (underscore) command */
 
 	SrcTyp = U_SEARCH;
 
-	if (Search(FALSE) == FAILURE) {
+	if (Search(false) == FAILURE) {
 		DBGFEX(1,DbgFNm,"FAILURE");
 		return FAILURE;
 	}

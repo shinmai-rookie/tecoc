@@ -46,9 +46,9 @@
 
 DEFAULT ExeA()			/* execute an A command */
 {
-    BOOLEAN		EBfFul;
+    bool		EBfFul;
     unsigned char	TmpChr;
-    BOOLEAN		ColonMod;
+    bool		ColonMod;
 
     DBGFEN(1,"ExeA",NULL);
 
@@ -73,7 +73,7 @@ DEFAULT ExeA()			/* execute an A command */
 		return FAILURE;
 	    }
 	    while (NArgmt-- > 0) {
-	        EBfFul = FALSE;
+	        EBfFul = false;
 		if (RdLine(&EBfFul) == FAILURE) {
 		    DBGFEX(1,DbgFNm,"FAILURE, RdLine() failed");
 		    return FAILURE;

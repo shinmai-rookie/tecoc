@@ -16,8 +16,8 @@ DEFAULT
 DoCJR(LONG HowFar)                /* do C, J or R stuff */
 /* LONG HowFar;                         positive or negative displacement */
 {
-        LONG        InRange;
-        BOOLEAN        ColonMod;
+        LONG    InRange;
+        bool ColonMod;
 
 #if DEBUGGING
         static char *DbgFNm = "DoCJR";
@@ -64,7 +64,6 @@ DoCJR(LONG HowFar)                /* do C, J or R stuff */
                 DBGFEX(2, DbgFNm, "FAILURE");
                 return FAILURE;
             }
-        }
 
         CmdMod = '\0';                                /* clear modifiers flags */
         EStTop = EStBot;                        /* clear expression stack */

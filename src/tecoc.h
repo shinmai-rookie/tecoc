@@ -260,7 +260,7 @@ DEFAULT BldStr(			/* build a string */
 	charptr (*XBfPtr));	/* pointer into build-string buffer */
 void	ClenUp(void);		/* clean up for TECO-C abort */
 DEFAULT	CMatch(			/* match a character */
-	BOOLEAN *SamChr);	/* returned match indicator */
+	bool *SamChr);	/* returned match indicator */
 #if DEBUGGING
 DEFAULT	DbgDsp(void);		/* debugging, control debugging display (^P) */
 void	DbgFEn(			/* debugging, function entry */
@@ -391,7 +391,7 @@ void	Init(			/* initialize TECO-C */
 DEFAULT	InsStr(			/* insert string into edit buffer */
 	charptr string,
 	ptrdiff_t length);
-BOOLEAN	IsRadx(			/* is the character in the radix set? */
+bool	IsRadx(			/* is the character in the radix set? */
 	unsigned char Charac);
 LONG	Ln2Chr(			/* convert line offset to character offset */
 	LONG Value);
@@ -408,12 +408,12 @@ DEFAULT	PushEx(			/* push onto expression stack */
 	LONG Item,
 	DEFAULT EType);
 DEFAULT	RdLine(			/* read a line */
-	BOOLEAN *EBfFul);	/* returned "edit buffer is full" indicator */
+	bool *EBfFul);	/* returned "edit buffer is full" indicator */
 DEFAULT	RdPage(void);		/* read a page from a file */
 void	ReadCS(void);		/* read command string */
 DEFAULT	Replac(void);		/* replace a string */
 DEFAULT	Search(			/* top level search */
-	BOOLEAN	RepCmd);	/* TRUE if the command has two arguments */
+	bool	RepCmd);	/* true if the command has two arguments */
 DEFAULT	SinglP(void);		/* execute a single P function */
 DEFAULT	SkpCmd(void);		/* skip a single command */
 DEFAULT	SrcLop(void);		/* search loop */
@@ -436,7 +436,7 @@ voidptr ZAlloc(			/* like standard malloc function */
 	SIZE_T MemSiz);
 void	ZBell(void);		/* ring the terminal bell */
 DEFAULT ZChIn(			/* input a character from the terminal */
-	BOOLEAN	NoWait);	/* return immediately? */
+	bool	NoWait);	/* return immediately? */
 LONG	ZClnEG(			/* execute special :EG command */
 	DEFAULT EGWhat,		/* what to get/set/clear: MEM, LIB, etc. */
 	DEFAULT EGOper,		/* operation: get, set or clear */
@@ -465,8 +465,8 @@ DEFAULT	ZFrSrc(void);		/* forward search to match 1st character */
 void	ZHelp(			/* display a help message */
 	charptr HlpBeg,		/* first char of help request */
 	charptr HlpEnd,		/* last character of help request */
-	BOOLEAN SysLib,		/* use default HELP library? */
-	BOOLEAN	Prompt);	/* enter interactive help mode? */
+	bool SysLib,		/* use default HELP library? */
+	bool	Prompt);	/* enter interactive help mode? */
 void	ZIClos(			/* close input file */
 	DEFAULT	IfIndx);	/* index into IFiles array */
 void	ZOClDe(			/* close and delete output file */
@@ -475,12 +475,12 @@ void	ZOClos(			/* close output file */
 	DEFAULT	OfIndx);	/* index into OFiles array */
 DEFAULT	ZOpInp(			/* open input file */
 	DEFAULT IfIndx,		/* index into file data block array IFiles */
-	BOOLEAN	EIFile,		/* is it a macro file? (hunt for it) */
-	BOOLEAN RepFNF);	/* report "file not found" error? */
+	bool	EIFile,		/* is it a macro file? (hunt for it) */
+	bool RepFNF);	/* report "file not found" error? */
 DEFAULT ZOpOut(			/* open output file */
 	DEFAULT	OfIndx,		/* output file indicator */
-	BOOLEAN RepErr,		/* report errors? */
-	BOOLEAN Backup);	/* create backup? TAA MOD */
+	bool RepErr,		/* report errors? */
+	bool Backup);	/* create backup? TAA MOD */
 void	ZPrsCL(			/* parse the command line */
 	int argc,
 	char **argv);
@@ -628,7 +628,7 @@ DEFAULT	GetNmA();	/* get numeric argument */
 DEFAULT	IncCBP();	/* increment CBfPtr */
 void	Init();		/* initialize TECO-C */
 DEFAULT	InsStr();	/* insert string into edit buffer */
-BOOLEAN	IsRadx();	/* is the character in the radix set? */
+bool	IsRadx();	/* is the character in the radix set? */
 LONG	Ln2Chr();	/* convert line offset to character offset */
 void	MakDBf();	/* make digit buffer */
 DEFAULT	MakRom();	/* make room in q-register */

@@ -96,7 +96,7 @@ DEFAULT ExeDQu()		/* execute a " (double quote) command */
 
 	case 'L':	/* test for less than zero */
 	case 'S':	/* test for successful */
-	case 'T':	/* test for TRUE */
+	case 'T':	/* test for true */
 	case '<':	/* test for less than zero */
 		if (NArgmt < 0) {
 			DBGFEX(1,DbgFNm,"SUCCESS, less than zero");

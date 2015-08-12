@@ -2,7 +2,7 @@
 
 	IsRadx()
 
-	This function returns TRUE if the argument is a valid digit in the
+	This function returns true if the argument is a valid digit in the
 current radix.
 
 *****************************************************************************/
@@ -12,11 +12,11 @@ current radix.
 #include "defext.h"		/* define external global variables */
 #include "chmacs.h"		/* define character processing macros */
 
-BOOLEAN	IsRadx(Charac)		/* is Charac in the radix set? */
+bool	IsRadx(Charac)		/* is Charac in the radix set? */
 unsigned char Charac;
 {
 	if (Charac < '0') {
-		return FALSE;
+		return false;
 	}
 
 	if (Charac <= '9') {
@@ -26,7 +26,7 @@ unsigned char Charac;
 	} else if (Is_Upper(Charac)) {
 		Charac -= ('A' - 10);
 	} else {
-		return FALSE;
+		return false;
 	}
 
 	return Charac < Radix;

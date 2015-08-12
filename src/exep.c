@@ -17,7 +17,7 @@
 
 DEFAULT ExeP(void)		/* execute a P or PW command */
 {
-	BOOLEAN	SavEof;
+	bool	SavEof;
 
 	DBGFEN(1,"ExeP",NULL);
 

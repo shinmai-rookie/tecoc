@@ -23,7 +23,7 @@ DEFAULT ExeFB()			/* execute an FB command */
 
 	SrcTyp = FB_SEARCH;
 
-	if (Search(FALSE) == FAILURE) {		/* FALSE: not two text args */
+	if (Search(false) == FAILURE) {		/* false: not two text args */
 		DBGFEX(1,DbgFNm,"FAILURE");
 		return FAILURE;
 	}

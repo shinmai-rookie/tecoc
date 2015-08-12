@@ -15,7 +15,7 @@
 
 DEFAULT ExeO()			/* execute an O command */
 {
-    BOOLEAN Found;		/* has the tag been found? */
+    bool Found;		/* has the tag been found? */
     unsigned char TBfBeg[TBFINIT]; /* tag buffer */
     charptr TBfEnd;		/* end of tag buffer */
     charptr TBfPtr;		/* end of tag in tag buffer */
@@ -110,7 +110,7 @@ DEFAULT ExeO()			/* execute an O command */
  */
 
     CBfPtr = (LStTop == LStBot) ? CStBeg : LStack[LStTop].LAddr + 1;
-    Found = FALSE;
+    Found = false;
     CmdMod = '\0';				/* clear modifiers flags */
     while (!Found) {
 	while (*CBfPtr != '!') {

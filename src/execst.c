@@ -102,7 +102,7 @@ DEFAULT ExeCSt()		/* execute command string */
 		ZCHKKB();			/* kludge for MS-DOS only */
 
 		if (GotCtC) {			/* if got a control-C */
-			GotCtC = FALSE;
+			GotCtC = false;
 			ErrMsg(ERR_XAB);	/* XAB = execution aborted */
 			DBGFEX(4,DbgFNm,"SUCCESS");
 			return SUCCESS;

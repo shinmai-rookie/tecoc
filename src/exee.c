@@ -80,8 +80,8 @@ static DEFAULT ExeEX(void);
 static DEFAULT ExeEZ(void);
 static DEFAULT GetWha(charptr TxtPtr, ptrdiff_t TxtLen);
 static DEFAULT OpnEI(DEFAULT EInd);
-static DEFAULT OpnInp(DEFAULT IfIndx, BOOLEAN EIFile, BOOLEAN RepFNF);
-static DEFAULT OpnOut(DEFAULT OfIndx, BOOLEAN RepErr, BOOLEAN Backup);
+static DEFAULT OpnInp(DEFAULT IfIndx, bool EIFile, bool RepFNF);
+static DEFAULT OpnOut(DEFAULT OfIndx, bool RepErr, bool Backup);
 static DEFAULT ReadEI(DEFAULT IfIndx, charptr *ZBfPtr, charptr *EscPtr);
 #endif
 
@@ -101,8 +101,8 @@ the file name.
 
 static DEFAULT OpnInp(IfIndx, EIFile, RepFNF)
 DEFAULT	IfIndx;				/* output file indicator */
-BOOLEAN	EIFile;				/* is it a macro file? */
-BOOLEAN RepFNF;				/* report "file not found" error? */
+bool	EIFile;				/* is it a macro file? */
+bool    RepFNF;				/* report "file not found" error? */
 {
     DEFAULT status;
 
@@ -121,8 +121,8 @@ BOOLEAN RepFNF;				/* report "file not found" error? */
 	return status;
     }
 
-    IsOpnI[IfIndx] = TRUE;		/* mark the file as open */
-    IsEofI[IfIndx] = FALSE;		/* end-of-file indicator */
+    IsOpnI[IfIndx] = true;		/* mark the file as open */
+    IsEofI[IfIndx] = false;		/* end-of-file indicator */
 
     DBGFEX(2,DbgFNm,"SUCCESS");
     return SUCCESS;
@@ -141,8 +141,8 @@ following the last character of the file name.
 
 static DEFAULT OpnOut(OfIndx, RepErr, Backup)
 DEFAULT	OfIndx;				/* output file indicator */
-BOOLEAN RepErr;				/* report errors? */
-BOOLEAN Backup;				/* create backup? TAA Added */
+bool RepErr;				/* report errors? */
+bool Backup;				/* create backup? TAA Added */
 {
 	DBGFEN(2,"OpnOut",NULL);
 
@@ -160,7 +160,7 @@ BOOLEAN Backup;				/* create backup? TAA Added */
 		return FAILURE;
 	}
 
-	IsOpnO[OfIndx] = TRUE;
+	IsOpnO[OfIndx] = true;
 
 	DBGFEX(2,DbgFNm,"SUCCESS");
 	return SUCCESS;
@@ -201,7 +201,7 @@ static DEFAULT ExeEA()			/* execute an EA command */
 
 static DEFAULT ExeEB()			/* execute an EB command */
 {
-	BOOLEAN	RepFNF;			/* report "file not found" ? */
+	bool	RepFNF;			/* report "file not found" ? */
 	DEFAULT	status;			/* OpnInp() status */
 
 	DBGFEN(1,"ExeEB",NULL);
@@ -213,7 +213,7 @@ static DEFAULT ExeEB()			/* execute an EB command */
 
 	RepFNF = !(CmdMod & COLON);		/* report file not found? */
 	CmdMod = '\0';				/* clear modifiers flags */
-	status = OpnInp(CurInp, FALSE, RepFNF);	/* open input file */
+	status = OpnInp(CurInp, false, RepFNF);	/* open input file */
 	if (status != SUCCESS) {
 		if (status == FILENF) {
 			if (!RepFNF) {		/* if it's :EB */
@@ -227,7 +227,7 @@ static DEFAULT ExeEB()			/* execute an EB command */
 
 	ZMKOFN();				/* kludge for VMS filenames */
 
-	if (OpnOut(CurOut, RepFNF, TRUE) == FAILURE) {/* open output file */
+	if (OpnOut(CurOut, RepFNF, true) == FAILURE) {/* open output file */
 #if DEBUGGING
 		sprintf(DbgSBf,"%s, OpnOut() failed",
 			(RepFNF) ? "FAILURE" : "PushEx(0)");
@@ -527,7 +527,7 @@ charptr *EscPtr;	/* returned ptr to $$ in EI string  (+1) */
 	DEFAULT		line_len;
 	charptr		NewBuf;
 	SIZE_T		NewSiz;
-	BOOLEAN		previous_char_was_escape;
+	bool		previous_char_was_escape;
 	charptr		TmpPtr;
 
 #if DEBUGGING
@@ -585,7 +585,7 @@ charptr *EscPtr;	/* returned ptr to $$ in EI string  (+1) */
 
 		TmpPtr = ZBfRdP;
 		ZBfRdP += line_len;
-		previous_char_was_escape = FALSE;
+		previous_char_was_escape = false;
 		for (; TmpPtr < ZBfRdP; ++TmpPtr) {
 			if (*TmpPtr == ESCAPE) {
 				if (previous_char_was_escape) {
@@ -595,9 +595,9 @@ charptr *EscPtr;	/* returned ptr to $$ in EI string  (+1) */
 					       "SUCCESS, ran into $$");
 					return (SUCCESS);
 				}
-				previous_char_was_escape = TRUE;
+				previous_char_was_escape = true;
 			} else {
-				previous_char_was_escape = FALSE;
+				previous_char_was_escape = false;
 			}
 		}
 	}
@@ -630,19 +630,21 @@ static DEFAULT OpnEI(EInd)	/* open an EI file */
 DEFAULT EInd;
 {
 #ifdef OPNEI_FINISHED
-	if (OpnInp(EInd, FALSE, TRUE) == SUCCESS)
+	if (OpnInp(EInd, false, true) == SUCCESS)
 		return(SUCCESS);
-	if (OpnInp(EInd, TRUE, TRUE) == SUCCESS)
+	if (OpnInp(EInd, true, true) == SUCCESS)
 		return(SUCCESS);
+        /*
 	save contents of FBf
 	use :EGDEF command to fill FBf with default directory (how?)
 	append saved FBf to actual FBf
-	if (OpnInp(EInd, FALSE, TRUE) == SUCCESS)
+        */
+	if (OpnInp(EInd, false, true) == SUCCESS)
 		return(SUCCESS);
-	if (OpnInp(EInd, TRUE, TRUE) == SUCCESS)
+	if (OpnInp(EInd, true, true) == SUCCESS)
 		return(SUCCESS);
 #else
-	return OpnInp(EInd, TRUE, TRUE);
+	return OpnInp(EInd, true, true);
 #endif
 }
 
@@ -939,7 +941,7 @@ static DEFAULT ExeEP()			/* execute an EP command */
 
 static DEFAULT ExeEPr()			/* execute an E% command */
 {
-	BOOLEAN RepErr;			/* report errors? */
+	bool RepErr;			/* report errors? */
 
 	DBGFEN(1,"ExeEPr",NULL);
 
@@ -966,7 +968,7 @@ static DEFAULT ExeEPr()			/* execute an E% command */
 
 	RepErr = !(CmdMod & COLON);
 	CmdMod = '\0';
-	if (OpnOut(EPRCFL, RepErr, FALSE) == FAILURE) {
+	if (OpnOut(EPRCFL, RepErr, false) == FAILURE) {
 #if DEBUGGING
 		sprintf(DbgSBf,"%s, OpnOut() failed",
 			(RepErr) ? "FAILURE" : "PushEx(0)");
@@ -1043,7 +1045,7 @@ static DEFAULT ExeEQ()			/* execute an EQ command */
 		return FAILURE;
 	}
 
-	if (OpnInp(EQFL, FALSE, TRUE) != SUCCESS) {	/* open the file */
+	if (OpnInp(EQFL, false, true) != SUCCESS) {	/* open the file */
 		DBGFEX(1,DbgFNm,"FAILURE, OpnInp() failed");
 		return FAILURE;
 	}
@@ -1111,7 +1113,7 @@ exeeqdone:
 
 static DEFAULT ExeER()			/* execute an ER command */
 {
-	BOOLEAN	RepFNF;			/* report "file not found" errors? */
+	bool	RepFNF;			/* report "file not found" errors? */
 	DEFAULT	status;
 
 	DBGFEN(1,"ExeER",NULL);
@@ -1131,7 +1133,7 @@ static DEFAULT ExeER()			/* execute an ER command */
 
 	RepFNF = !(CmdMod & COLON);		/* report file not found? */
 	CmdMod = '\0';				/* clear modifiers flags */
-	status = OpnInp(CurInp, FALSE, RepFNF);	/* open input file */
+	status = OpnInp(CurInp, false, RepFNF);	/* open input file */
 	if (status != SUCCESS) {
 		if (status == FILENF) {
 			if (!RepFNF) {		/* if it's :ER */
@@ -1273,7 +1275,7 @@ static DEFAULT ExeEUn()			/* execute an E_ command */
 	}
 
 	SrcTyp = E_SEARCH;
-	if (Search(FALSE) == FAILURE) {
+	if (Search(false) == FAILURE) {
 		DBGFEX(1,DbgFNm,"FAILURE, Search() failed");
 		return FAILURE;
 	}
@@ -1314,7 +1316,7 @@ static DEFAULT ExeEV()			/* execute an EV command */
 
 static DEFAULT ExeEW()			/* execute an EW command */
 {
-	BOOLEAN RepErr;			/* report errors? */
+	bool RepErr;			/* report errors? */
 
 	DBGFEN(1,"ExeEW",NULL);
 
@@ -1333,7 +1335,7 @@ static DEFAULT ExeEW()			/* execute an EW command */
 
 	RepErr = !(CmdMod & COLON);
 	CmdMod = '\0';				/* clear modifiers flags */
-	if (OpnOut(CurOut, RepErr, FALSE) == FAILURE) {
+	if (OpnOut(CurOut, RepErr, false) == FAILURE) {
 #if DEBUGGING
 		sprintf(DbgSBf,"%s, OpnOut() failed",
 			(RepErr) ? "FAILURE" : "PushEx(0)");

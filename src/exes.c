@@ -69,7 +69,7 @@ DEFAULT ExeS()			/* execute an S command */
 
 	SrcTyp = S_SEARCH;
 
-	if (Search(FALSE) == FAILURE) {
+	if (Search(false) == FAILURE) {
 		DBGFEX(1,DbgFNm,"FAILURE");
 		return FAILURE;
 	}

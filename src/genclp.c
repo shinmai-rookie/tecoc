@@ -21,14 +21,14 @@ int	fclose();		/* close a stream */
 #include <stdio.h>		/* define prototypes for fopen(), etc. */
 #include <string.h>		/* define prototype for strcpy */
 
-#ifndef FALSE
-#define FALSE (1==0)
+#ifndef false
+#  define false (1==0)
 #endif
-#ifndef TRUE
-#define TRUE (1==1)
+#ifndef true
+#  define true  (1==1)
 #endif
 
-typedef char BOOLEAN;
+typedef char bool;
 
 #define ILINE_SIZE 132	/* maximum input file (CLPARS.TEC) line length */
 #define OLINE_SIZE 75	/* maximum output file (CLPARS.H) line length */
@@ -152,12 +152,12 @@ static void
 #if USE_PROTOTYPES
 cnvrt(	FILE *ifile,
 	FILE *ofile,
-	BOOLEAN ANSI_style)
+	bool ANSI_style)
 #else
 cnvrt(ifile, ofile, ANSI_style)
 FILE *ifile;
 FILE *ofile;
-BOOLEAN ANSI_style;
+bool ANSI_style;
 #endif
 {
 	char *iptr;
@@ -239,7 +239,7 @@ main()
 	write_header(ofile);
 	write_line("#if USE_ANSI_CLPARS\n", ofile);
 	write_line("unsigned const char clpars[] = {\n", ofile);
-	cnvrt(ifile, ofile, TRUE);
+	cnvrt(ifile, ofile, true);
 	close_clpars_tec(ifile);
 
 /*
@@ -248,7 +248,7 @@ main()
 	open_clpars_tec(&ifile);
 	write_line("#else\n", ofile);
 	write_line("char *clpars[] = {\n", ofile);
-	cnvrt(ifile, ofile, FALSE);
+	cnvrt(ifile, ofile, false);
 	close_clpars_tec(ifile);
 
 	write_line("#endif\n", ofile);

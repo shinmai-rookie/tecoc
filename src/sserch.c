@@ -18,7 +18,7 @@ the search area.
 
 DEFAULT SSerch()		/* search for 1 occurrence of a string */
 {
-	BOOLEAN	SamChr;		/* same character indicator */
+	bool	SamChr;		/* same character indicator */
 
 #if DEBUGGING
 	static char *DbgFNm = "SSerch";
@@ -31,7 +31,7 @@ DEFAULT SSerch()		/* search for 1 occurrence of a string */
 #endif
 
 	if (SBfPtr == SBfBeg) {			/* if null search string */
-		Matchd = FALSE;
+		Matchd = false;
 		DBGFEX(3,DbgFNm,"SUCCESS, Matchd = FALSE");
 		return SUCCESS;
 	}
@@ -50,7 +50,7 @@ DEFAULT SSerch()		/* search for 1 occurrence of a string */
 				return FAILURE;
 			}
 			if (EBPtr1 > EndSAr) {		/* if not found */
-				Matchd = FALSE;
+				Matchd = false;
 				DBGFEX(3,DbgFNm,"SUCCESS, Matchd = FALSE");
 				return SUCCESS;
 			}
@@ -60,7 +60,7 @@ DEFAULT SSerch()		/* search for 1 occurrence of a string */
 				return FAILURE;
 			}
 			if (EBPtr1 < EndSAr) {		/* if not found */
-				Matchd = FALSE;
+				Matchd = false;
 				DBGFEX(3,DbgFNm,"SUCCESS, Matchd = FALSE");
 				return SUCCESS;
 			}
@@ -76,7 +76,7 @@ DEFAULT SSerch()		/* search for 1 occurrence of a string */
 				if ((SIncrm == -1) && (EBPtr2 >= GapEnd)) {
 					RefLen += GapEnd-GapBeg+1;
 				}
-				Matchd = TRUE;
+				Matchd = true;
 				DBGFEX(3,DbgFNm,"SUCCESS, Matchd = TRUE");
 				return SUCCESS;
 			}
@@ -84,7 +84,7 @@ DEFAULT SSerch()		/* search for 1 occurrence of a string */
 			    if (SIncrm == -1) {
 				if (EBPtr2 < GapEnd) EBPtr2 = GapEnd+1;
 			    } else {
-				Matchd = FALSE;
+				Matchd = false;
 				DBGFEX(3,DbgFNm,"SUCCESS, Matchd = FALSE");
 				return SUCCESS;
 			    }
@@ -101,13 +101,13 @@ DEFAULT SSerch()		/* search for 1 occurrence of a string */
 
 		if (SIncrm == 1) {		/* if forward search */
 			if (++EBPtr1 > EndSAr) {
-				Matchd = FALSE;
+				Matchd = false;
 				DBGFEX(3,DbgFNm,"SUCCESS, Matchd = FALSE");
 				return SUCCESS;
 			}
 		} else {
 			if (--EBPtr1 < EndSAr) {
-				Matchd = FALSE;
+				Matchd = false;
 				DBGFEX(3,DbgFNm,"SUCCESS, Matchd = FALSE");
 				return SUCCESS;
 			}

@@ -35,7 +35,7 @@ DEFAULT WrPage(OfIndx, OBfBeg, OBfEnd, AddFF)
 DEFAULT	OfIndx;			/* index into OFiles array */
 charptr OBfBeg;			/* address of output buffer beginning */
 charptr OBfEnd;			/* address of output buffer end */
-LONG AddFF;			/* add form feed: -1 is TRUE, 0 is FALSE */
+LONG AddFF;			/* add form feed: -1 is true, 0 is FALSE */
 {
 	unsigned char	SavChr;	/* saved char overwritten with form feed */
 	ptrdiff_t	Shuffl;	/* size of shuffled area */

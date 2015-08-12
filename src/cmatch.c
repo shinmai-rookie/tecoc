@@ -41,10 +41,10 @@ indicate the limit past which EBPtr2 should not be incremented.
 #include "deferr.h"		/* define identifiers for error messages */
 
 DEFAULT
-CMatch(BOOLEAN* SamChr)		/* match a character */
+CMatch(bool* SamChr)		/* match a character */
 /* BOOLEAN *SamChr;		 returned match indicator */
 {
-    BOOLEAN	ChrMat;		/* character match indicator */
+    bool	ChrMat;		/* character match indicator */
     char	OtCase;		/* "other" case character */
     charptr	QRPtr;		/* pointer into q-register text */
     charptr	SavEP2;		/* temporary holder of EBPtr2 */
@@ -62,7 +62,7 @@ CMatch(BOOLEAN* SamChr)		/* match a character */
 
     switch (*SStPtr) {
     case CTRL_X:
-	*SamChr = TRUE;
+	*SamChr = true;
 	break;
 
     case CTRL_S:
@@ -132,7 +132,7 @@ CMatch(BOOLEAN* SamChr)		/* match a character */
 	    QRPtr = QR->Start;
 	    while (QRPtr < QR->End_P1) {
 		if (*QRPtr++ == *EBPtr2) {
-		    *SamChr = TRUE;
+		    *SamChr = true;
 #if DEBUGGING
 		    sprintf(DbgSBf,"SUCCESS, *SamChr = %s", (*SamChr)?"TRUE":"FALSE");
 		    DbgFEx(3,DbgFNm,DbgSBf);
@@ -140,7 +140,7 @@ CMatch(BOOLEAN* SamChr)		/* match a character */
 		    return SUCCESS;
 		}
 	    }
-	    *SamChr = FALSE;
+	    *SamChr = false;
 	    break;
 
 	case 'L':
@@ -186,9 +186,9 @@ CMatch(BOOLEAN* SamChr)		/* match a character */
 
 	case 'S':
 	    if ((*EBPtr2 != SPACE) && (*EBPtr2 != TABCHR)) {
-		*SamChr = FALSE;
+		*SamChr = false;
 	    } else {
-		*SamChr = TRUE;
+		*SamChr = true;
 		while (EBPtr2 <= RhtSid) {
 		    ++EBPtr2;
 		    if ((*EBPtr2 != SPACE) && (*EBPtr2 != TABCHR)) {
@@ -208,7 +208,7 @@ CMatch(BOOLEAN* SamChr)		/* match a character */
 	    break;
 
 	case 'X':
-	    *SamChr = TRUE;
+	    *SamChr = true;
 	    break;
 
 	case '<':
@@ -266,7 +266,7 @@ CMatch(BOOLEAN* SamChr)		/* match a character */
 				return FAILURE;
 			    }
 			}
-			*SamChr = TRUE;
+			*SamChr = true;
 #if DEBUGGING
 			sprintf(DbgSBf,"SUCCESS, *SamChr = %s",
 					(*SamChr) ? "TRUE" : "FALSE");

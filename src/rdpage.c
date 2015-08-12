@@ -14,7 +14,7 @@ edit buffer.
 
 DEFAULT RdPage()		/* read a page */
 {
-	BOOLEAN EBfFul;
+	bool EBfFul;
 
 	DBGFEN(2,"RdPage",NULL);
 
@@ -23,7 +23,7 @@ DEFAULT RdPage()		/* read a page */
  * edit buffer fills up
  */
 
-	EBfFul = FALSE;
+	EBfFul = false;
 	do {
 		if (RdLine(&EBfFul) == FAILURE) {
 			DBGFEX(2,DbgFNm,"FAILURE");

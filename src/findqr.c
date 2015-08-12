@@ -21,7 +21,7 @@ level,  then memory for a local q-register table is allocated.
 DEFAULT FindQR()		/* find q-register index */
 {
     WORD	i;
-    BOOLEAN	LocalQ;
+    bool	LocalQ;
     WORD	QIndex;
     unsigned char QName;
 

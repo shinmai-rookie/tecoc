@@ -17,7 +17,7 @@ DEFAULT PopMac()		/* restore environment after macro exit */
     WORD	i;
     MSptr	MSp;		/* pointer into the macro stack */
     QRptr	QRp;		/* pointer into local Q-register table */
-    BOOLEAN	RetVal;		/* TRUE if macro is returning a value */
+    bool	RetVal;		/* true if macro is returning a value */
 
     DBGFEN(1,"PopMac",NULL);
 

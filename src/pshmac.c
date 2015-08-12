@@ -21,7 +21,7 @@ charptr Start;			/* start of new command string */
 charptr End;			/* end of new command string, plus one */
 {
 	MSptr	MSp;		/* pointer into the macro stack */
-	BOOLEAN	NumArg;		/* TRUE if there is a number on the stack */
+	bool	NumArg;		/* true if there is a number on the stack */
 
 	DBGFEN(1,"PshMac",NULL);
 

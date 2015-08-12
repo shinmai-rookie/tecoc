@@ -33,10 +33,10 @@ static DEFAULT SkpSkp(void);	/* */
 
 static DEFAULT SkpArg()		/* skip command with text argument */
 {
-	BOOLEAN TTrace;		/* temp: holds trace flag */
+	bool TTrace;		/* temp: holds trace flag */
 
 	TTrace = TraceM;			/* save trace mode flag */
-	TraceM = FALSE;				/* keep FindES from tracing */
+	TraceM = false;				/* keep FindES from tracing */
 	if (FindES(ESCAPE) == FAILURE)		/* find end of string */
 		{
 		TraceM = TTrace;		/* restore trace mode flag */
@@ -57,10 +57,10 @@ static DEFAULT SkpArg()		/* skip command with text argument */
 
 static DEFAULT SkpCtA()		/* skip control-A command */
 {
-	BOOLEAN	TTrace;		/* temp: holds trace flag */
+	bool	TTrace;		/* temp: holds trace flag */
 
 	TTrace = TraceM;			/* save trace mode flag */
-	TraceM = FALSE;				/* keep FindES from tracing */
+	TraceM = false;				/* keep FindES from tracing */
 	if (FindES(CTRL_A) == FAILURE)		/* find end of string */
 		{
 		TraceM = TTrace;		/* restore trace mode flag */
@@ -81,7 +81,7 @@ static DEFAULT SkpCtA()		/* skip control-A command */
 
 static DEFAULT SkpCtU()		/* skip control-U command */
 {
-	BOOLEAN	TTrace;		/* temp: holds trace flag */
+	bool	TTrace;		/* temp: holds trace flag */
 
 	if (CBfPtr == CStEnd)
 		if (MStTop < 0)			/* if not in a macro */
@@ -93,7 +93,7 @@ static DEFAULT SkpCtU()		/* skip control-U command */
 			return SUCCESS;
 	++CBfPtr;
 	TTrace = TraceM;			/* save trace mode flag */
-	TraceM = FALSE;				/* keep FindES from tracing */
+	TraceM = false;				/* keep FindES from tracing */
 	if (FindES(ESCAPE) == FAILURE)		/* find end of string */
 		{
 		TraceM = TTrace;		/* restore trace mode flag */
@@ -114,10 +114,10 @@ static DEFAULT SkpCtU()		/* skip control-U command */
 
 static DEFAULT SkpDAr()		/* skip "double text argument" command */
 {
-	BOOLEAN TTrace;		/* saves TraceM temporarily */
+	bool TTrace;		/* saves TraceM temporarily */
 
 	TTrace = TraceM;			/* save trace mode flag */
-	TraceM = FALSE;				/* keep FindES from tracing */
+	TraceM = false;				/* keep FindES from tracing */
 	if (FindES(ESCAPE) == FAILURE)
 		{
 		TraceM = TTrace;		/* restore trace mode flag */
@@ -194,10 +194,10 @@ static DEFAULT SkpDqu()		/* skip a " (double quote) command */
 
 static DEFAULT SkpExc()		/* skip command with text argument */
 {
-	BOOLEAN	TTrace;		/* temp: holds trace flag */
+	bool	TTrace;		/* temp: holds trace flag */
 
 	TTrace = TraceM;			/* save trace mode flag */
-	TraceM = FALSE;				/* keep FindES from tracing */
+	TraceM = false;				/* keep FindES from tracing */
 	if (FindES('!') == FAILURE)		/* find end of string */
 		{
 		TraceM = TTrace;		/* restore trace mode flag */

@@ -118,7 +118,7 @@ static DEFAULT ExeFD()			/* execute an FD command */
 	}
 
 	SrcTyp = S_SEARCH;
-	if (Search(FALSE) == FAILURE) {
+	if (Search(false) == FAILURE) {
 		DBGFEX(1,DbgFNm,"FAILURE");
 		return FAILURE;
 	}
@@ -189,7 +189,7 @@ static DEFAULT ExeFK()			/* execute an FK command */
 
 	SrcTyp = FK_SEARCH;
 
-	if (Search(FALSE) == FAILURE) {
+	if (Search(false) == FAILURE) {
 		DBGFEX(1,DbgFNm,"FAILURE");
 		return FAILURE;
 	}

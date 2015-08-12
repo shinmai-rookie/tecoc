@@ -39,14 +39,14 @@ DEFAULT ExeBSl()		/* execute a \ (backslash) command */
 	LONG StrVal = 0;
 	RefLen=0;
 	if (GapEnd != EBfEnd) {			/* if not at end of buffer */
-	    BOOLEAN negative = FALSE;
+	    bool negative = false;
 	    char NxtChr;
 
 	    if (*(GapEnd+1) == '-') {		/* minus sign? */
 		RefLen--;
 		GapEnd++;			/* move forward... */
 		*GapBeg++ = *GapEnd;		/* ... one character */
-		negative = TRUE;
+		negative = true;
 	    } else if (*(GapEnd+1) == '+') {	/* plus sign? */
 		RefLen--;
 		GapEnd++;			/* move forward... */

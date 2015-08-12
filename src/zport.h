@@ -23,7 +23,17 @@ produce signed 16-bit variables.
 produce 32-bit variables.
 *****************************************************************************/
 
-typedef	int		BOOLEAN;	/* holds FALSE or TRUE */
+/* Use standard bool type and related constants if available; define them
+ * otherwise */
+
+#ifdef _ISOC99_SOURCE
+#  include <stdbool.h>
+#else
+typedef char bool;
+#  define false 0
+#  define true 1
+#endif
+
 typedef int		DEFAULT;	/* signed, at least 16 bits */
 typedef	short		WORD;		/* 16 bits signed */
 typedef long		LONG;		/* 32 bits signed */
@@ -31,16 +41,6 @@ typedef unsigned long	ULONG;		/* 32 bits unsigned */
 
 #define FOREVER		for(;;)		/* Infinite loop declaration */
 
-/*
- * Define TRUE and FALSE if they haven't been defined already.
- */
-
-#ifndef FALSE
-#define FALSE 0
-#endif
-#ifndef TRUE
-#define TRUE 1
-#endif
 
 /*****************************************************************************
 	The following identifiers determine which compiler is being used.
@@ -77,13 +77,14 @@ in TECOC.C.
 *****************************************************************************/
 
 #ifndef CHECKSUM_CODE			/* if not defined on command line */
-#define CHECKSUM_CODE (FALSE && defined(__TURBOC__))
+#define CHECKSUM_CODE (false && defined(__TURBOC__))
+
 #endif
 #ifndef CONSISTENCY_CHECKING		/* if not defined on command line */
-#define CONSISTENCY_CHECKING FALSE	/* check pointer consistency */
+#define CONSISTENCY_CHECKING false	/* check pointer consistency */
 #endif
 #ifndef DEBUGGING			/* if not defined on command line */
-#define DEBUGGING FALSE			/* compile debugging code */
+#define DEBUGGING false			/* compile debugging code */
 #endif
 
 /*****************************************************************************
@@ -106,8 +107,8 @@ main() {}
 
 #else
 
-#define TC_SMALL_DATA FALSE
-#define TC_SMALL_CODE FALSE
+#define TC_SMALL_DATA false
+#define TC_SMALL_CODE false
 
 #endif
 
@@ -138,11 +139,11 @@ defined on the command line.
 *****************************************************************************/
 
 #ifdef CURSES			/* if CURSES is defined on command line */
-#define VIDEO TRUE
+#define VIDEO true
 #else
-#define CURSES FALSE
+#define CURSES false
 #ifndef VIDEO			/* if VIDEO is not defined on command line */
-#define VIDEO FALSE
+#define VIDEO false
 #endif
 #endif
 
@@ -183,7 +184,7 @@ allows checking of function calls for correctness,  but doesn't guarantee
 that prototypes and declarations match.  I choose to leave the actual
 function declarations in non-prototype form,  so they work with older
 compilers.  Defining USE_PROTOTYPES to TRUE causes prototypes to be defined
-in TECOC.H for all functions.  Defining it FALSE causes old-style definitions
+in TECOC.H for all functions.  Defining it false causes old-style definitions
 in TECOC.H.
 	GNU C is one of the compilers that forces consistency:  if you use
 prototypes,  then declarations have to match the prototypes.  The only way
@@ -193,9 +194,9 @@ just don't use prototypes in GNU C.
 ****************************************************************************/
 
 #if defined(VAX11C) || defined(__TURBOC__) || defined(__POWERC) || defined(ULTRIX)
-#define USE_PROTOTYPES TRUE
+#define USE_PROTOTYPES true
 #else
-#define USE_PROTOTYPES FALSE
+#define USE_PROTOTYPES false
 #endif
 
 /****************************************************************************
@@ -210,9 +211,9 @@ does not like the 3 Kbyte clpars[] string.
 ****************************************************************************/
 
 #if defined(__TURBOC__) || defined(__GNUC__)
-#define USE_ANSI_CLPARS TRUE
+#define USE_ANSI_CLPARS true
 #else
-#define USE_ANSI_CLPARS FALSE
+#define USE_ANSI_CLPARS false
 #endif
 
 /*****************************************************************************
@@ -272,10 +273,6 @@ typedef size_t SIZE_T;		/* use size_t as defined above */
 /*****************************************************************************
 	The values of the following identifiers are system-dependent.
 
-EXTERN	usually "extern",  this identifier lets the more useful keyword
-	"globalref" be used to define an external variable in VAX C.
-global	used for the single definition of a variable.  This identifier
-	allows the use of the keyword "globaldef" in VAX C.
 EXTERNV used only for GotCtC, this means "extern volatile" for compilers that
 	support the "volatile" keyword.
 volatile used only for GotCtC, this means "volatile" for compilers that
@@ -313,7 +310,7 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 
 #if defined(VAX11C)
 
-#define EXTERN	globalref	/* to reference an external symbol */
+#define extern	globalref	/* to reference an external symbol */
 #define GLOBAL	globaldef	/* to define an external symbol */
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
 #define VVOID	void		/* Void function return */
@@ -341,10 +338,8 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 
 #elif defined(__TURBOC__) || defined(__POWERC) || defined(unix) || defined(AMIGA)
 
-#define EXTERN	extern		/* to reference an external symbol */
 #define global	/**/		/* to define an external symbol */
 #if defined(AMIGA) || defined(unix) && !defined(__GNUC__)
-#define EXTERNV	extern		/* to reference an external volatile symbol */
 #define volatile /**/		/* to define an external volatile symbol */
 #else
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
@@ -428,7 +423,6 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 
 #elif defined(EMX)
 
-#define EXTERN	extern		/* to reference an external symbol */
 #define global	/**/		/* to define an external symbol */
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
 
@@ -454,7 +448,6 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 
 #elif defined(UNKNOWN)
 
-#define EXTERN	extern		/* to reference an external symbol */
 #define global	/**/		/* to define an external symbol */
 #define EXTERNV	extern volatile	/* to reference an external volatile symbol */
 
@@ -523,17 +516,17 @@ files.
 
 #if defined(sun)
 
-EXTERN void bcopy();
+extern void bcopy();
 #define MEMMOVE(dest,source,len) bcopy((source),(dest),(len))
 
 #elif defined(unix) || defined(AMIGA) || (defined(UNKNOWN) && !defined(__STDC__))
 
-EXTERN void ZCpyBl();
+extern void ZCpyBl();
 #define MEMMOVE(dest,source,len) ZCpyBl((dest),(source),(len))
 
 #elif defined(__TURBOC__) || defined(__POWERC)
 
-EXTERN void ZCpyBl(charptr dest, charptr source, SIZE_T len);
+extern void ZCpyBl(charptr dest, charptr source, SIZE_T len);
 #define MEMMOVE(dest,source,len) ZCpyBl((dest),(source),(len))
 
 #else

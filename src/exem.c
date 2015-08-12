@@ -15,7 +15,7 @@
 DEFAULT ExeM()			/* execute an M command */
 {
     DEFAULT status;
-	BOOLEAN islocal;
+	bool islocal;
 
     DBGFEN(1,"ExeM",NULL);
 

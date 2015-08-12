@@ -59,7 +59,7 @@ BakSrc(void)                    /* forward search for 1st search char */
     charptr  LstBeg;        /* beginning of ^E[x1,x2,...] list */
     char     OtCase;        /* "other" case character */
     charptr  QRPtr;        /* pointer into q-register text */
-    BOOLEAN  SamChr;        /* same character indicator */
+    bool     SamChr;        /* same character indicator */
     charptr  SavEP2;        /* temporary holder of EBPtr2 */
     charptr  SavSSP;        /* temporary holder of SStPtr */
     DEFAULT  Status;        /* FindQR() status for ^EGq */

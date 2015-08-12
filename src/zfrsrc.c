@@ -74,7 +74,7 @@ DEFAULT ZFrSrc()		/* forward search for 1st search charptr */
 	char	OtCase;		/* "other" case character */
 	charptr	QTPtr;		/* pointer into q-register text */
 	int	real_length;	/* length of area to be searched */
-	BOOLEAN	SamChr;		/* same character indicator */
+	bool	SamChr;		/* same character indicator */
 	charptr	SavEP2;		/* temporary holder of EBPtr2 */
 	charptr	SavSSP;		/* temporary holder of SStPtr */
 	struct	dsc$descriptor_s src_str = {
@@ -540,7 +540,7 @@ DEFAULT ZFrSrc()		/* forward search for 1st search charptr */
 	charptr	LstBeg;		/* beginning of ^E[x,x,x] list */
 	char	OtCase;		/* "other" case character */
 	charptr	QTPtr;		/* pointer into q-register text */
-	BOOLEAN	SamChr;		/* same character indicator */
+	bool	SamChr;		/* same character indicator */
 	charptr	SavEP2;		/* temporary holder of EBPtr2 */
 	charptr	SavSSP;		/* temporary holder of SStPtr */
 	DEFAULT	Status;

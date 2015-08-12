@@ -32,7 +32,7 @@ before calling this function to do the search.
 #include "dchars.h"		/* define identifiers for characters */
 
 DEFAULT Search(RepCmd)		/* main search code */
-BOOLEAN	RepCmd;			/* TRUE if the command has two arguments */
+bool	RepCmd;			/* true if the command has two arguments */
 {
 	DBGFEN(2,"Search",NULL);
 

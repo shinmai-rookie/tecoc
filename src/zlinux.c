@@ -36,7 +36,7 @@
 #include "defext.h"		/* define external global variables */
 #include "dscren.h"		/* define identifiers for screen i/o */
 
-static BOOLEAN tty_set = FALSE;	/* Has the terminal been set? */
+static bool tty_set = false;	/* Has the terminal been set? */
 static struct termios  out, cur;	/* terminal characteristics buffers */
 static char tbuf[1024];		/* store TERMCAP entry here */
 // static char tarea[1024];	/* store decoded TERMCAP stuff here */
@@ -83,7 +83,7 @@ static struct {
 	char	OFNam[FILENAME_MAX];	/* output file name */
 	char	OTNam[FILENAME_MAX];	/* temporary output file name */
 	FILE	*OStrem;		/* stream */
-	BOOLEAN forBackup;          /* TAA Mod */
+	bool forBackup;          /* TAA Mod */
 } OFiles[NOFDBS];
 
 
@@ -148,7 +148,7 @@ void ZBell(VVOID)
 	3.  type-ahead is always nice
 	4.  The character must be returned immediately:  no fooling
 	    around waiting for a carriage-return before returning.
-	5.  If the NoWait argument is TRUE, don't wait.
+	5.  If the NoWait argument is true, don't wait.
 	6.  When the user hits the RETURN key,  TECO is supposed to see
 	    a carriage return and then a line feed.  The function must
 	    deal with this by returning a carriage return to the caller
@@ -158,13 +158,13 @@ void ZBell(VVOID)
 *****************************************************************************/
 
 DEFAULT ZChIn(NoWait)			/* input a character from terminal */
-BOOLEAN NoWait;				/* return immediately? */
+bool NoWait;				/* return immediately? */
 {
 	char Charac;
-	static	BOOLEAN	LastLF = FALSE;
+	static	bool	LastLF = false;
 
 	if (LastLF) {
-		LastLF = FALSE;
+		LastLF = false;
 		return (DEFAULT)LINEFD;
 	}
 	if (read(fileno(stdin), &Charac, 1) != 1) {
@@ -177,9 +177,9 @@ BOOLEAN NoWait;				/* return immediately? */
 			exit(EXIT_FAILURE);
 		}
 	}
-	GotCtC = FALSE;
+	GotCtC = false;
 	if (Charac == CRETRN) {
-		LastLF = TRUE;
+		LastLF = true;
 		return (DEFAULT)CRETRN;
 	}
 	if (EtFlag & ET_BKSP_IS_DEL) {
@@ -326,7 +326,7 @@ voidptr cp;
 void ZClnUp(VVOID)			/* cleanup for TECO-C abort */
 {
 	DBGFEN(3,"ZClnUp","closing terminal channels and exiting");
-	if (tty_set == TRUE)
+	if (tty_set == true)
 		tcsetattr(0, TCSANOW, &out);
 }
 
@@ -566,8 +566,8 @@ help text.
 void ZHelp(HlpBeg, HlpEnd, SysLib, Prompt)
 charptr HlpBeg;		/* first char of help request */
 charptr HlpEnd;		/* last character of help request */
-BOOLEAN SysLib;		/* use default HELP library? */
-BOOLEAN	Prompt;		/* enter interactive help mode? */
+bool SysLib;		/* use default HELP library? */
+bool	Prompt;		/* enter interactive help mode? */
 {
 	(void)ExeNYI();
 }
@@ -580,7 +580,7 @@ BOOLEAN	Prompt;		/* enter interactive help mode? */
 
 	1.  if current input stream is not open,  simply return
 	2.  close the input file
-	3.  set open indicator to FALSE
+	3.  set open indicator to false
 
 *****************************************************************************/
 
@@ -595,7 +595,7 @@ DEFAULT	IfIndx;				/* index into IFiles array */
 			ErrMsg(ERR_UCI);
 			ZExit(EXIT_FAILURE);
 		}
-		IsOpnI[IfIndx] = FALSE;
+		IsOpnI[IfIndx] = false;
 	}
 	DBGFEX(2,DbgFNm,NULL);
 }
@@ -628,7 +628,7 @@ DEFAULT	OfIndx;				/* index into OFiles array */
 			ErrStr(ERR_UCD, OFiles[OfIndx].OFNam);
 			ZExit(EXIT_FAILURE);
 		}
-		IsOpnO[OfIndx] = FALSE;
+		IsOpnO[OfIndx] = false;
 	}
 	DBGFEX(2,DbgFNm,NULL);
 }
@@ -763,7 +763,7 @@ DEFAULT	OfIndx;			/* index into OFiles array */
 		}
 	}
 
-	IsOpnO[OfIndx] = FALSE;
+	IsOpnO[OfIndx] = false;
 	DBGFEX(2,DbgFNm,NULL);
 }
 
@@ -810,8 +810,8 @@ name,  as you can only have one dot in MS-DOS file names.
 
 DEFAULT ZOpInp(IfIndx, EIFile, RepFNF)
 DEFAULT IfIndx;			/* index into file data block array IFiles */
-BOOLEAN	EIFile;			/* is it a macro file (hunt for it) */
-BOOLEAN RepFNF;			/* report "file not found" error? */
+bool	EIFile;			/* is it a macro file (hunt for it) */
+bool RepFNF;			/* report "file not found" error? */
 {
 #if DEBUGGING
     static char *DbgFNm = "ZOpInp";
@@ -904,8 +904,8 @@ character following the last character of the file name.
 
 DEFAULT ZOpOut(OfIndx, RepErr, Backup)		/* open output file */
 DEFAULT	OfIndx;				/* output file indicator */
-BOOLEAN RepErr;				/* report errors? */
-BOOLEAN Backup;				/* TAA Added */
+bool RepErr;				/* report errors? */
+bool Backup;				/* TAA Added */
 {
 	char *tfname;
 	struct stat *bufstat = NULL;
@@ -1160,7 +1160,7 @@ SIZE_T NewSiz;
 
 	This function reads a line from a file.  It is passed a buffer, the
 size of the buffer, and a file pointer.  It returns the length of the line,
-or sets IsEofI[] to TRUE if the end of file is encountered.
+or sets IsEofI[] to true if the end of file is encountered.
 
 *****************************************************************************/
 
@@ -1245,7 +1245,7 @@ DEFAULT *retlen;		/* returned length of string */
  * If we made it to here, the read has failed because of EOF.
  */
 	if ((*retlen = shortBuf-charsLeft) == 0) {
-		IsEofI[IfIndx] = TRUE;		/* say we reached EOF */
+		IsEofI[IfIndx] = true;		/* say we reached EOF */
 	}
 #if DEBUGGING
 	sprintf(DbgSBf,"SUCCESS, retlen = %d", *retlen);
@@ -1380,7 +1380,7 @@ static void CntrlC()
 	if (EtFlag & ET_MUNG_MODE) {		/* if in MUNG mode */
 	    TAbort(EXIT_SUCCESS);
 	}
-	GotCtC = TRUE;				/* set "stop soon" flag */
+	GotCtC = true;				/* set "stop soon" flag */
     }
     signal(SIGINT, CntrlC);
 }
@@ -1423,7 +1423,7 @@ void ZTrmnl()			/* set up I/O to the terminal */
  * get terminal characteristics and set some signals
  */
 	if (tcgetattr(0,  &out) != -1)
-		tty_set = TRUE;		/* tell ZClnUp to clean up */
+		tty_set = true;		/* tell ZClnUp to clean up */
 	tcgetattr(0, &cur);
 #ifdef SIGTSTP
 	signal(SIGTSTP, sigstop);	/* call sigstop on stop (control-Z) */

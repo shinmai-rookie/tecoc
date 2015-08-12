@@ -320,7 +320,7 @@ cleared before a command string is entered.  It is tested each time a command
 terminates and when certain commands execute time-consuming loops.
 *****************************************************************************/
 
-volatile BOOLEAN GotCtC = FALSE;
+volatile bool GotCtC = false;
 
 /*****************************************************************************
 	IBfEnd is the end of the input buffer.  See file PG.MEM for a
@@ -342,14 +342,14 @@ global	int	IniSrM = NONE;
 /*****************************************************************************
 	IsOpnI and IsOpnO contain indicators about the status of the file
 data blocks in the IFiles and OFiles arrays,  respectively.  An element has
-the value TRUE when the corresponding file data block reflects an opened file.
+the value true when the corresponding file data block reflects an opened file.
 IsEofI indicates that the corresponding element of IFiles reflects a file
 that has reached the end.
 *****************************************************************************/
 
-global	BOOLEAN	IsEofI[NIFDBS];
-global	BOOLEAN	IsOpnI[NIFDBS];
-global	BOOLEAN	IsOpnO[NOFDBS];
+global	bool	IsEofI[NIFDBS];
+global	bool	IsOpnI[NIFDBS];
+global	bool	IsOpnO[NOFDBS];
 
 /*****************************************************************************
 	LstErr holds the code for the last error reported by TECO-C.  It is
@@ -387,7 +387,7 @@ global	LONG	MArgmt;			/* m part of m,n numeric arguments */
 string.  It is only used when a search command is being executed.
 *****************************************************************************/
 
-global	BOOLEAN	Matchd;			/* indicates successful search */
+global	bool	Matchd;			/* indicates successful search */
 
 /*****************************************************************************
 	These variables implement the macro stack.  When TECO executes a
@@ -660,15 +660,15 @@ unsigned char ChrMsk[256] =
 	};
 
 /*****************************************************************************
-	TraceM is the trace mode flag.  This variable is set to TRUE when
+	TraceM is the trace mode flag.  This variable is set to true when
 TECO's trace mode is on.  When it is set,  commands are echoed to the terminal
 as they are executed.  This mode is used to aid in debugging TECO macros,  and
 is toggled by the ? command.
 	If you want to trace the command line parsing macro executed in
-ZPrsCL(), set this to TRUE; otherwise, set it to FALSE.
+ZPrsCL(), set this to true; otherwise, set it to FALSE.
 *****************************************************************************/
 
-global	BOOLEAN	TraceM = FALSE;		/* trace mode flag */
+global	bool	TraceM = false;		/* trace mode flag */
 
 /*****************************************************************************
 	CrType is the terminal type.  It is used by the ZScrOp function to
