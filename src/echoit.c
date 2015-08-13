@@ -22,7 +22,7 @@ unsigned char Charac;
 			ZDspCh(Charac);
 		} else {
 			ZDspCh('[');			/* display as [ch] */
-			MakDBf((LONG)Charac,16);
+			MakDBf((long)Charac,16);
 			*DBfPtr++ = ']';
 			ZDspBf(DBfBeg, DBfPtr-DBfBeg);
 		}

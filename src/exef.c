@@ -337,7 +337,7 @@ static integer ExeFS()			/* execute an FS command */
 		CmdMod |= COLON;		/* set colon bit */
 		CmdMod |= MARGIS;		/* set m defined bit */
 		MArgmt = GapBeg - EBfBeg;	/* set m */
-		if (PushEx((LONG)((GapBeg-EBfBeg)+1),OPERAND) == FAILURE) {
+		if (PushEx((long)((GapBeg-EBfBeg)+1),OPERAND) == FAILURE) {
 			DBGFEX(1,DbgFNm,"FAILURE, PushEx() failed");
 			return FAILURE;
 		}

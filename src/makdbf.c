@@ -25,7 +25,7 @@ order the string so much that I made the base 8 and 16 code use it too.
 #if USE_PROTOTYPES
 static void DoHex(ULONG n);
 static void DoOct(ULONG n);
-static void DoNeg(LONG n);
+static void DoNeg(long n);
 #endif
 
 static char digits[] = "0123456789ABCDEF";
@@ -55,9 +55,9 @@ ULONG n;
  *  Put the character representation for the negative number n into DBf
  */
 static void DoNeg(n)
-LONG n;
+long n;
 {
-    LONG quotient;
+    long quotient;
     integer remainder;
 
     quotient = n / 10;
@@ -74,7 +74,7 @@ LONG n;
 
 
 void MakDBf(Binary, NRadix)	/* make digit buffer (DBfBeg) */
-LONG Binary;			/* binary number to be converted */
+long Binary;			/* binary number to be converted */
 integer NRadix;			/* radix to be used: 8, 10 or 16 */
 {
         ULONG TmpBin;

@@ -53,7 +53,7 @@ WORD Flag;
 	}
     }
 
-    TypBuf(GapBeg+Ln2Chr((LONG)1 - (LONG)VLines), GapBeg);
+    TypBuf(GapBeg+Ln2Chr((long)1 - (long)VLines), GapBeg);
 #if CURSES
     if (GapEnd+1 < EBfEnd) {
 	unsigned char c = *(GapEnd + 1);
@@ -86,7 +86,7 @@ WORD Flag;
 	} else
 	    ZDspCh(c);
 	standend();
-	TypBuf(GapEnd+2, GapEnd + Ln2Chr((LONG)VLines)+1);
+	TypBuf(GapEnd+2, GapEnd + Ln2Chr((long)VLines)+1);
     }
 #else
     if ((PtChar >= '\001') && (PtChar <= '\037')) {
@@ -94,6 +94,6 @@ WORD Flag;
     } else if (PtChar != 0) {
 	ZDspCh(PtChar);
     }
-    TypBuf(GapEnd+1, GapEnd+Ln2Chr((LONG)VLines)+1);
+    TypBuf(GapEnd+1, GapEnd+Ln2Chr((long)VLines)+1);
 #endif
 }

@@ -25,5 +25,5 @@ integer ExeRtP()		/* execute right parenthesis command */
 	}
 
 	DBGFEX(1,DbgFNm,"PushEx(')')");
-	return PushEx((LONG)')', OPERATOR);
+	return PushEx((long)')', OPERATOR);
 }

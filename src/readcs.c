@@ -36,7 +36,7 @@ if the text preceding the carriage return is a valid HELP command.  This
 checking is only performed when the first carriage return is struck.
 *****************************************************************************/
 
-static LONG CRCnt;		/* carriage-return count */
+static long CRCnt;		/* carriage-return count */
 static charptr Prompt = (charptr)"\n\r*";
 #if CURSES
 extern int skiprefresh;
@@ -378,7 +378,7 @@ void ReadCS()
 {
     bool         BadSeq;	/* bad escape sequence indicator */
     unsigned char   ctrstr[3];	/* temp buffer to display ^chars as string */
-    LONG            HowFar;
+    long            HowFar;
     int             PrvChr;	/* previous character flags */
     unsigned char   TmpChr;	/* temporary character */
     charptr         TmpPtr;	/* temporary pointer */
@@ -539,7 +539,7 @@ void ReadCS()
 			    	ZDspCh(CRETRN);
 			    	ZScrOp(SCR_EEL);
 			    }
-			HowFar = Ln2Chr((LONG)1);
+			HowFar = Ln2Chr((long)1);
 			MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)HowFar);
 			GapBeg += HowFar;
 			GapEnd += HowFar;
@@ -549,7 +549,7 @@ void ReadCS()
 #if CURSES
 			    if (ScroLn == 0 || skiprefresh)
 #endif
-				TypBuf(GapEnd+1, GapEnd+Ln2Chr((LONG)1)+1);
+				TypBuf(GapEnd+1, GapEnd+Ln2Chr((long)1)+1);
 			}
 #if CURSES
 			if (ScroLn > 0 || skiprefresh)
@@ -600,7 +600,7 @@ void ReadCS()
 #if CURSES
 			    if (ScroLn == 0 || skiprefresh)
 #endif
-				TypBuf(GapEnd+1, GapEnd+Ln2Chr((LONG)1)+1);
+				TypBuf(GapEnd+1, GapEnd+Ln2Chr((long)1)+1);
 			}
 #if CURSES
 			if (ScroLn > 0 && !skiprefresh)

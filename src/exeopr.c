@@ -21,7 +21,7 @@
 integer ExeOpr()		/* operators: + - * / # & ^_ */
 {
 	DBGFEN(1,"ExeOpr",NULL);
-	if (PushEx((LONG)*CBfPtr, OPERATOR) == FAILURE) {
+	if (PushEx((long)*CBfPtr, OPERATOR) == FAILURE) {
 		DBGFEX(1,DbgFNm,"FAILURE");
 		return FAILURE;
 	}

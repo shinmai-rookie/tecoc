@@ -36,7 +36,7 @@ integer ExeBSl()		/* execute a \ (backslash) command */
  */
     if ((EStTop == EStBot) ||			/* if no numeric arg or */
 	(EStack[EStTop].ElType != OPERAND)) {	/* partial expression */
-	LONG StrVal = 0;
+	long StrVal = 0;
 	RefLen=0;
 	if (GapEnd != EBfEnd) {			/* if not at end of buffer */
 	    bool negative = false;

@@ -33,7 +33,7 @@ integer ExeCtT()		/* execute a ^T (control-T) command */
 	    }
 
 	    DBGFEX(1,DbgFNm,"PushEx()");
-	    return PushEx((LONG)lchar, OPERAND);
+	    return PushEx((long)lchar, OPERAND);
 	}
 
 	if (GetNmA() == FAILURE) {		/* get numeric arg */

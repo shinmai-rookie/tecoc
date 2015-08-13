@@ -19,7 +19,7 @@ have tried to define the type of the destination as ptrdiff_t.
 	The mode control flags (like ES, ED) are 16-bit entities defined as
 WORD.  The DoEvEs function will not function correctly if WORD does not
 produce signed 16-bit variables.
-	The MakDBf function will not work properly if LONG does not
+	The MakDBf function will not work properly if long does not
 produce 32-bit variables.
 *****************************************************************************/
 
@@ -36,7 +36,6 @@ typedef char bool;
 
 typedef int             integer;	/* signed, at least 16 bits */
 typedef	short		WORD;		/* 16 bits signed */
-typedef long		LONG;		/* 32 bits signed */
 typedef unsigned long	ULONG;		/* 32 bits unsigned */
 
 #define FOREVER		for(;;)		/* Infinite loop declaration */

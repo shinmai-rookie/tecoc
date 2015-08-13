@@ -43,16 +43,16 @@ static void MemIni()
 /*
  * allocate memory for the digit buffer.  It needs to be big enough to hold
  * the decimal (signed), octal or hexadecimal representation of the largest
- * number that can be stored in a LONG.  Here, it's assumed that octal takes
+ * number that can be stored in a long.  Here, it's assumed that octal takes
  * the most characters.  The calculation is as follows:
  *
- *	sizeof(LONG) * 8 to get bits per long
+ *	sizeof(long) * 8 to get bits per long
  *	+2 to round up so /3 doesn't truncate
  *	/3 since there is 3 bits per octal digit
  *	+2 in case ExeEqu() appends a <CR><LF> for display purposes
  */
 
-	DBfBeg = DBfPtr = (charptr)ZAlloc((((sizeof(LONG)*8)+2)/3)+2);
+	DBfBeg = DBfPtr = (charptr)ZAlloc((((sizeof(long)*8)+2)/3)+2);
 	if (DBfBeg == NULL) {
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
@@ -71,7 +71,7 @@ static void MemIni()
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
 		sprintf(DbgSBf,"FBfBeg = ZAlloc(%ld) failed, calling TAbort()",
-			(LONG)FILENAME_MAX);
+			(long)FILENAME_MAX);
 		DbgFMs(2,DbgFNm,DbgSBf);
 #endif
 		TAbort(EXIT_FAILURE);
@@ -87,7 +87,7 @@ static void MemIni()
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
 		sprintf(DbgSBf,"CbfBeg =ZAlloc(%ld) failed, calling TAbort()",
-			(LONG)CBFINIT);
+			(long)CBFINIT);
 		DbgFMs(2,DbgFNm,DbgSBf);
 #endif
 		TAbort(EXIT_FAILURE);
@@ -103,7 +103,7 @@ static void MemIni()
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
 		sprintf(DbgSBf,"SbfBeg = ZAlloc(%ld) failed, calling TAbort()",
-			(LONG)SBFINIT);
+			(long)SBFINIT);
 		DbgFMs(2,DbgFNm,DbgSBf);
 #endif
 		TAbort(EXIT_FAILURE);
@@ -119,7 +119,7 @@ static void MemIni()
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
 		sprintf(DbgSBf,"EbfBeg = ZAlloc(%ld) failed, calling TAbort()",
-			(LONG)(EBFINIT + IBFINIT));
+			(long)(EBFINIT + IBFINIT));
 		DbgFMs(2,DbgFNm,DbgSBf);
 #endif
 		TAbort(EXIT_FAILURE);

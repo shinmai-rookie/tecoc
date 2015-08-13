@@ -13,10 +13,10 @@ commands.  It is called by ExeC, ExeJ and ExeR only.
 #include "deferr.h"                /* define identifiers for error messages */
 
 integer
-DoCJR(LONG HowFar)                /* do C, J or R stuff */
-/* LONG HowFar;                         positive or negative displacement */
+DoCJR(long HowFar)                /* do C, J or R stuff */
+/* long HowFar;                         positive or negative displacement */
 {
-        LONG    InRange;
+        long    InRange;
         bool ColonMod;
 
 #if DEBUGGING

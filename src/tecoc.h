@@ -185,7 +185,7 @@ done in the search code.
 *****************************************************************************/
 
 struct EStck {
-	LONG Elemnt;		/* integer or operand character */
+	long Elemnt;		/* integer or operand character */
 	int ElType;		/* Entry's type: OPERATOR or OPERAND */
 };
 
@@ -194,7 +194,7 @@ struct EStck {
 *****************************************************************************/
 
 struct LStck {
-	LONG	LIndex;		/* loop repetition count */
+	long	LIndex;		/* loop repetition count */
 	charptr LAddr;		/* pointer to start of loop in command buf */
 };
 
@@ -205,7 +205,7 @@ struct LStck {
 struct QReg  {
 	charptr	Start;		/* start of text */
 	charptr	End_P1;		/* end of text, plus one */
-	LONG	Number;		/* numeric part of q-register */
+	long	Number;		/* numeric part of q-register */
 };
 
 /*****************************************************************************
@@ -277,7 +277,7 @@ void	DbgFMs(			/* debugging, function message */
 	char *DbgMsg);		/*   an message */
 #endif
 integer	DoCJR(			/* do C, J or R stuff */
-	LONG HowFar);		/* positive or negative displacement */
+	long HowFar);		/* positive or negative displacement */
 void	DoEvEs(			/* do an EV or ES mode control flag function */
 	WORD Flag);
 integer	DoFlag(			/* handle mode control flag */
@@ -393,10 +393,10 @@ integer	InsStr(			/* insert string into edit buffer */
 	ptrdiff_t length);
 bool	IsRadx(			/* is the character in the radix set? */
 	unsigned char Charac);
-LONG	Ln2Chr(			/* convert line offset to character offset */
-	LONG Value);
+long	Ln2Chr(			/* convert line offset to character offset */
+	long Value);
 void	MakDBf(			/* make digit buffer */
-	LONG Binary,		/* binary number to be converted */
+	long Binary,		/* binary number to be converted */
 	integer NRadix);	/* radix to be used: 8, 10 or 16 */
 integer	MakRom(			/* make room in q-register */
 	SIZE_T Amount);		/* how much room to make */
@@ -405,7 +405,7 @@ integer	PshMac(			/* push variables for macro call */
 	charptr Start,		/* start of new command string */
 	charptr End);		/* end of new command string, plus one */
 integer	PushEx(			/* push onto expression stack */
-	LONG Item,
+	long Item,
 	integer EType);
 integer	RdLine(			/* read a line */
 	bool *EBfFul);	/* returned "edit buffer is full" indicator */
@@ -431,13 +431,13 @@ integer	WrPage(			/* write to output file */
 	integer	OfIndx,		/* index into OFiles array */
 	charptr OBfBeg,		/* address of output buffer beginning */
 	charptr OBfEnd,		/* address of output buffer end */
-	LONG AddFF);		/* -1 means add form feed, 0 means don't */
+	long AddFF);		/* -1 means add form feed, 0 means don't */
 voidptr ZAlloc(			/* like standard malloc function */
 	SIZE_T MemSiz);
 void	ZBell(void);		/* ring the terminal bell */
 integer ZChIn(			/* input a character from the terminal */
 	bool	NoWait);	/* return immediately? */
-LONG	ZClnEG(			/* execute special :EG command */
+long	ZClnEG(			/* execute special :EG command */
 	integer EGWhat,		/* what to get/set/clear: MEM, LIB, etc. */
 	integer EGOper,		/* operation: get, set or clear */
 	charptr TxtPtr);	/* if setting,  value to set */
@@ -629,7 +629,7 @@ integer	IncCBP();	/* increment CBfPtr */
 void	Init();		/* initialize TECO-C */
 integer	InsStr();	/* insert string into edit buffer */
 bool	IsRadx();	/* is the character in the radix set? */
-LONG	Ln2Chr();	/* convert line offset to character offset */
+long	Ln2Chr();	/* convert line offset to character offset */
 void	MakDBf();	/* make digit buffer */
 integer	MakRom();	/* make room in q-register */
 integer	PopMac();	/* pop variables after macro call */
@@ -652,7 +652,7 @@ integer	WrPage();	/* write to output file */
 voidptr ZAlloc();	/* like standard malloc function */
 void	ZBell();	/* ring the terminal bell */
 integer ZChIn();	/* input a character from the terminal */
-LONG	ZClnEG();	/* execute special :EG command */
+long	ZClnEG();	/* execute special :EG command */
 void	ZClnUp();	/* cleanup for TECO-C abort */
 #if DEBUGGING || CONSISTENCY_CHECKING
 ULONG	Zcp2ul();	/* convert charptr to unsigned long */

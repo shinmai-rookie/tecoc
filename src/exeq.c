@@ -30,7 +30,7 @@
 
 integer ExeQ()			/* execute a Q command */
 {
-	LONG	TmpVal;
+	long	TmpVal;
 
 	DBGFEN(1,"ExeQ",NULL);
 

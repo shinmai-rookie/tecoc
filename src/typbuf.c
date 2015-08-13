@@ -111,7 +111,7 @@ charptr YBfEnd;
 		    ZDspBf(YBfBeg, YBfPtr-YBfBeg);
 		}
 		ZDspCh('[');
-		MakDBf((LONG)*YBfPtr, 16);
+		MakDBf((long)*YBfPtr, 16);
 		*DBfPtr++ = ']';
 		ZDspBf(DBfBeg, DBfPtr-DBfBeg);
 		YBfBeg = ++YBfPtr;

@@ -13,7 +13,7 @@
 
 integer ExeL()			/* execute L command */
 {
-	LONG	HowFar;
+	long	HowFar;
 
 	DBGFEN(1,"ExeL",NULL);
 	if (EStTop == EStBot) {			/* if no numeric argument */

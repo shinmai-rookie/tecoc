@@ -65,7 +65,7 @@ BakSrc(void)                /* forward search for 1st search char */
     int      Status;        /* FindQR() status for ^EGq */
     charptr  TCBfPt;        /* temporary holder of CBfPtr */
     charptr  TCStEn;        /* temporary holder of CStEnd */
-    LONG     TmpLng;        /* holds octal number for ^E<nnn> */
+    long     TmpLng;        /* holds octal number for ^E<nnn> */
 
 #if DEBUGGING
     static char *DbgFNm = "BakSrc";

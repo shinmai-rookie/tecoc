@@ -16,7 +16,7 @@ some lines around the cursor.
 
 integer ExeV()			/* execute an V command */
 {
-	LONG firstarg;
+	long firstarg;
 
 	DBGFEN(1,"ExeV",NULL);
 	if (EStTop == EStBot) {			/* if no numeric argument */

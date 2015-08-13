@@ -34,16 +34,16 @@ integer GetNmA()		/* get numeric argument */
     }
 
 #if DEBUGGING
-    sprintf(DbgSBf,"dying with IFE, EstBot = %ld, stack =",(LONG)EStBot);
+    sprintf(DbgSBf,"dying with IFE, EstBot = %ld, stack =",(long)EStBot);
     DbgFMs(2,DbgFNm,DbgSBf);
     while (EStTop > 0) {
-	printf("EStack[%ld].ElType = ", (LONG)EStTop);
+	printf("EStack[%ld].ElType = ", (long)EStTop);
 	if (EStack[EStTop].ElType == OPERATOR) {
 	    printf("OPERATOR, EStack[%ld].Elemnt = '%c'\r\n",
-	    (LONG)EStTop, (char)EStack[EStTop].Elemnt);
+	    (long)EStTop, (char)EStack[EStTop].Elemnt);
 	} else {
 	    printf("OPERAND, EStack[%ld].Elemnt = %ld\r\n",
-	    (LONG)EStTop, (LONG)EStack[EStTop].Elemnt);
+	    (long)EStTop, (long)EStack[EStTop].Elemnt);
 	}
 	EStTop--;
     }

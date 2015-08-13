@@ -16,7 +16,7 @@ the current radix,  and pushes the value onto the expression stack.
 
 integer ExeDgt()		/* execute a digit command */
 {
-	LONG	TmpLng;
+	long	TmpLng;
 
 	DBGFEN(1,"ExeDgt",NULL);
 	if ((Radix == 8) && (*CBfPtr > '7')) {	/* if bad octal digit */

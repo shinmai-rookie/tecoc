@@ -302,7 +302,7 @@ related operations to determine if a form feed should be appended to the
 contents of the buffer when it is output.
 *****************************************************************************/
 
-global	LONG	FFPage = 0;		/* form feed flag (see ^E command) */
+global	long	FFPage = 0;		/* form feed flag (see ^E command) */
 
 /*****************************************************************************
 	These variables point to the first and last characters in the edit
@@ -380,7 +380,7 @@ TECO command.  For instance,  MArgmt would contain 10 when the command
 10,45T is being executed.
 *****************************************************************************/
 
-global	LONG	MArgmt;			/* m part of m,n numeric arguments */
+global	long	MArgmt;			/* m part of m,n numeric arguments */
 
 /*****************************************************************************
 	MAtchd is used to indicate that a match has been found for a search
@@ -405,7 +405,7 @@ by a call to the GetNmA function.  When the command is preceded by an m,n
 argument pair,  NArgmt holds the value of the n argument.
 *****************************************************************************/
 
-global	LONG	NArgmt;			/* n argument (n part of m,n) */
+global	long	NArgmt;			/* n argument (n part of m,n) */
 
 /*****************************************************************************
 	QR is a pointer to a structure which defines a q-register.
@@ -439,7 +439,7 @@ global	WORD	QStTop = -1;		/* top of q-register stack */
 string.  It is accessed by the ^S command.
 *****************************************************************************/
 
-global	LONG	RefLen = 0;		/* returned by ^S */
+global	long	RefLen = 0;		/* returned by ^S */
 
 /*****************************************************************************
 	Radix is TECO's radix,  usually 10.  It is set by the ^D, ^O and ^R
@@ -474,7 +474,7 @@ direction.  By using this variable,  the rather complex code that implements
 searching can easily be used to search in either direction.
 *****************************************************************************/
 
-global	LONG	SIncrm;			/* search increment */
+global	long	SIncrm;			/* search increment */
 
 /*****************************************************************************
 	SMFlag is TECOC's search mode flag,  and controls case sensitivity
@@ -836,23 +836,23 @@ static void DbgEBf()
 
 	DbgPrP ("\r\nEBfBeg =", EBfBeg);
 	DbgPrP ("\tGapBeg =",   GapBeg);
-	printf (" (%ld bytes)", (LONG) (GapBeg - EBfBeg));
+	printf (" (%ld bytes)", (long) (GapBeg - EBfBeg));
 
 	DbgPrP ("\r\nGapBeg =", GapBeg);
 	DbgPrP ("\tGapEnd =",   GapEnd);
-	printf (" (%ld bytes)", (LONG) (GapEnd - GapBeg));
+	printf (" (%ld bytes)", (long) (GapEnd - GapBeg));
 
 	DbgPrP ("\r\nGapEnd =", GapEnd);
 	DbgPrP ("\tEBfEnd =",   EBfEnd);
-	printf (" (%ld bytes)", (LONG) (EBfEnd - GapEnd));
+	printf (" (%ld bytes)", (long) (EBfEnd - GapEnd));
 
 	DbgPrP ("\r\nEBfEnd =", EBfEnd);
 	DbgPrP ("\tIBfEnd =",   IBfEnd);
-	printf (" (%ld bytes)", (LONG) (IBfEnd - EBfEnd));
+	printf (" (%ld bytes)", (long) (IBfEnd - EBfEnd));
 
 	DbgPrP ("\r\nEBfBeg =", EBfBeg);
 	DbgPrP ("\tIBfEnd =",   IBfEnd);
-	printf (" (%ld bytes)", (LONG) (IBfEnd - EBfBeg));
+	printf (" (%ld bytes)", (long) (IBfEnd - EBfBeg));
 
 	for (DbgPtr = EBfBeg; DbgPtr < GapBeg; ++DbgPtr) {
 		DbgPrP ("\r\nDbgEBf: first half, char at", DbgPtr);

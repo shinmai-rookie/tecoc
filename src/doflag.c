@@ -22,7 +22,7 @@ WORD *Flag;
 	if ((EStTop == EStBot) ||		    /* if no numeric arg or */
 	    (EStack[EStTop].ElType != OPERAND)) {   /* partial expression */
 		DBGFEX(2,DbgFNm,"PushEx");
-		return PushEx((LONG)*Flag, OPERAND);	/* return the flag */
+		return PushEx((long)*Flag, OPERAND);	/* return the flag */
 	}
 
 	if (GetNmA() == FAILURE) {		/* get the numeric argument */

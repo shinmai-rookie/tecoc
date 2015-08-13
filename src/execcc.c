@@ -23,5 +23,5 @@ integer ExeCCC()		/* execute a control-^ command */
 	}
 
 	DBGFEX(1,DbgFNm,"PushEx()");
-	return PushEx((LONG)*CBfPtr, OPERAND);
+	return PushEx((long)*CBfPtr, OPERAND);
 }

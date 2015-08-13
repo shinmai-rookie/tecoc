@@ -16,7 +16,7 @@
 
 integer ExeCtZ()		/* execute a ^Z (control-Z) command */
 {
-	LONG	TmpLng;
+	long	TmpLng;
 	WORD	TmpWrd;
 
 	DBGFEN(1,"ExeCtZ",NULL);

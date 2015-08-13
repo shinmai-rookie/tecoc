@@ -238,14 +238,14 @@ So I partially implemented :EG for Unix.  :EG can read the "INI", "LIB" and
 using a file (ugh) to save the name of the last-file-edited.  The file is
 stored in /tmp so it gets deleted when the system boots.
 *****************************************************************************/
-	LONG ZClnEG(                    /* execute special :EG command */
+	long ZClnEG(                    /* execute special :EG command */
 				integer EGWhat,         /* what to get/set/clear: MEM, LIB, etc. */
 				integer EGOper,         /* operation: get, set or clear */
 				charptr TxtPtr)         /* if setting,  value to set */
 	{
 		char    *cp=NULL;       /* environment variable name */
 //		char    buf[100];       /* enough for envname + 80 char filename */
-		LONG    retval;         /* -1L on success, 0L on failure */
+		long    retval;         /* -1L on success, 0L on failure */
 
 		DBGFEN(2,"ZClnEG",NULL);
 		DBGFEX(2,DbgFNm,"0");
@@ -510,12 +510,12 @@ integer ZExeEJ()			/* execute an EJ command */
 
 	if (NArgmt == -1) {
 		DBGFEX(1,DbgFNm,"PushEx(25858)");
-		return PushEx((LONG)25858, OPERAND);	/* means "PC Linux" */
+		return PushEx((long)25858, OPERAND);	/* means "PC Linux" */
 	}
 
 	if (NArgmt == 0) {
 		DBGFEX(1,DbgFNm,"PushEx(getppid())");
-		return PushEx((LONG)getppid(), OPERAND);
+		return PushEx((long)getppid(), OPERAND);
 	}
 
 	DBGFEX(1,DbgFNm,"ExeNYI()");
@@ -721,7 +721,7 @@ integer	OfIndx;			/* index into OFiles array */
 				int ln = strlen(TmpFsp);
 				ver++;
 				strcat(TmpFsp, ";");
-				MakDBf((LONG)ver, 10);
+				MakDBf((long)ver, 10);
 				strncat(TmpFsp, DBfBeg, DBfPtr-DBfBeg);
 				*(TmpFsp+ln+(1+DBfPtr-DBfBeg)+1) = '\0';
 			}
@@ -1179,7 +1179,7 @@ integer *retlen;		/* returned length of string */
 #if DEBUGGING
 	static char *DbgFNm = "ZRdLin";
 	sprintf(DbgSBf,"ibuf = %ld, ibuflen = %ld, IfIndx = %d",
-		Zcp2ul(ibuf),(LONG)ibuflen,IfIndx);
+		Zcp2ul(ibuf),(long)ibuflen,IfIndx);
 	DbgFEn(3,DbgFNm,DbgSBf);
 #endif
 

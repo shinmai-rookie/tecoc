@@ -86,7 +86,7 @@ integer ZFrSrc()		/* forward search for 1st search charptr */
 	integer	Status;
 	charptr	TCBfPt;		/* temporary holder of CBfPtr */
 	charptr	TCStEn;		/* temporary holder of CStEnd */
-	LONG	TmpLng;
+	long	TmpLng;
 
 
 #define SEPARATOR	'\001'	/* separators (not a letter or digit) */
@@ -546,7 +546,7 @@ integer ZFrSrc()		/* forward search for 1st search charptr */
 	integer	Status;
 	charptr	TCBfPt;		/* temporary holder of CBfPtr */
 	charptr	TCStEn;		/* temporary holder of CStEnd */
-	LONG	TmpLng;
+	long	TmpLng;
 
 #if DEBUGGING
 	static char *DbgFNm = "ZFrSrc";

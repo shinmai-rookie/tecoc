@@ -15,5 +15,5 @@ integer ExeUsc()                /* execute control-_ command */
 {
 	DBGFEN(1,"ExeUsc",NULL);
 	DBGFEX(1,DbgFNm,"PushEx(USCHAR)");
-	return PushEx((LONG)USCHAR, OPERATOR);
+	return PushEx((long)USCHAR, OPERATOR);
 }

@@ -19,8 +19,8 @@ whether the argument is positive or negative.
 #include "dchars.h"		/* define identifiers for characters */
 #include "chmacs.h"		/* define character processing macros */
 
-LONG Ln2Chr(Value)
-LONG Value;
+long Ln2Chr(Value)
+long Value;
 {
 	charptr	TmpPtr;
 

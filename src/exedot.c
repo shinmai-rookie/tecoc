@@ -19,8 +19,8 @@ integer ExeDot()		/* execute a . (dot) command */
 {
 #if DEBUGGING
 	DBGFEN(1,"ExeDot",NULL);
-	sprintf(DbgSBf,"PushEx(%ld)", (LONG)(GapBeg-EBfBeg));
+	sprintf(DbgSBf,"PushEx(%ld)", (long)(GapBeg-EBfBeg));
 	DbgFEx(1,DbgFNm,DbgSBf);
 #endif
-	return PushEx((LONG)(GapBeg-EBfBeg), OPERAND);
+	return PushEx((long)(GapBeg-EBfBeg), OPERAND);
 }

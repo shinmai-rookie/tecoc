@@ -22,7 +22,7 @@ integer ExeCtR()		/* execute a ^R (control-R) command */
 	if ((EStTop == EStBot) ||		    /* if no numeric arg or */
 	    (EStack[EStTop].ElType != OPERAND)) {     /* partial expression */
 		DBGFEX(1,DbgFNm,"PushEx");
-		return PushEx((LONG)Radix, OPERAND);
+		return PushEx((long)Radix, OPERAND);
 	}
 
 	if (GetNmA() == FAILURE) {

@@ -32,8 +32,8 @@ static integer Reduce()		/* reduce the expression stack */
 	ESptr	ESp2;		/* 2nd thing on stack (top-1) */
 	ESptr	ESp3;		/* 3rd thing on stack (top-2) */
 	WORD	OnStack;	/* number of items on stack */
-	LONG	x;		/* temporary operand */
-	LONG	y;		/* temporary operand */
+	long	x;		/* temporary operand */
+	long	y;		/* temporary operand */
 
 	FOREVER {		/* reduce until you can't reduce anymore */
 		OnStack = EStTop - EStBot;
@@ -141,13 +141,13 @@ the expression can be evaluated at that time.
 *****************************************************************************/
 
 integer PushEx(Item, EType)	/* push onto expression stack */
-LONG Item;
+long Item;
 integer EType;
 {
 #if DEBUGGING
 	static char *DbgFNm = "PushEx";
 	if (EType == OPERAND) {
-		sprintf(DbgSBf,"Item = %ld, EType = OPERAND", (LONG)Item);
+		sprintf(DbgSBf,"Item = %ld, EType = OPERAND", (long)Item);
 	} else if (EType == OPERATOR) {
 		sprintf(DbgSBf,"Item = '%c', EType = OPERATOR", (char)Item);
 	} else {
@@ -172,7 +172,7 @@ integer EType;
 		}
 	}
 #if DEBUGGING
-	sprintf(DbgSBf,"EStTop = %ld, EStBot = %ld", (LONG)EStTop, (LONG)EStBot);
+	sprintf(DbgSBf,"EStTop = %ld, EStBot = %ld", (long)EStTop, (long)EStBot);
 	DbgFEx(3,DbgFNm,DbgSBf);
 #endif
 	return SUCCESS;

@@ -32,7 +32,7 @@ SIZE_T Amount;			/* how much additional room to make */
 
 #if DEBUGGING
 	static char *DbgFNm = "MakRom";
-	sprintf(DbgSBf,"Amount = %ld bytes", (LONG)Amount);
+	sprintf(DbgSBf,"Amount = %ld bytes", (long)Amount);
 	DbgFEn(2,DbgFNm,DbgSBf);
 #endif
 	if (QR->Start == NULL) {		/* if it was empty */

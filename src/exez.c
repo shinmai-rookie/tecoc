@@ -20,5 +20,5 @@ integer ExeZ()                  /* execute Z command */
 	sprintf(DbgSBf,"PushEx(%ld)", ((GapBeg-EBfBeg)+(EBfEnd-GapEnd)));
 	DbgFEx(1,DbgFNm,DbgSBf);
 #endif
-	return PushEx((LONG)((GapBeg-EBfBeg)+(EBfEnd-GapEnd)), OPERAND);
+	return PushEx((long)((GapBeg-EBfBeg)+(EBfEnd-GapEnd)), OPERAND);
 }

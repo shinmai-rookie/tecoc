@@ -15,7 +15,7 @@
 
 integer ExeD()			/* execute a D command */
 {
-	LONG	Status;
+	long	Status;
 
 	DBGFEN(1,"ExeD",NULL);
 

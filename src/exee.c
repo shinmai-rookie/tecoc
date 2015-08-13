@@ -904,7 +904,7 @@ static integer ExeEO()			/* execute an EO command */
 {
 	return ((EStTop > EStBot)		/* is it nEO ? */
 	    ? ExeNYI()				/* ...yes, not supported */
-	    : PushEx((LONG)TVERSION,OPERAND));	/* ...no, return version */
+	    : PushEx((long)TVERSION,OPERAND));	/* ...no, return version */
 }
 
 /*****************************************************************************
@@ -1017,7 +1017,7 @@ It then copies the text to a q-register.
 static integer ExeEQ()			/* execute an EQ command */
 {
 	ptrdiff_t	FSize;		/* file size */
-	LONG		SvFFPg;		/* saved FFPage value */
+	long		SvFFPg;		/* saved FFPage value */
 	integer		SvCrIn;		/* saved CurInp value */
 	ptrdiff_t	SvEbSz;		/* saved edit buffer size */
 	integer		Status;

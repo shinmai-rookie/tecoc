@@ -27,5 +27,5 @@ integer ExeCtY()		/* execute ^Y command */
 	CmdMod |= MARGIS;			/* say that m part exists */
 
 	DBGFEX(1,DbgFNm,"PushEx()");
-	return PushEx((LONG)(GapBeg-EBfBeg), OPERAND); /* push n part */
+	return PushEx((long)(GapBeg-EBfBeg), OPERAND); /* push n part */
 }

@@ -110,7 +110,7 @@ integer ExeA()			/* execute an A command */
 	sprintf(DbgSBf,"PushEx(%d)", TmpChr);
 	DbgFEx(1,DbgFNm,DbgSBf);
 #endif
-	return PushEx((LONG)TmpChr, OPERAND);
+	return PushEx((long)TmpChr, OPERAND);
     }
 
 /*

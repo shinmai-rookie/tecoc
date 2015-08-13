@@ -19,7 +19,7 @@ in the global variables AraBeg and AraEnd.
 
 integer GetAra()		/* get m,n addresses */
 {
-	LONG	TmpLng;
+	long	TmpLng;
 
 #if DEBUGGING
 	static char *DbgFNm = "GetAra";

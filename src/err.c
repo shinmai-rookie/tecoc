@@ -202,7 +202,7 @@ charptr *PtrPtr;
 	    case '\0':		SPtr = "<NUL>";	SLen = 5; break;
 	    default:		if (Charac >= DELETE) {
 					SPtr = SBuf;
-					MakDBf((LONG)Charac, 16);
+					MakDBf((long)Charac, 16);
 					SLen = (size_t) (DBfPtr - DBfBeg);
 					SBuf[0] = '[';
 					MEMMOVE(&SBuf[1], DBfBeg, SLen);
