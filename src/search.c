@@ -31,7 +31,7 @@ before calling this function to do the search.
 #include "deferr.h"		/* define identifiers for error messages */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT Search(RepCmd)		/* main search code */
+integer Search(RepCmd)		/* main search code */
 bool	RepCmd;			/* true if the command has two arguments */
 {
 	DBGFEN(2,"Search",NULL);

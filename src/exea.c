@@ -44,7 +44,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeA()			/* execute an A command */
+integer ExeA()			/* execute an A command */
 {
     bool		EBfFul;
     unsigned char	TmpChr;

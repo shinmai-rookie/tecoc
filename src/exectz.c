@@ -14,7 +14,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtZ()		/* execute a ^Z (control-Z) command */
+integer ExeCtZ()		/* execute a ^Z (control-Z) command */
 {
 	LONG	TmpLng;
 	WORD	TmpWrd;

@@ -25,7 +25,7 @@ buffer,  the character pointer is left at the end of the string in the buffer.
 #include "defext.h"		/* define external global variables */
 #include "chmacs.h"		/* define character processing macros */
 
-DEFAULT ExeBSl()		/* execute a \ (backslash) command */
+integer ExeBSl()		/* execute a \ (backslash) command */
 {
     DBGFEN(1,"ExeBSl",NULL);
 

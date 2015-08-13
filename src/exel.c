@@ -11,7 +11,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeL()			/* execute L command */
+integer ExeL()			/* execute L command */
 {
 	LONG	HowFar;
 

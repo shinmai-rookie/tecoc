@@ -12,17 +12,17 @@
 #include "deferr.h"		/* define identifiers for error messages */
 
 #if USE_PROTOTYPES
-static DEFAULT SkpArg(void);	/* skip command with text argument */
-static DEFAULT SkpCrt(void);	/* skip a ^ (caret) command */
-static DEFAULT SkpCtA(void);	/* skip control-A command */
-static DEFAULT SkpCtU(void);	/* skip control-U command */
-static DEFAULT SkpDAr(void);	/* skip "double text argument" command */
-static DEFAULT SkpDqu(void);	/* skip a " (double quote) command */
-static DEFAULT SkpE(void);	/* skip one of the E commands */
-static DEFAULT SkpExc(void);	/* skip command with text argument */
-static DEFAULT SkpF(void);	/* skip one of the F commands */
-static DEFAULT SkpOne(void);	/* skip one command character */
-static DEFAULT SkpSkp(void);	/* */
+static integer SkpArg(void);	/* skip command with text argument */
+static integer SkpCrt(void);	/* skip a ^ (caret) command */
+static integer SkpCtA(void);	/* skip control-A command */
+static integer SkpCtU(void);	/* skip control-U command */
+static integer SkpDAr(void);	/* skip "double text argument" command */
+static integer SkpDqu(void);	/* skip a " (double quote) command */
+static integer SkpE(void);	/* skip one of the E commands */
+static integer SkpExc(void);	/* skip command with text argument */
+static integer SkpF(void);	/* skip one of the F commands */
+static integer SkpOne(void);	/* skip one command character */
+static integer SkpSkp(void);	/* */
 #endif
 
 /*****************************************************************************
@@ -31,7 +31,7 @@ static DEFAULT SkpSkp(void);	/* */
 
 *****************************************************************************/
 
-static DEFAULT SkpArg()		/* skip command with text argument */
+static integer SkpArg()		/* skip command with text argument */
 {
 	bool TTrace;		/* temp: holds trace flag */
 
@@ -55,7 +55,7 @@ static DEFAULT SkpArg()		/* skip command with text argument */
 
 *****************************************************************************/
 
-static DEFAULT SkpCtA()		/* skip control-A command */
+static integer SkpCtA()		/* skip control-A command */
 {
 	bool	TTrace;		/* temp: holds trace flag */
 
@@ -79,7 +79,7 @@ static DEFAULT SkpCtA()		/* skip control-A command */
 
 *****************************************************************************/
 
-static DEFAULT SkpCtU()		/* skip control-U command */
+static integer SkpCtU()		/* skip control-U command */
 {
 	bool	TTrace;		/* temp: holds trace flag */
 
@@ -112,7 +112,7 @@ static DEFAULT SkpCtU()		/* skip control-U command */
 
 *****************************************************************************/
 
-static DEFAULT SkpDAr()		/* skip "double text argument" command */
+static integer SkpDAr()		/* skip "double text argument" command */
 {
 	bool TTrace;		/* saves TraceM temporarily */
 
@@ -141,7 +141,7 @@ static DEFAULT SkpDAr()		/* skip "double text argument" command */
 
 *****************************************************************************/
 
-static DEFAULT SkpDqu()		/* skip a " (double quote) command */
+static integer SkpDqu()		/* skip a " (double quote) command */
 {
 	DBGFEN(3,"SkpDqu",NULL);
 	if (CBfPtr == CStEnd)			/* if end of command string */
@@ -192,7 +192,7 @@ static DEFAULT SkpDqu()		/* skip a " (double quote) command */
 
 *****************************************************************************/
 
-static DEFAULT SkpExc()		/* skip command with text argument */
+static integer SkpExc()		/* skip command with text argument */
 {
 	bool	TTrace;		/* temp: holds trace flag */
 
@@ -216,7 +216,7 @@ static DEFAULT SkpExc()		/* skip command with text argument */
 
 *****************************************************************************/
 
-static DEFAULT SkpSkp()		/* */
+static integer SkpSkp()		/* */
 {
 	CmdMod = '\0';				/* clear ATSIGN modifier */
 	return SUCCESS;
@@ -229,7 +229,7 @@ static DEFAULT SkpSkp()		/* */
 
 *****************************************************************************/
 
-static DEFAULT SkpF()			/* skip one of the F commands */
+static integer SkpF()			/* skip one of the F commands */
 {
 	if (CBfPtr == CStEnd)
 		if (MStTop < 0)			/* if not in a macro */
@@ -271,7 +271,7 @@ static DEFAULT SkpF()			/* skip one of the F commands */
 
 *****************************************************************************/
 
-static DEFAULT SkpOne()		/* skip one command character */
+static integer SkpOne()		/* skip one command character */
 {
 #if DEBUGGING
 	static char *DbgFNm = "SkpOne";
@@ -305,9 +305,9 @@ static DEFAULT SkpOne()		/* skip one command character */
 
 *****************************************************************************/
 
-static DEFAULT SkpCrt()		/* skip a ^ (caret) command */
+static integer SkpCrt()		/* skip a ^ (caret) command */
 {
-	static DEFAULT (*FCAray[])(void) = {
+	static integer (*FCAray[])(void) = {
 /* ^A*/ SkpCtA,   /* ^B*/ SkpSkp,   /* ^C*/ SkpSkp,   /* ^D*/ SkpSkp,
 /* ^E*/ SkpSkp,   /* ^F*/ SkpSkp,   /* ^G*/ SkpSkp,   /* ^H*/ SkpSkp,
 /*TAB*/ SkpArg,   /* LF*/ ExeNul,   /* VT*/ SkpSkp,   /* FF*/ SkpSkp,
@@ -347,10 +347,10 @@ static DEFAULT SkpCrt()		/* skip a ^ (caret) command */
 *****************************************************************************/
 
 
-static DEFAULT SkpE()			/* skip one of the E commands */
+static integer SkpE()			/* skip one of the E commands */
 {
 	unsigned char TmpChr;
-	static DEFAULT (*FEAray[])(void) = {
+	static integer (*FEAray[])(void) = {
 /* A */ SkpSkp,    /* B */ SkpArg,    /* C */ SkpSkp,    /* D */ SkpSkp,
 /* E */ 0,         /* F */ SkpSkp,    /* G */ SkpArg,    /* H */ SkpSkp,
 /* I */ SkpArg,    /* J */ SkpSkp,    /* K */ SkpSkp,    /* L */ SkpArg,
@@ -404,9 +404,9 @@ case of a command like Stext<ESC>, CBfPtr is left pointing to the <ESC>.
 
 *****************************************************************************/
 
-DEFAULT SkpCmd()		/* skip a "command" */
+integer SkpCmd()		/* skip a "command" */
 {
-	static DEFAULT (*FSAray[])(void) = {
+	static integer (*FSAray[])(void) = {
 /*NUL*/ ExeNul,   /* ^A*/ SkpCtA,   /* ^B*/ SkpSkp,   /* ^C*/ SkpSkp,
 /* ^D*/ SkpSkp,   /* ^E*/ SkpSkp,   /* ^F*/ SkpSkp,   /* ^G*/ SkpSkp,
 /* BS*/ SkpSkp,   /*TAB*/ SkpArg,   /* LF*/ ExeNul,   /* VT*/ SkpSkp,
@@ -472,7 +472,7 @@ DEFAULT SkpCmd()		/* skip a "command" */
 /*249*/ SkpSkp,   /*250*/ SkpSkp,   /*251*/ SkpSkp,   /*252*/ SkpSkp,
 /*253*/ SkpSkp,   /*254*/ SkpSkp,   /*255*/ SkpSkp,   /*256*/ SkpSkp
 	};
-	DEFAULT Status;
+	integer Status;
 
 #if DEBUGGING
 	static char *DbgFNm = "SkpCmd";

@@ -11,7 +11,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeK()			/* execute a K command */
+integer ExeK()			/* execute a K command */
 {
 	ptrdiff_t	HowFar;
 

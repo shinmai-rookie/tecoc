@@ -23,10 +23,10 @@ reduceable.
 *****************************************************************************/
 
 #if USE_PROTOTYPES
-static DEFAULT Reduce(void);
+static integer Reduce(void);
 #endif
 
-static DEFAULT Reduce()		/* reduce the expression stack */
+static integer Reduce()		/* reduce the expression stack */
 {
 	ESptr	ESp1;		/* 1st thing on stack (top) */
 	ESptr	ESp2;		/* 2nd thing on stack (top-1) */
@@ -140,9 +140,9 @@ the expression can be evaluated at that time.
 
 *****************************************************************************/
 
-DEFAULT PushEx(Item, EType)	/* push onto expression stack */
+integer PushEx(Item, EType)	/* push onto expression stack */
 LONG Item;
-DEFAULT EType;
+integer EType;
 {
 #if DEBUGGING
 	static char *DbgFNm = "PushEx";

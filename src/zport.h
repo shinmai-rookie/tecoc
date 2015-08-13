@@ -34,7 +34,7 @@ typedef char bool;
 #  define true 1
 #endif
 
-typedef int		DEFAULT;	/* signed, at least 16 bits */
+typedef int             integer;	/* signed, at least 16 bits */
 typedef	short		WORD;		/* 16 bits signed */
 typedef long		LONG;		/* 32 bits signed */
 typedef unsigned long	ULONG;		/* 32 bits unsigned */
@@ -275,6 +275,8 @@ typedef size_t SIZE_T;		/* use size_t as defined above */
 
 EXTERNV used only for GotCtC, this means "extern volatile" for compilers that
 	support the "volatile" keyword.
+    Edit: not needed: if the compiler doesn't accept "volatile", it is defined
+        as nothing, so "extern volatile" becomes "extern"
 volatile used only for GotCtC, this means "volatile" for compilers that
 	support the "volatile" keyword.
 VVOID	if the compiler supports the keyword "void",  then this should be
@@ -311,8 +313,7 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #if defined(VAX11C)
 
 #define extern	globalref	/* to reference an external symbol */
-#define GLOBAL	globaldef	/* to define an external symbol */
-#define EXTERNV	extern volatile	/* to reference an external volatile symbol */
+#define global	globaldef	/* to define an external symbol */
 #define VVOID	void		/* Void function return */
 
 #define CBFINIT		20000	/* command buffer initial size */
@@ -342,7 +343,6 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #if defined(AMIGA) || defined(unix) && !defined(__GNUC__)
 #define volatile /**/		/* to define an external volatile symbol */
 #else
-#define EXTERNV	extern volatile	/* to reference an external volatile symbol */
 #endif
 
 #if !defined(__TURBOC__) && !defined(__POWERC) && !defined(__GNUC__) && !defined(AMIGA)
@@ -424,7 +424,6 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #elif defined(EMX)
 
 #define global	/**/		/* to define an external symbol */
-#define EXTERNV	extern volatile	/* to reference an external volatile symbol */
 
 #define CBFINIT		20000	/* command buffer initial size */
 #define EBFEXP		64000	/* edit buffer expansion value */
@@ -449,7 +448,6 @@ ZBFMIN	minimum size of the EI file buffer before it is expanded.
 #elif defined(UNKNOWN)
 
 #define global	/**/		/* to define an external symbol */
-#define EXTERNV	extern volatile	/* to reference an external volatile symbol */
 
 #define CBFINIT		100	/* command buffer initial size */
 #define EBFEXP		100	/* edit buffer expansion value */

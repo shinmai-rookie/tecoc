@@ -16,7 +16,7 @@
 #include "dchars.h"		/* define identifiers for characters */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeS()			/* execute an S command */
+integer ExeS()			/* execute an S command */
 {
 	DBGFEN(1, "ExeS", NULL);
 

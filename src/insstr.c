@@ -21,9 +21,9 @@ edit buffer is expanded to make room for the text if necessary.
  */
 
 #if USE_PROTOTYPES
-static DEFAULT expand_gap(ptrdiff_t length)
+static integer expand_gap(ptrdiff_t length)
 #else
-static DEFAULT expand_gap(length)
+static integer expand_gap(length)
 ptrdiff_t length;			/* amount of gap room needed */
 #endif
 {
@@ -91,7 +91,7 @@ ptrdiff_t length;			/* amount of gap room needed */
 }
 
 
-DEFAULT InsStr(string, length)		/* insert string into edit buffer */
+integer InsStr(string, length)		/* insert string into edit buffer */
 charptr string;
 ptrdiff_t length;
 {

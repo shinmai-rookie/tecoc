@@ -24,7 +24,7 @@ is used as the destination of the new text.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT MakRom(Amount)		/* make room in q-register */
+integer MakRom(Amount)		/* make room in q-register */
 SIZE_T Amount;			/* how much additional room to make */
 {
 	ptrdiff_t	OldSiz;		/* old size of text area */

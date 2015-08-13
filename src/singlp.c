@@ -15,7 +15,7 @@
 #include "defext.h"		/* define external global variables */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT SinglP()		/* do a single P command */
+integer SinglP()		/* do a single P command */
 {
 	DBGFEN(2,"SinglP",NULL);
 

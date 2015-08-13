@@ -58,7 +58,7 @@ static void DoNeg(n)
 LONG n;
 {
     LONG quotient;
-    DEFAULT remainder;
+    integer remainder;
 
     quotient = n / 10;
     remainder = (int) (n % 10);	   /* trailing digit */
@@ -75,7 +75,7 @@ LONG n;
 
 void MakDBf(Binary, NRadix)	/* make digit buffer (DBfBeg) */
 LONG Binary;			/* binary number to be converted */
-DEFAULT NRadix;			/* radix to be used: 8, 10 or 16 */
+integer NRadix;			/* radix to be used: 8, 10 or 16 */
 {
         ULONG TmpBin;
 

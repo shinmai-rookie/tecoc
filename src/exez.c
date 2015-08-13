@@ -13,7 +13,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeZ()                  /* execute Z command */
+integer ExeZ()                  /* execute Z command */
 {
 #if DEBUGGING
 	DBGFEN(1,"ExeZ",NULL);

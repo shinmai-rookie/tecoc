@@ -16,7 +16,7 @@ The PopMac function reverses the effects of this function,  redefining the
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT PshMac(Start, End)	/* push environment for a macro call */
+integer PshMac(Start, End)	/* push environment for a macro call */
 charptr Start;			/* start of new command string */
 charptr End;			/* end of new command string, plus one */
 {

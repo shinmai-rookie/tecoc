@@ -41,7 +41,7 @@
 #include "deferr.h"		/* define identifiers for error messages */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT ExeCtU()		/* execute a ^U (control-U) command */
+integer ExeCtU()		/* execute a ^U (control-U) command */
 {
 	ptrdiff_t TmpSiz;
 

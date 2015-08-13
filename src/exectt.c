@@ -14,9 +14,9 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeCtT()		/* execute a ^T (control-T) command */
+integer ExeCtT()		/* execute a ^T (control-T) command */
 {
-	DEFAULT lchar;
+	integer lchar;
 
 	DBGFEN(1,"ExeCtT",NULL);
 

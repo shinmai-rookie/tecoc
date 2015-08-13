@@ -31,15 +31,15 @@ was overwritten is restored.
 #include "dchars.h"		/* define identifiers for characters */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT WrPage(OfIndx, OBfBeg, OBfEnd, AddFF)
-DEFAULT	OfIndx;			/* index into OFiles array */
+integer WrPage(OfIndx, OBfBeg, OBfEnd, AddFF)
+integer	OfIndx;			/* index into OFiles array */
 charptr OBfBeg;			/* address of output buffer beginning */
 charptr OBfEnd;			/* address of output buffer end */
 LONG AddFF;			/* add form feed: -1 is true, 0 is FALSE */
 {
 	unsigned char	SavChr;	/* saved char overwritten with form feed */
 	ptrdiff_t	Shuffl;	/* size of shuffled area */
-	DEFAULT		status;
+	integer		status;
 
 #if DEBUGGING
 	static char *DbgFNm = "WrPage";

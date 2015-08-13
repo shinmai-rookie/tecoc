@@ -42,14 +42,14 @@ function.
 #include "chmacs.h"                /* define character processing macros */
 
 #if USE_PROTOTYPES
-static DEFAULT DoCtVW(charptr EndArg, unsigned char TmpChr);
-static DEFAULT DoCtE(charptr EndArg, charptr XBfEnd);
+static int DoCtVW(charptr EndArg, unsigned char TmpChr);
+static int DoCtE(charptr EndArg, charptr XBfEnd);
 #endif
 
 static charptr BBfPtr;                        /* pointer into XBf */
 static int CaseCv;                        /* case conversion */
 
-static DEFAULT
+static int
 DoCtVW(charptr EndArg, unsigned char TmpChr)        /* do a control-V or control-W */
 /* charptr EndArg;                         ptr to end of string argument */
 /* unsigned char TmpChr;                 temporary character */
@@ -101,12 +101,12 @@ DoCtVW(charptr EndArg, unsigned char TmpChr)        /* do a control-V or control
 }
 
 
-static DEFAULT
+static int
 DoCtE(charptr EndArg, charptr XBfEnd)        /* do a control-E */
 /* charptr EndArg;                         ptr to end of string argument */
 /* charptr XBfEnd;                         end of build-string buffer */
 {
-    DEFAULT        Status;                        /* returned from FindQR */
+    int        Status;                        /* returned from FindQR */
     charptr        TCStEn;                        /* temporary holder of CStEnd */
 
     DBGFEN(3, "DoCtE", NULL);
@@ -205,7 +205,7 @@ DoCtE(charptr EndArg, charptr XBfEnd)        /* do a control-E */
 }
 
 
-DEFAULT
+int
 BldStr(charptr XBfBeg, charptr XBfEnd, charptr* XBfPtr)                /* build a string */
 /* charptr XBfBeg;                 beginning of build-string buffer */
 /* charptr XBfEnd;                 end of build-string buffer */

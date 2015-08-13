@@ -12,11 +12,11 @@ extern	charptr	CBfBeg;		/* command buffer beginning */
 extern	charptr	CBfEnd;		/* command buffer end */
 extern	charptr	CBfPtr;		/* pointer into command string */
 extern	char	CmdMod;		/* command modifiers flags for @, ;, etc. */
-extern	DEFAULT	CrType;		/* value of 0:W (terminal type) */
+extern	integer	CrType;		/* value of 0:W (terminal type) */
 extern	charptr	CStBeg;		/* command string beginning */
 extern	charptr	CStEnd;		/* pointer to last char of command string */
-extern	DEFAULT	CurInp;		/* index of current input stream in IFiles */
-extern	DEFAULT	CurOut;		/* index of current output stream in OFiles */
+extern	integer	CurInp;		/* index of current input stream in IFiles */
+extern	integer	CurOut;		/* index of current output stream in OFiles */
 extern	charptr	DBfBeg;		/* digit buffer beginning */
 extern	charptr	DBfPtr;		/* digit buffer pointer */
 #if DEBUGGING
@@ -44,7 +44,7 @@ extern	charptr	FBfPtr;		/* pointer into filename buffer */
 extern	LONG	FFPage;		/* form feed flag (returned by ^E command) */
 extern	charptr	GapBeg;		/* edit buffer gap beginning */
 extern	charptr	GapEnd;		/* end of edit buffer gap */
-EXTERNV	bool	GotCtC;		/* true if the user just hit a control-C */
+extern volatile	bool GotCtC;	/* true if the user just hit a control-C */
 extern	charptr	IBfEnd;		/* end of input buffer */
 extern	charptr	IBfEnd;		/* input buffer end */
 extern	int	IniSrM;		/* initial search mode */
@@ -65,7 +65,7 @@ extern	QRptr	QR;		/* pointer to q-register structure */
 extern	struct	QReg QRgstr[];	/* global q-registers */
 extern	struct	QReg QStack[];	/* q-register stack */
 extern	WORD	QStTop;		/* top of q-register stack */
-extern	DEFAULT	Radix;		/* TECO-C's current radix, 2-36 */
+extern	integer	Radix;		/* TECO-C's current radix, 2-36 */
 extern	LONG	RefLen;		/* value returned by ^S command */
 extern	charptr	RhtSid;		/* right-hand side of area to be searched */
 extern	charptr	SBfBeg;		/* search string buffer beginning */
@@ -77,15 +77,15 @@ extern	WORD	SrcTyp;		/* type of search (E_SEARCH, N_SEARCH, etc) */
 extern	charptr	SStPtr;		/* pointer into search string */
 extern	bool	TraceM;		/* trace mode flag */
 #if VIDEO
-extern DEFAULT	HldFlg;		/* value of 5:W (hold mode flag) */
-extern DEFAULT	HtSize;		/* value of 1:W (screen width) */
-extern DEFAULT	MrkFlg;		/* value of 4:W */
-extern DEFAULT	ScroLn;		/* value of 7:W */
-extern DEFAULT	SeeAll;		/* value of 3:W */
-extern DEFAULT	TopDot;		/* value of 6:W */
-extern DEFAULT	VtSize;		/* value of 2:W (screen height) */
+extern integer	HldFlg;		/* value of 5:W (hold mode flag) */
+extern integer	HtSize;		/* value of 1:W (screen width) */
+extern integer	MrkFlg;		/* value of 4:W */
+extern integer	ScroLn;		/* value of 7:W */
+extern integer	SeeAll;		/* value of 3:W */
+extern integer	TopDot;		/* value of 6:W */
+extern integer	VtSize;		/* value of 2:W (screen height) */
 #  if CURSES
-extern DEFAULT	SpcMrk;		/* value of 8:W */
-extern DEFAULT	KeyPad;		/* value of 9:W */
+extern integer	SpcMrk;		/* value of 8:W */
+extern integer	KeyPad;		/* value of 9:W */
 #  endif
 #endif

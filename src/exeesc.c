@@ -23,7 +23,7 @@ ESCAPE cannot be part of the syntax of the preceding TECO command.
 #include "defext.h"		/* define external global variables */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT ExeEsc()		/* execute an ESCAPE command */
+integer ExeEsc()		/* execute an ESCAPE command */
 {
 	DBGFEN(1,"ExeEsc",NULL);
 

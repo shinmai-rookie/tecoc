@@ -14,7 +14,7 @@ modification check CmdMod explicitly.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCln()		/* execute : or :: modifiers */
+integer ExeCln()		/* execute : or :: modifiers */
 {
 	DBGFEN(1,"ExeCln",NULL);
 	if (CmdMod & COLON) {			/* if colon bit is set */

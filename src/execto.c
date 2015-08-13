@@ -11,7 +11,7 @@ command sets the radix to octal.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtO()		/* execute a ^O (control-O) command */
+integer ExeCtO()		/* execute a ^O (control-O) command */
 {
 	DBGFEN(1,"ExeCtO",NULL);
 	Radix = 8;			/* set radix to octal */

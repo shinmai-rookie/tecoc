@@ -12,7 +12,7 @@ string found, or string inserted with "G" command).
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtS()		/* execute a ^S (control-S) command */
+integer ExeCtS()		/* execute a ^S (control-S) command */
 {
 	DBGFEN(1,"ExeCtS",NULL);
 	DBGFEX(1,DbgFNm,"PushEx(RefLen)");

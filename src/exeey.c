@@ -10,7 +10,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeEY()			/* execute an EY command */
+integer ExeEY()			/* execute an EY command */
 {
 	bool	ColonMod;
 

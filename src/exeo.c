@@ -13,7 +13,7 @@
 #include "dchars.h"		/* define identifiers for characters */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeO()			/* execute an O command */
+integer ExeO()			/* execute an O command */
 {
     bool Found;		/* has the tag been found? */
     unsigned char TBfBeg[TBFINIT]; /* tag buffer */

@@ -12,7 +12,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeC()			/* execute a C command */
+integer ExeC()			/* execute a C command */
 {
 	DBGFEN(1,"ExeC",NULL);
 

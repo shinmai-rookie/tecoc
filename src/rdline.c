@@ -83,10 +83,10 @@ bool *EBfFul;			/* indicates edit buffer full */
 }
 
 
-DEFAULT RdLine(EBfFul)		/* read a line */
+integer RdLine(EBfFul)		/* read a line */
 bool *EBfFul;
 {
-    DEFAULT length;
+    integer length;
 
     DBGFEN(3,"RdLine",NULL);
 

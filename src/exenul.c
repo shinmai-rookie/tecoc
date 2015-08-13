@@ -10,7 +10,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeNul()		/* execute a null command */
+integer ExeNul()		/* execute a null command */
 {
 	return SUCCESS;
 }

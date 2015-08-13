@@ -19,7 +19,7 @@ operand is removed from the stack and placed in NArgmt.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT GetNmA()		/* get numeric argument */
+integer GetNmA()		/* get numeric argument */
 {
     DBGFEN(2,"GetNmA",NULL);
 

@@ -16,7 +16,7 @@ when the edit buffer is written to the output file.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtE()		/* execute a ^E (control-E) command */
+integer ExeCtE()		/* execute a ^E (control-E) command */
 {
     DBGFEN(1,"ExeCtE",NULL);
 

@@ -11,7 +11,7 @@
 #include "defext.h"		/* define external global variables */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT ExeCtL()		/* execute an ^L (control-L) command */
+integer ExeCtL()		/* execute an ^L (control-L) command */
 {
 	ZDspCh(FORMFD);
 	return SUCCESS;

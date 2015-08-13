@@ -11,7 +11,7 @@
 
 
 void TAbort(tstat)		/* terminate TECO-C */
-DEFAULT tstat;
+integer tstat;
 {
 	DBGFEN(2,"TAbort",NULL);
 

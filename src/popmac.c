@@ -12,7 +12,7 @@ is de-allocating memory consumed by local q-registers.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT PopMac()		/* restore environment after macro exit */
+integer PopMac()		/* restore environment after macro exit */
 {
     WORD	i;
     MSptr	MSp;		/* pointer into the macro stack */

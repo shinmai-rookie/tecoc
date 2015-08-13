@@ -22,10 +22,10 @@ capability.
 *****************************************************************************/
 
 #if USE_PROTOTYPES
-static DEFAULT DoFBFC(void);
+static integer DoFBFC(void);
 #endif
 
-static DEFAULT DoFBFC()		/* search loop */
+static integer DoFBFC()		/* search loop */
 {
     ptrdiff_t HowFar;
     ptrdiff_t Shuffl;		/* how far buffer gap is shuffled */
@@ -150,7 +150,7 @@ actually doing the loop for n arguments.
 
 *****************************************************************************/
 
-DEFAULT SrcLop()		/* search loop */
+integer SrcLop()		/* search loop */
 {
     ptrdiff_t	HowFar;
 

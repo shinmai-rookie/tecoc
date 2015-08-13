@@ -12,7 +12,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeU()					/* execute U command */
+integer ExeU()					/* execute U command */
 {
 	DBGFEN(1,"ExeU",NULL);
 	if (EStTop == EStBot) {			/* if no numeric argument */

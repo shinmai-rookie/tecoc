@@ -15,7 +15,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeG()			/* execute a G command */
+integer ExeG()			/* execute a G command */
 {
 	charptr TxtBeg;		/* beginning of a text area */
 	charptr TxtEnd;		/* end of a text area */

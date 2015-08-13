@@ -16,7 +16,7 @@ the search area.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT SSerch()		/* search for 1 occurrence of a string */
+integer SSerch()		/* search for 1 occurrence of a string */
 {
 	bool	SamChr;		/* same character indicator */
 

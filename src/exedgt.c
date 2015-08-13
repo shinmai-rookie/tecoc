@@ -14,7 +14,7 @@ the current radix,  and pushes the value onto the expression stack.
 #include "deferr.h"		/* define identifiers for error messages */
 #include "chmacs.h"		/* define character processing macros */
 
-DEFAULT ExeDgt()		/* execute a digit command */
+integer ExeDgt()		/* execute a digit command */
 {
 	LONG	TmpLng;
 

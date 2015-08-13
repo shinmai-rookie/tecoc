@@ -18,7 +18,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeOpr()		/* operators: + - * / # & ^_ */
+integer ExeOpr()		/* operators: + - * / # & ^_ */
 {
 	DBGFEN(1,"ExeOpr",NULL);
 	if (PushEx((LONG)*CBfPtr, OPERATOR) == FAILURE) {

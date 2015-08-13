@@ -13,7 +13,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeH()			/* execute an H command */
+integer ExeH()			/* execute an H command */
 {
 	DBGFEN(1,"ExeH",NULL);
 

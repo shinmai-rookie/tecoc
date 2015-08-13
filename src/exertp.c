@@ -11,7 +11,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeRtP()		/* execute right parenthesis command */
+integer ExeRtP()		/* execute right parenthesis command */
 {
 	DBGFEN(1,"ExeRtP",NULL);
 

@@ -13,7 +13,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeD()			/* execute a D command */
+integer ExeD()			/* execute a D command */
 {
 	LONG	Status;
 

@@ -11,7 +11,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeExc()		/* execute a ! (exclamation mark) command */
+integer ExeExc()		/* execute a ! (exclamation mark) command */
 {
 	DBGFEN(1,"ExeExc",NULL);
 	if (FindES('!') == FAILURE) {		/* simply skip to next '!' */

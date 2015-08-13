@@ -18,7 +18,7 @@ level,  then memory for a local q-register table is allocated.
 #include "deferr.h"		/* define identifiers for error messages */
 #include "chmacs.h"		/* define character processing macros */
 
-DEFAULT FindQR()		/* find q-register index */
+integer FindQR()		/* find q-register index */
 {
     WORD	i;
     bool	LocalQ;

@@ -12,7 +12,7 @@ displaying the message "not yet implemented" and failing.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeNYI()			/* command not yet implemented */
+integer ExeNYI()			/* command not yet implemented */
 {
 	ErrMsg(ERR_NYI);		/* NYI = not yet implemented */
 	return FAILURE;

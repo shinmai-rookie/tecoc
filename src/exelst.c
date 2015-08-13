@@ -12,7 +12,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeLst()				/* execute a  < command */
+integer ExeLst()				/* execute a  < command */
 {
 	DBGFEN(1,"ExeLst",NULL);
 

@@ -17,7 +17,7 @@
 #include "dchars.h"		/* define identifiers for characters */
 
 
-DEFAULT ExeCtA()		/* execute a ^A (control-A) command */
+integer ExeCtA()		/* execute a ^A (control-A) command */
 {
 	DBGFEN(1,"ExeCtA",NULL);
 

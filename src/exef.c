@@ -27,17 +27,17 @@
 #include "deferr.h"		/* define identifiers for error messages */
 
 #if USE_PROTOTYPES
-static DEFAULT ExeFBr(void);
-static DEFAULT ExeFC(void);
-static DEFAULT ExeFD(void);
-static DEFAULT ExeFGt(void);
-static DEFAULT ExeFK(void);
-static DEFAULT ExeFLs(void);
-static DEFAULT ExeFN(void);
-static DEFAULT ExeFR(void);
-static DEFAULT ExeFS(void);
-static DEFAULT ExeFSQ(void);
-static DEFAULT ExeFUn(void);
+static integer ExeFBr(void);
+static integer ExeFC(void);
+static integer ExeFD(void);
+static integer ExeFGt(void);
+static integer ExeFK(void);
+static integer ExeFLs(void);
+static integer ExeFN(void);
+static integer ExeFR(void);
+static integer ExeFS(void);
+static integer ExeFSQ(void);
+static integer ExeFUn(void);
 #endif
 
 /*****************************************************************************
@@ -48,7 +48,7 @@ static DEFAULT ExeFUn(void);
 
 *****************************************************************************/
 
-static DEFAULT ExeFBr()			/* execute an F| command */
+static integer ExeFBr()			/* execute an F| command */
 {
 	DBGFEN(1,"ExeFBr",NULL);
 
@@ -67,7 +67,7 @@ static DEFAULT ExeFBr()			/* execute an F| command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFC()			/* execute an FC command */
+static integer ExeFC()			/* execute an FC command */
 {
 	DBGFEN(1,"ExeFC",NULL);
 
@@ -97,7 +97,7 @@ static DEFAULT ExeFC()			/* execute an FC command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFD()			/* execute an FD command */
+static integer ExeFD()			/* execute an FD command */
 {
 	DBGFEN(1,"ExeFD",NULL);
 
@@ -141,7 +141,7 @@ static DEFAULT ExeFD()			/* execute an FD command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFGt()			/* execute an F> command */
+static integer ExeFGt()			/* execute an F> command */
 {
 	DBGFEN(1,"ExeFGt",NULL);
 
@@ -171,7 +171,7 @@ static DEFAULT ExeFGt()			/* execute an F> command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFK()			/* execute an FK command */
+static integer ExeFK()			/* execute an FK command */
 {
 	DBGFEN(1,"ExeFK",NULL);
 
@@ -208,7 +208,7 @@ static DEFAULT ExeFK()			/* execute an FK command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFLs()			/* execute an F< command */
+static integer ExeFLs()			/* execute an F< command */
 {
 	DBGFEN(1,"ExeFLs",NULL);
 
@@ -228,7 +228,7 @@ static DEFAULT ExeFLs()			/* execute an F< command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFN()			/* execute an FN command */
+static integer ExeFN()			/* execute an FN command */
 {
 	DBGFEN(1,"ExeFN",NULL);
 
@@ -269,7 +269,7 @@ static DEFAULT ExeFN()			/* execute an FN command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFR()			/* execute an FR command */
+static integer ExeFR()			/* execute an FR command */
 {
 	DBGFEN(1,"ExeFR",NULL);
 
@@ -296,7 +296,7 @@ static DEFAULT ExeFR()			/* execute an FR command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFS()			/* execute an FS command */
+static integer ExeFS()			/* execute an FS command */
 {
 	DBGFEN(1,"ExeFS",NULL);
 
@@ -365,7 +365,7 @@ static DEFAULT ExeFS()			/* execute an FS command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFSQ()				/* execute an F' command */
+static integer ExeFSQ()				/* execute an F' command */
 {
 	DBGFEN(1,"ExeFSQ",NULL);
 
@@ -384,7 +384,7 @@ static DEFAULT ExeFSQ()				/* execute an F' command */
 
 *****************************************************************************/
 
-static DEFAULT ExeFUn()				/* execute an F_ command */
+static integer ExeFUn()				/* execute an F_ command */
 {
 	DBGFEN(1,"ExeFUn",NULL);
 
@@ -426,7 +426,7 @@ static DEFAULT ExeFUn()				/* execute an F_ command */
 
 *****************************************************************************/
 
-DEFAULT ExeF()				/* execute one of the F commands */
+integer ExeF()				/* execute one of the F commands */
 {
 	if (IncCBP() == FAILURE) {
 		return FAILURE;

@@ -14,7 +14,7 @@ some lines around the cursor.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeV()			/* execute an V command */
+integer ExeV()			/* execute an V command */
 {
 	LONG firstarg;
 

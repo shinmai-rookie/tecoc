@@ -12,7 +12,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExePrc()		/* execute % (percent) command */
+integer ExePrc()		/* execute % (percent) command */
 {
 	DBGFEN(1,"ExePrc",NULL);
 

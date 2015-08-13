@@ -11,7 +11,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeFB()			/* execute an FB command */
+integer ExeFB()			/* execute an FB command */
 {
 	DBGFEN(1,"ExeFB",NULL);
 

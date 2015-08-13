@@ -12,7 +12,7 @@ FN.
 #include "defext.h"		/* define external global variables */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT Replac()
+integer Replac()
 {
 	DBGFEN(2,"Replac",NULL);
 

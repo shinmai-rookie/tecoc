@@ -15,7 +15,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeX()			/* execute an X command */
+integer ExeX()			/* execute an X command */
 {
 	ptrdiff_t TmpSiz;
 

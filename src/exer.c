@@ -11,7 +11,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeR()			/* execute a R command */
+integer ExeR()			/* execute a R command */
 {
 	DBGFEN(1,"ExeR",NULL);
 

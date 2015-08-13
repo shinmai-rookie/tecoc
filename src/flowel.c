@@ -15,7 +15,7 @@ executed.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT FlowEL()		/* flow to end of loop */
+integer FlowEL()		/* flow to end of loop */
 {
 	WORD	TmpNst;		/* temporary loop nest count */
 

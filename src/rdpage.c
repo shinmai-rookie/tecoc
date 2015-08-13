@@ -12,7 +12,7 @@ edit buffer.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT RdPage()		/* read a page */
+integer RdPage()		/* read a page */
 {
 	bool EBfFul;
 

@@ -14,7 +14,7 @@
 #include "dchars.h"		/* define identifiers for characters */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeI()			/* execute an I command */
+integer ExeI()			/* execute an I command */
 {
 	unsigned char InChar;
 

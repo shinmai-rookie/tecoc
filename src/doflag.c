@@ -14,7 +14,7 @@ function.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT DoFlag(Flag)		/* handle a mode control flag */
+integer DoFlag(Flag)		/* handle a mode control flag */
 WORD *Flag;
 {
 	DBGFEN(2,"DoFlag",NULL);

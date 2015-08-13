@@ -15,7 +15,7 @@ a command string.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeCtR()		/* execute a ^R (control-R) command */
+integer ExeCtR()		/* execute a ^R (control-R) command */
 {
 	DBGFEN(1,"ExeCtR",NULL);
 
@@ -34,7 +34,7 @@ DEFAULT ExeCtR()		/* execute a ^R (control-R) command */
 		DBGFEX(1,DbgFNm,"FAILURE, illegal radix");
 		return FAILURE;
 	}
-	Radix = (DEFAULT)NArgmt;
+	Radix = (integer)NArgmt;
 
 	DBGFEX(1,DbgFNm,"SUCCESS");
 	return SUCCESS;

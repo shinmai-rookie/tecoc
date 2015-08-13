@@ -20,7 +20,7 @@ and CBfPtr points to the termination character.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT FindES(TrmChr)		/* find end of text argument */
+integer FindES(TrmChr)		/* find end of text argument */
 unsigned char TrmChr;		/* termination char if no @ modifier */
 {
 #if DEBUGGING

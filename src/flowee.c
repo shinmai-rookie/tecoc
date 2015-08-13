@@ -14,7 +14,7 @@ command is encountered.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT FlowEE()		/* flow to else or end (| or ') */
+integer FlowEE()		/* flow to else or end (| or ') */
 {
 	WORD	TmpNst;
 

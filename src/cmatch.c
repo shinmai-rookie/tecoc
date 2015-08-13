@@ -40,7 +40,7 @@ indicate the limit past which EBPtr2 should not be incremented.
 #include "chmacs.h"		/* define character processing macros */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT
+integer
 CMatch(bool* SamChr)		/* match a character */
 /* BOOLEAN *SamChr;		 returned match indicator */
 {
@@ -49,7 +49,7 @@ CMatch(bool* SamChr)		/* match a character */
     charptr	QRPtr;		/* pointer into q-register text */
     charptr	SavEP2;		/* temporary holder of EBPtr2 */
     charptr	SavSSP;		/* temporary holder of SStPtr */
-    DEFAULT	Status;		/* FindQR() status for ^EGq */
+    integer	Status;		/* FindQR() status for ^EGq */
     charptr	TCBfPt;		/* temporary holder of CBfPtr */
     charptr	TCStEn;		/* temporary holder of CStEnd */
     unsigned int TmpChr;	/* accumulator for ^E<nnn> */

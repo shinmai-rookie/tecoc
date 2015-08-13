@@ -13,7 +13,7 @@
 #include "defext.h"		/* define external global variables */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT ExeT()				/* execute T command */
+integer ExeT()				/* execute T command */
 {
 	DBGFEN(1,"ExeT",NULL);
 	if (EStTop == EStBot) {			/* if no numeric argument */

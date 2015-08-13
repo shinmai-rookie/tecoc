@@ -12,10 +12,10 @@ to by CBfPtr.  The last character in the string is pointed to by CStEnd.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeCSt()		/* execute command string */
+integer ExeCSt()		/* execute command string */
 {
-	DEFAULT status;
-	static DEFAULT (*FArray[])(void) = {
+	integer status;
+	static integer (*FArray[])(void) = {
 /*NUL*/ ExeNul,   /* ^A*/ ExeCtA,   /* ^B*/ ZExCtB,   /* ^C*/ ExeCtC,
 /* ^D*/ ExeCtD,   /* ^E*/ ExeCtE,   /* ^F*/ ExeNYI,   /* ^G*/ ExeIll,
 /* ^H*/ ZExCtH,   /* ^I*/ ExeCtI,   /* LF*/ ExeNul,   /* VT*/ ExeIll,

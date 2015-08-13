@@ -11,7 +11,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeQes()                /* question mark command */
+integer ExeQes()                /* question mark command */
 {
 	DBGFEN(1,"ExeQes",NULL);
 

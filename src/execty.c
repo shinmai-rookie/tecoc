@@ -19,7 +19,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtY()		/* execute ^Y command */
+integer ExeCtY()		/* execute ^Y command */
 {
 	DBGFEN(1,"ExeCtY",NULL);
 

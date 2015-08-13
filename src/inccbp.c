@@ -13,7 +13,7 @@ buffer pointer past the end of the command buffer.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT IncCBP()
+integer IncCBP()
 {
 	if (CBfPtr == CStEnd) {			/* if end of command string */
 		if (MStTop < 0) {		/* if not in a macro */

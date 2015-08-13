@@ -15,7 +15,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeDot()		/* execute a . (dot) command */
+integer ExeDot()		/* execute a . (dot) command */
 {
 #if DEBUGGING
 	DBGFEN(1,"ExeDot",NULL);

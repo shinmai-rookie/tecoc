@@ -130,8 +130,8 @@ respectively.  They indicate the entries for the current input stream and
 current output stream.
 *****************************************************************************/
 
-global	DEFAULT	CurInp = PINPFL;
-global	DEFAULT	CurOut = POUTFL;
+global	integer	CurInp = PINPFL;
+global	integer	CurOut = POUTFL;
 
 /*****************************************************************************
 	These variables point to the digit buffer.  When TECO-C needs to
@@ -446,7 +446,7 @@ global	LONG	RefLen = 0;		/* returned by ^S */
 commands.
 *****************************************************************************/
 
-global	DEFAULT	Radix = 10;		/* TECO's current radix */
+global	integer	Radix = 10;		/* TECO's current radix */
 
 /*****************************************************************************
 	When searching,  this pointer points to the farthest-right character
@@ -676,19 +676,19 @@ drive the few screen capabilities of TECOC.  See ZScrOp for a list of the
 values that CrType can take.
 *****************************************************************************/
 
-global	DEFAULT	CrType = UNTERM;	/* terminal type */
+global	integer	CrType = UNTERM;	/* terminal type */
 
 #if VIDEO
-global DEFAULT	HldFlg;			/* value of 5:W (hold mode flag) */
-global DEFAULT	HtSize;			/* value of 1:W (screen width) */
-global DEFAULT	MrkFlg;			/* value of 4:W */
-global DEFAULT	ScroLn;			/* value of 7:W */
-global DEFAULT	SeeAll;			/* value of 3:W */
-global DEFAULT	TopDot;			/* value of 6:W */
-global DEFAULT	VtSize;			/* value of 2:W (screen height) */
+global integer	HldFlg;			/* value of 5:W (hold mode flag) */
+global integer	HtSize;			/* value of 1:W (screen width) */
+global integer	MrkFlg;			/* value of 4:W */
+global integer	ScroLn;			/* value of 7:W */
+global integer	SeeAll;			/* value of 3:W */
+global integer	TopDot;			/* value of 6:W */
+global integer	VtSize;			/* value of 2:W (screen height) */
 #if CURSES
-global DEFAULT	SpcMrk = 0;		/* value of 8:W */
-global DEFAULT	KeyPad;			/* value of 9:W */
+global integer	SpcMrk = 0;		/* value of 8:W */
+global integer	KeyPad;			/* value of 9:W */
 #endif
 #endif
 
@@ -736,8 +736,8 @@ of this code is compiled.
 #include <ctype.h>		/* isprint() macro */
 #include "dchars.h"		/* define identifiers for characters */
 
-static	DEFAULT	DbgInd = 0;	/* debugging indent level */
-static	DEFAULT	DbgLvl = 0;	/* debugging message level */
+static	integer	DbgInd = 0;	/* debugging indent level */
+static	integer	DbgLvl = 0;	/* debugging message level */
 
 #define DBGSBF	4000		/* huge buffer to avoid overruns */
 
@@ -1169,7 +1169,7 @@ in order to debug it can be left in the code so they're useful later.
 
 static void DbgSLv()
 {
-	DbgLvl = (DEFAULT)MArgmt;
+	DbgLvl = (integer)MArgmt;
 }
 
 /*****************************************************************************
@@ -1192,7 +1192,7 @@ the user, causes this function to be executed.
 
 *****************************************************************************/
 
-DEFAULT DbgDsp()
+integer DbgDsp()
 {
 	if (EStTop == EStBot) {			/* if no numeric argument */
 		ZScrOp(SCR_RON);		/* turn on reverse video */

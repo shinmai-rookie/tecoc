@@ -15,7 +15,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtN()		/* execute a ^N (control-N) command */
+integer ExeCtN()		/* execute a ^N (control-N) command */
 {
 	DBGFEN(1,"ExeCtN",NULL);
 	DBGFEX(1,DbgFNm,"PushEx()");

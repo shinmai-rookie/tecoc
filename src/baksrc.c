@@ -45,24 +45,24 @@ does not modify EndSAr.
 
 *****************************************************************************/
 
-#include "zport.h"        /* define portability identifiers */
-#include "tecoc.h"        /* define general identifiers */
-#include "defext.h"        /* define external global variables */
-#include "dchars.h"        /* define identifiers for characters */
-#include "chmacs.h"        /* define character processing macros */
-#include "deferr.h"        /* define identifiers for error messages */
+#include "zport.h"          /* define portability identifiers */
+#include "tecoc.h"          /* define general identifiers */
+#include "defext.h"         /* define external global variables */
+#include "dchars.h"         /* define identifiers for characters */
+#include "chmacs.h"         /* define character processing macros */
+#include "deferr.h"         /* define identifiers for error messages */
 
-DEFAULT
-BakSrc(void)                    /* forward search for 1st search char */
+int
+BakSrc(void)                /* forward search for 1st search char */
 {
-    unsigned char Charac;    /* holds a character */
+    unsigned char Charac;   /* holds a character */
     charptr  LstBeg;        /* beginning of ^E[x1,x2,...] list */
     char     OtCase;        /* "other" case character */
-    charptr  QRPtr;        /* pointer into q-register text */
+    charptr  QRPtr;         /* pointer into q-register text */
     bool     SamChr;        /* same character indicator */
     charptr  SavEP2;        /* temporary holder of EBPtr2 */
     charptr  SavSSP;        /* temporary holder of SStPtr */
-    DEFAULT  Status;        /* FindQR() status for ^EGq */
+    int      Status;        /* FindQR() status for ^EGq */
     charptr  TCBfPt;        /* temporary holder of CBfPtr */
     charptr  TCStEn;        /* temporary holder of CStEnd */
     LONG     TmpLng;        /* holds octal number for ^E<nnn> */

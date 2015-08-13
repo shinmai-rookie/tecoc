@@ -14,7 +14,7 @@ string is executing.
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT FlowEC()		/* flow to end of conditional */
+integer FlowEC()		/* flow to end of conditional */
 {
 	WORD	TmpNst;
 

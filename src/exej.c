@@ -11,7 +11,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeJ()			/* execute J command */
+integer ExeJ()			/* execute J command */
 {
 	DBGFEN(1,"ExeJ",NULL);
 

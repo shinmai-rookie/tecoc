@@ -14,7 +14,7 @@ check CmdMod explicitly.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeAtS()		/* execute an @ (at sign) command */
+integer ExeAtS()		/* execute an @ (at sign) command */
 {
 	DBGFEN(1,"ExeAtS",NULL);
 

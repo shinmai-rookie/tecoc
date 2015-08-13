@@ -65,7 +65,7 @@ This function does not modify EndSAr.
 
 int	lib$scanc();		/* scan for characters */
 
-DEFAULT ZFrSrc()		/* forward search for 1st search charptr */
+integer ZFrSrc()		/* forward search for 1st search charptr */
 {
 	char	Charac;		/* holds a character */
 	int	indx;		/* returned by lib$scanc */
@@ -83,7 +83,7 @@ DEFAULT ZFrSrc()		/* forward search for 1st search charptr */
 		DSC$K_CLASS_S,	/* dsc$b_class */
 		0		/* dsc$a_pointer */
 	};
-	DEFAULT	Status;
+	integer	Status;
 	charptr	TCBfPt;		/* temporary holder of CBfPtr */
 	charptr	TCStEn;		/* temporary holder of CStEnd */
 	LONG	TmpLng;
@@ -534,7 +534,7 @@ scanc:	real_length = EndSAr - EBPtr1;
 
 
 
-DEFAULT ZFrSrc()		/* forward search for 1st search charptr */
+integer ZFrSrc()		/* forward search for 1st search charptr */
 {
 	char	Charac;		/* holds a character */
 	charptr	LstBeg;		/* beginning of ^E[x,x,x] list */
@@ -543,7 +543,7 @@ DEFAULT ZFrSrc()		/* forward search for 1st search charptr */
 	bool	SamChr;		/* same character indicator */
 	charptr	SavEP2;		/* temporary holder of EBPtr2 */
 	charptr	SavSSP;		/* temporary holder of SStPtr */
-	DEFAULT	Status;
+	integer	Status;
 	charptr	TCBfPt;		/* temporary holder of CBfPtr */
 	charptr	TCStEn;		/* temporary holder of CStEnd */
 	LONG	TmpLng;

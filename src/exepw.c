@@ -14,7 +14,7 @@ called only by ExeP.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExePW()			/* execute a PW command */
+integer ExePW()			/* execute a PW command */
 {
 	DBGFEN(1,"ExePW",NULL);
 

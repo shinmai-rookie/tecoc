@@ -253,16 +253,16 @@ void	init_consistency_check(void);
 void	check_consistency(void);
 #endif
 
-DEFAULT	BakSrc(void);		/* backwards search to match 1st character */
-DEFAULT BldStr(			/* build a string */
+int	BakSrc(void);		/* backwards search to match 1st character */
+integer BldStr(			/* build a string */
 	charptr XBfBeg,		/* beginning of build-string buffer */
 	charptr XBfEnd,		/* end of build-string buffer */
 	charptr (*XBfPtr));	/* pointer into build-string buffer */
 void	ClenUp(void);		/* clean up for TECO-C abort */
-DEFAULT	CMatch(			/* match a character */
+integer	CMatch(			/* match a character */
 	bool *SamChr);	/* returned match indicator */
 #if DEBUGGING
-DEFAULT	DbgDsp(void);		/* debugging, control debugging display (^P) */
+integer	DbgDsp(void);		/* debugging, control debugging display (^P) */
 void	DbgFEn(			/* debugging, function entry */
 	int DbgFLv,             /*   function display level */
 	char *DbgFNm,		/*   function name */
@@ -276,11 +276,11 @@ void	DbgFMs(			/* debugging, function message */
 	char *DbgFNm,		/*   function name */
 	char *DbgMsg);		/*   an message */
 #endif
-DEFAULT	DoCJR(			/* do C, J or R stuff */
+integer	DoCJR(			/* do C, J or R stuff */
 	LONG HowFar);		/* positive or negative displacement */
 void	DoEvEs(			/* do an EV or ES mode control flag function */
 	WORD Flag);
-DEFAULT	DoFlag(			/* handle mode control flag */
+integer	DoFlag(			/* handle mode control flag */
 	WORD *Flag);
 void	EchoIt(			/* echo a character to to terminal */
 	unsigned char Charac);
@@ -299,96 +299,96 @@ void	ErrStr(			/* display error message with string arg */
 void	ErrUTC(void);		/* unterminated command or macro */
 void	ErrVrb(			/* display a verbose error message */
 	WORD ErrNum);		/* error message number */
-DEFAULT	ExeA(void);		/* execute an A command */
-DEFAULT	ExeAtS(void);		/* execute an at-sign (@) command */
-DEFAULT	ExeB(void);		/* execute a B command */
-DEFAULT	ExeBar(void);		/* execute a bar (|) command */
-DEFAULT	ExeBSl(void);		/* execute a backslash (\) command */
-DEFAULT	ExeC(void);		/* execute a C command */
-DEFAULT	ExeCCC(void);		/* execute a control-^ command */
-DEFAULT	ExeCln(void);		/* execute a colon (:) command */
-DEFAULT	ExeCom(void);		/* execute a comma (,) command */
-DEFAULT	ExeCrt(void);		/* execute a caret (^) command */
-DEFAULT	ExeCSt(void);		/* execute a command string */
-DEFAULT	ExeCtA(void);		/* execute a control-A command */
-DEFAULT	ExeCtC(void);		/* execute a control-C command */
-DEFAULT	ExeCtD(void);		/* execute a control-D command */
-DEFAULT	ExeCtE(void);		/* execute a control-E command */
-DEFAULT	ExeCtI(void);		/* execute a control-I (tab) command */
-DEFAULT	ExeCtL(void);		/* execute a control-L (form feed) command */
-DEFAULT	ExeCtN(void);		/* execute a control-N command */
-DEFAULT	ExeCtO(void);		/* execute a control-O command */
-DEFAULT	ExeCtP(void);		/* execute a control-P command */
-DEFAULT	ExeCtQ(void);		/* execute a control-Q command */
-DEFAULT	ExeCtR(void);		/* execute a control-R command */
-DEFAULT	ExeCtS(void);		/* execute a control-S command */
-DEFAULT	ExeCtT(void);		/* execute a control-T command */
-DEFAULT	ExeCtU(void);		/* execute a control-U command */
-DEFAULT	ExeCtV(void);		/* execute a control-V command */
-DEFAULT	ExeCtW(void);		/* execute a control-W command */
-DEFAULT	ExeCtX(void);		/* execute a control-X command */
-DEFAULT	ExeCtY(void);		/* execute a control-Y command */
-DEFAULT	ExeCtZ(void);		/* execute a control-Z command */
-DEFAULT	ExeD(void);		/* execute a D command */
-DEFAULT	ExeDgt(void);		/* execute a digit command */
-DEFAULT	ExeDot(void);		/* execute a dot (.) command */
-DEFAULT	ExeDQu(void);		/* execute a double-quote (") command */
-DEFAULT	ExeE(void);		/* execute on of the E commands */
-DEFAULT	ExeEqu(void);		/* execute an equals-sign (=) command */
-DEFAULT	ExeEsc(void);		/* execute an ESCAPE command */
-DEFAULT	ExeExc(void);		/* execute an exclamation-mark (!) command */
-DEFAULT	ExeEY(void);		/* execute an EY command */
-DEFAULT	ExeF(void);		/* execute one of the F commands */
-DEFAULT	ExeFB(void);		/* execute an FB command */
-DEFAULT	ExeG(void);		/* execute a G command */
-DEFAULT	ExeGtr(void);		/* execute a greater-than (>) command */
-DEFAULT	ExeH(void);		/* execute an H command */
-DEFAULT	ExeI(void);		/* execute an I command */
-DEFAULT	ExeIll(void);		/* execute an "illegal" command */
-DEFAULT	ExeJ(void);		/* execute a J command */
-DEFAULT	ExeK(void);		/* execute a K command */
-DEFAULT	ExeK(void);		/* execute a K command */
-DEFAULT	ExeL(void);		/* execute an L command */
-DEFAULT	ExeLBr(void);		/* execute a left-bracket ([) command */
-DEFAULT	ExeLst(void);		/* execute a less-than (<) command */
-DEFAULT	ExeM(void);		/* execute an M command */
-DEFAULT	ExeN(void);		/* execute a N command */
-DEFAULT	ExeNul(void);		/* execute a null command */
-DEFAULT	ExeNYI(void);		/* "not yet implemented" function */
-DEFAULT	ExeO(void);		/* execute an O command */
-DEFAULT	ExeOpr(void);		/* execute a operator (+,-,*, etc.) command */
-DEFAULT	ExeP(void);		/* execute a P or PW command */
-DEFAULT	ExePrc(void);		/* execute a percent {%} command */
-DEFAULT	ExePW(void);		/* execute a PW command */
-DEFAULT	ExeQ(void);		/* execute a Q command */
-DEFAULT	ExeQes(void);		/* execute a question-mark (?) command */
-DEFAULT	ExeR(void);		/* execute an R command */
-DEFAULT	ExeRBr(void);		/* execute a right-bracket (]) command */
-DEFAULT	ExeRtP(void);		/* execute a right-parenthesis command */
-DEFAULT	ExeS(void);		/* execute an S command */
-DEFAULT	ExeSCl(void);		/* execute a semi-colon (;) command */
-DEFAULT	ExeT(void);		/* execute a T command */
-DEFAULT	ExeU(void);		/* execute a U command */
-DEFAULT	ExeUnd(void);		/* execute an underbar (_) command */
-DEFAULT	ExeUsc(void);		/* execute control-_ command */
-DEFAULT	ExeV(void);		/* execute a V command */
-DEFAULT	ExeW(void);		/* execute a W command */
-DEFAULT	ExeX(void);		/* execute a X command */
-DEFAULT	ExeY(void);		/* execute a Y command */
-DEFAULT	ExeZ(void);		/* execute a Z command */
-DEFAULT	FindES(			/* find end of string */
+integer	ExeA(void);		/* execute an A command */
+integer	ExeAtS(void);		/* execute an at-sign (@) command */
+integer	ExeB(void);		/* execute a B command */
+integer	ExeBar(void);		/* execute a bar (|) command */
+integer	ExeBSl(void);		/* execute a backslash (\) command */
+integer	ExeC(void);		/* execute a C command */
+integer	ExeCCC(void);		/* execute a control-^ command */
+integer	ExeCln(void);		/* execute a colon (:) command */
+integer	ExeCom(void);		/* execute a comma (,) command */
+integer	ExeCrt(void);		/* execute a caret (^) command */
+integer	ExeCSt(void);		/* execute a command string */
+integer	ExeCtA(void);		/* execute a control-A command */
+integer	ExeCtC(void);		/* execute a control-C command */
+integer	ExeCtD(void);		/* execute a control-D command */
+integer	ExeCtE(void);		/* execute a control-E command */
+integer	ExeCtI(void);		/* execute a control-I (tab) command */
+integer	ExeCtL(void);		/* execute a control-L (form feed) command */
+integer	ExeCtN(void);		/* execute a control-N command */
+integer	ExeCtO(void);		/* execute a control-O command */
+integer	ExeCtP(void);		/* execute a control-P command */
+integer	ExeCtQ(void);		/* execute a control-Q command */
+integer	ExeCtR(void);		/* execute a control-R command */
+integer	ExeCtS(void);		/* execute a control-S command */
+integer	ExeCtT(void);		/* execute a control-T command */
+integer	ExeCtU(void);		/* execute a control-U command */
+integer	ExeCtV(void);		/* execute a control-V command */
+integer	ExeCtW(void);		/* execute a control-W command */
+integer	ExeCtX(void);		/* execute a control-X command */
+integer	ExeCtY(void);		/* execute a control-Y command */
+integer	ExeCtZ(void);		/* execute a control-Z command */
+integer	ExeD(void);		/* execute a D command */
+integer	ExeDgt(void);		/* execute a digit command */
+integer	ExeDot(void);		/* execute a dot (.) command */
+integer	ExeDQu(void);		/* execute a double-quote (") command */
+integer	ExeE(void);		/* execute on of the E commands */
+integer	ExeEqu(void);		/* execute an equals-sign (=) command */
+integer	ExeEsc(void);		/* execute an ESCAPE command */
+integer	ExeExc(void);		/* execute an exclamation-mark (!) command */
+integer	ExeEY(void);		/* execute an EY command */
+integer	ExeF(void);		/* execute one of the F commands */
+integer	ExeFB(void);		/* execute an FB command */
+integer	ExeG(void);		/* execute a G command */
+integer	ExeGtr(void);		/* execute a greater-than (>) command */
+integer	ExeH(void);		/* execute an H command */
+integer	ExeI(void);		/* execute an I command */
+integer	ExeIll(void);		/* execute an "illegal" command */
+integer	ExeJ(void);		/* execute a J command */
+integer	ExeK(void);		/* execute a K command */
+integer	ExeK(void);		/* execute a K command */
+integer	ExeL(void);		/* execute an L command */
+integer	ExeLBr(void);		/* execute a left-bracket ([) command */
+integer	ExeLst(void);		/* execute a less-than (<) command */
+integer	ExeM(void);		/* execute an M command */
+integer	ExeN(void);		/* execute a N command */
+integer	ExeNul(void);		/* execute a null command */
+integer	ExeNYI(void);		/* "not yet implemented" function */
+integer	ExeO(void);		/* execute an O command */
+integer	ExeOpr(void);		/* execute a operator (+,-,*, etc.) command */
+integer	ExeP(void);		/* execute a P or PW command */
+integer	ExePrc(void);		/* execute a percent {%} command */
+integer	ExePW(void);		/* execute a PW command */
+integer	ExeQ(void);		/* execute a Q command */
+integer	ExeQes(void);		/* execute a question-mark (?) command */
+integer	ExeR(void);		/* execute an R command */
+integer	ExeRBr(void);		/* execute a right-bracket (]) command */
+integer	ExeRtP(void);		/* execute a right-parenthesis command */
+integer	ExeS(void);		/* execute an S command */
+integer	ExeSCl(void);		/* execute a semi-colon (;) command */
+integer	ExeT(void);		/* execute a T command */
+integer	ExeU(void);		/* execute a U command */
+integer	ExeUnd(void);		/* execute an underbar (_) command */
+integer	ExeUsc(void);		/* execute control-_ command */
+integer	ExeV(void);		/* execute a V command */
+integer	ExeW(void);		/* execute a W command */
+integer	ExeX(void);		/* execute a X command */
+integer	ExeY(void);		/* execute a Y command */
+integer	ExeZ(void);		/* execute a Z command */
+integer	FindES(			/* find end of string */
 	unsigned char TrmChr);	/* termination char if no @ modifier */
-DEFAULT	FindQR(void);		/* find a q-register index */
-DEFAULT	FlowEC(void);		/* flow to end of conditional */
-DEFAULT	FlowEE(void);		/* flow to | or ' */
-DEFAULT	FlowEL(void);		/* flow to end of loop */
-DEFAULT	GetAra(void);		/* get m,n area */
-DEFAULT	GetNmA(void);		/* get numeric argument */
-DEFAULT	IncCBP(void);		/* increment CBfPtr */
+integer	FindQR(void);		/* find a q-register index */
+integer	FlowEC(void);		/* flow to end of conditional */
+integer	FlowEE(void);		/* flow to | or ' */
+integer	FlowEL(void);		/* flow to end of loop */
+integer	GetAra(void);		/* get m,n area */
+integer	GetNmA(void);		/* get numeric argument */
+integer	IncCBP(void);		/* increment CBfPtr */
 void	Init(			/* initialize TECO-C */
 	int argc,
 	char *argv[]);
-DEFAULT	InsStr(			/* insert string into edit buffer */
+integer	InsStr(			/* insert string into edit buffer */
 	charptr string,
 	ptrdiff_t length);
 bool	IsRadx(			/* is the character in the radix set? */
@@ -397,49 +397,49 @@ LONG	Ln2Chr(			/* convert line offset to character offset */
 	LONG Value);
 void	MakDBf(			/* make digit buffer */
 	LONG Binary,		/* binary number to be converted */
-	DEFAULT NRadix);	/* radix to be used: 8, 10 or 16 */
-DEFAULT	MakRom(			/* make room in q-register */
+	integer NRadix);	/* radix to be used: 8, 10 or 16 */
+integer	MakRom(			/* make room in q-register */
 	SIZE_T Amount);		/* how much room to make */
-DEFAULT	PopMac(void);		/* pop variables after macro call */
-DEFAULT	PshMac(			/* push variables for macro call */
+integer	PopMac(void);		/* pop variables after macro call */
+integer	PshMac(			/* push variables for macro call */
 	charptr Start,		/* start of new command string */
 	charptr End);		/* end of new command string, plus one */
-DEFAULT	PushEx(			/* push onto expression stack */
+integer	PushEx(			/* push onto expression stack */
 	LONG Item,
-	DEFAULT EType);
-DEFAULT	RdLine(			/* read a line */
+	integer EType);
+integer	RdLine(			/* read a line */
 	bool *EBfFul);	/* returned "edit buffer is full" indicator */
-DEFAULT	RdPage(void);		/* read a page from a file */
+integer	RdPage(void);		/* read a page from a file */
 void	ReadCS(void);		/* read command string */
-DEFAULT	Replac(void);		/* replace a string */
-DEFAULT	Search(			/* top level search */
+integer	Replac(void);		/* replace a string */
+integer	Search(			/* top level search */
 	bool	RepCmd);	/* true if the command has two arguments */
-DEFAULT	SinglP(void);		/* execute a single P function */
-DEFAULT	SkpCmd(void);		/* skip a single command */
-DEFAULT	SrcLop(void);		/* search loop */
-DEFAULT	SSerch(void);		/* single search */
+integer	SinglP(void);		/* execute a single P function */
+integer	SkpCmd(void);		/* skip a single command */
+integer	SrcLop(void);		/* search loop */
+integer	SSerch(void);		/* single search */
 void	TAbort(			/* terminate TECO-C */
-	DEFAULT tstat);
+	integer tstat);
 void	TypBuf(			/* type a buffer on the terminal */
 	charptr YBfBeg,
 	charptr YBfEnd);
 void	TAbort(			/* cleanup for TECO-C abort */
-	DEFAULT tstat);
+	integer tstat);
 void	TypESt(void);		/* type error string on terminal */
 void	UMinus(void);		/* handle unary minus */
-DEFAULT	WrPage(			/* write to output file */
-	DEFAULT	OfIndx,		/* index into OFiles array */
+integer	WrPage(			/* write to output file */
+	integer	OfIndx,		/* index into OFiles array */
 	charptr OBfBeg,		/* address of output buffer beginning */
 	charptr OBfEnd,		/* address of output buffer end */
 	LONG AddFF);		/* -1 means add form feed, 0 means don't */
 voidptr ZAlloc(			/* like standard malloc function */
 	SIZE_T MemSiz);
 void	ZBell(void);		/* ring the terminal bell */
-DEFAULT ZChIn(			/* input a character from the terminal */
+integer ZChIn(			/* input a character from the terminal */
 	bool	NoWait);	/* return immediately? */
 LONG	ZClnEG(			/* execute special :EG command */
-	DEFAULT EGWhat,		/* what to get/set/clear: MEM, LIB, etc. */
-	DEFAULT EGOper,		/* operation: get, set or clear */
+	integer EGWhat,		/* what to get/set/clear: MEM, LIB, etc. */
+	integer EGOper,		/* operation: get, set or clear */
 	charptr TxtPtr);	/* if setting,  value to set */
 void	ZClnUp(void);		/* cleanup for TECO-C abort */
 #if DEBUGGING || CONSISTENCY_CHECKING
@@ -454,57 +454,57 @@ void	ZDspBf(			/* output a buffer to the terminal */
 	SIZE_T length);
 void	ZDspCh(			/* display a character */
 	char Charac);
-DEFAULT	ZExCtB(void);		/* execute a ^B command */
-DEFAULT	ZExCtH(void);		/* execute a ^H command */
-DEFAULT	ZExeEJ(void);		/* execute an EJ command */
+integer	ZExCtB(void);		/* execute a ^B command */
+integer	ZExCtH(void);		/* execute a ^H command */
+integer	ZExeEJ(void);		/* execute an EJ command */
 void	ZExit(			/* terminate TECO-C */
-	DEFAULT estat);
+	integer estat);
 void	ZFree(			/* like standard free() function */
 	voidptr pointer);
-DEFAULT	ZFrSrc(void);		/* forward search to match 1st character */
+integer	ZFrSrc(void);		/* forward search to match 1st character */
 void	ZHelp(			/* display a help message */
 	charptr HlpBeg,		/* first char of help request */
 	charptr HlpEnd,		/* last character of help request */
 	bool SysLib,		/* use default HELP library? */
 	bool	Prompt);	/* enter interactive help mode? */
 void	ZIClos(			/* close input file */
-	DEFAULT	IfIndx);	/* index into IFiles array */
+	integer	IfIndx);	/* index into IFiles array */
 void	ZOClDe(			/* close and delete output file */
-	DEFAULT	OfIndx);	/* index into OFiles array */
+	integer	OfIndx);	/* index into OFiles array */
 void	ZOClos(			/* close output file */
-	DEFAULT	OfIndx);	/* index into OFiles array */
-DEFAULT	ZOpInp(			/* open input file */
-	DEFAULT IfIndx,		/* index into file data block array IFiles */
+	integer	OfIndx);	/* index into OFiles array */
+integer	ZOpInp(			/* open input file */
+	integer IfIndx,		/* index into file data block array IFiles */
 	bool	EIFile,		/* is it a macro file? (hunt for it) */
 	bool RepFNF);	/* report "file not found" error? */
-DEFAULT ZOpOut(			/* open output file */
-	DEFAULT	OfIndx,		/* output file indicator */
+integer ZOpOut(			/* open output file */
+	integer	OfIndx,		/* output file indicator */
 	bool RepErr,		/* report errors? */
 	bool Backup);	/* create backup? TAA MOD */
 void	ZPrsCL(			/* parse the command line */
 	int argc,
 	char **argv);
-DEFAULT	ZPWild(void);		/* preset the wildcard lookup filespec */
+integer	ZPWild(void);		/* preset the wildcard lookup filespec */
 voidptr	ZRaloc(			/* re-allocate memory*/
 	voidptr OldBlk,
 	SIZE_T NewSiz);
-DEFAULT ZRdLin(			/* read a line */
+integer ZRdLin(			/* read a line */
 	charptr ibuf,		/* where to put string */
 	ptrdiff_t ibuflen,	/* max length of buf */
 	int IfIndx,		/* index into IFiles[] */
-	DEFAULT *retlen);	/* returned length of string */
+	integer *retlen);	/* returned length of string */
 void	ZScrOp(			/* do a screen operation */
 	int OpCode);		/* code for operation */
-DEFAULT	ZSetTT(			/* set a terminal parameter */
-	DEFAULT TTWhat,		/* what terminal parameter to set */
-	DEFAULT TTVal);		/* new value for the terminal parameter */
-DEFAULT	ZSWild(void);		/* search for next wildcard filename */
+integer	ZSetTT(			/* set a terminal parameter */
+	integer TTWhat,		/* what terminal parameter to set */
+	integer TTVal);		/* new value for the terminal parameter */
+integer	ZSWild(void);		/* search for next wildcard filename */
 void	ZTrmnl(void);		/* open terminal input and output */
 void	ZVrbos(			/* display verbose form of an error message */
 	WORD ErrNum,		/* error number (see DEFERR.h) */
 	char *ErMnem);		/* error mnemonic */
-DEFAULT	ZWrBfr(			/* write a buffer */
-	DEFAULT	OfIndx,		/* index into OFiles array */
+integer	ZWrBfr(			/* write a buffer */
+	integer	OfIndx,		/* index into OFiles array */
 	charptr BfrBeg,		/* address of output buffer beginning */
 	charptr BfrEnd);	/* address of output buffer end */
 
@@ -521,19 +521,19 @@ void	init_consistency_check();
 void	check_consistency();
 #endif
 
-DEFAULT	BakSrc();	/* backwards search to match 1st character */
-DEFAULT	BldStr();	/* build a string */
+integer	BakSrc();	/* backwards search to match 1st character */
+integer	BldStr();	/* build a string */
 void	ClenUp();	/* clean up for TECO-C abort */
-DEFAULT	CMatch();	/* match a character */
+integer	CMatch();	/* match a character */
 #if DEBUGGING
-DEFAULT	DbgDsp();	/* debugging, control debugging display */
+integer	DbgDsp();	/* debugging, control debugging display */
 void	DbgFEn();	/* debugging, function entry */
 void	DbgFEx();	/* debugging, function exit */
 void	DbgFMs();	/* debugging, function message */
 #endif
-DEFAULT	DoCJR();	/* do C, J or R stuff */
+integer	DoCJR();	/* do C, J or R stuff */
 void	DoEvEs();	/* do an EV or ES mode control flag function */
-DEFAULT	DoFlag();	/* handle mode control flag */
+integer	DoFlag();	/* handle mode control flag */
 void	EchoIt();	/* echo a character to to terminal */
 void	ErrChr();	/* display error message with character argument */
 void	ErrMsg();	/* display error message */
@@ -541,117 +541,117 @@ void	ErrPSt();	/* display error message with string argument */
 void	ErrStr();	/* display error message with string argument */
 void	ErrUTC();	/* unterminated command or macro */
 void	ErrVrb();	/* display a verbose error message */
-DEFAULT	ExeA();		/* execute an A command */
-DEFAULT	ExeAtS();	/* execute an at-sign (@) command */
-DEFAULT	ExeB();		/* execute a B command */
-DEFAULT	ExeBar();	/* execute a bar (|) command */
-DEFAULT	ExeBSl();	/* execute a backslash (\) command */
-DEFAULT	ExeC();		/* execute a C command */
-DEFAULT	ExeCCC();	/* execute a control-^ command */
-DEFAULT	ExeCln();	/* execute a colon (:) command */
-DEFAULT	ExeCom();	/* execute a comma (,) command */
-DEFAULT	ExeCrt();	/* execute a caret (^) command */
-DEFAULT	ExeCSt();	/* execute a command string */
-DEFAULT	ExeCtA();	/* execute a control-A command */
-DEFAULT	ExeCtC();	/* execute a control-C command */
-DEFAULT	ExeCtD();	/* execute a control-D command */
-DEFAULT	ExeCtE();	/* execute a control-E command */
-DEFAULT	ExeCtI();	/* execute a control-I (tab) command */
-DEFAULT	ExeCtL();	/* execute a control-L (form feed) command */
-DEFAULT	ExeCtN();	/* execute a control-N command */
-DEFAULT	ExeCtO();	/* execute a control-O command */
-DEFAULT	ExeCtP();	/* execute a control-P command */
-DEFAULT	ExeCtQ();	/* execute a control-Q command */
-DEFAULT	ExeCtR();	/* execute a control-R command */
-DEFAULT	ExeCtS();	/* execute a control-S command */
-DEFAULT	ExeCtT();	/* execute a control-T command */
-DEFAULT	ExeCtU();	/* execute a control-U command */
-DEFAULT	ExeCtV();	/* execute a control-V command */
-DEFAULT	ExeCtW();	/* execute a control-W command */
-DEFAULT	ExeCtX();	/* execute a control-X command */
-DEFAULT	ExeCtY();	/* execute a control-Y command */
-DEFAULT	ExeCtZ();	/* execute a control-Z command */
-DEFAULT	ExeD();		/* execute a D command */
-DEFAULT	ExeDgt();	/* execute a digit command */
-DEFAULT	ExeDot();	/* execute a dot (.) command */
-DEFAULT	ExeDQu();	/* execute a double-quote (") command */
-DEFAULT	ExeE();		/* execute on of the E commands */
-DEFAULT	ExeEqu();	/* execute an equals-sign (=) command */
-DEFAULT	ExeEsc();	/* execute an ESCAPE command */
-DEFAULT	ExeExc();	/* execute an exclamation-mark (!) command */
-DEFAULT	ExeEY();	/* execute an EY command */
-DEFAULT	ExeF();		/* execute one of the F commands */
-DEFAULT	ExeFB();	/* execute an FB command */
-DEFAULT	ExeG();		/* execute a G command */
-DEFAULT	ExeGtr();	/* execute a greater-than (>) command */
-DEFAULT	ExeH();		/* execute an H command */
-DEFAULT	ExeI();		/* execute an I command */
-DEFAULT	ExeIll();	/* execute an "illegal" command */
-DEFAULT	ExeJ();		/* execute a J command */
-DEFAULT	ExeK();		/* execute a K command */
-DEFAULT	ExeK();		/* execute a K command */
-DEFAULT	ExeL();		/* execute an L command */
-DEFAULT	ExeLBr();	/* execute a left-bracket ([) command */
-DEFAULT	ExeLst();	/* execute a less-than (<) command */
-DEFAULT	ExeM();		/* execute an M command */
-DEFAULT	ExeN();		/* execute a N command */
-DEFAULT	ExeNul();	/* execute a null command */
-DEFAULT	ExeNYI();	/* "not yet implemented" function */
-DEFAULT	ExeO();		/* execute an O command */
-DEFAULT	ExeOpr();	/* execute a operator (+,-,*, etc.) command */
-DEFAULT	ExeP();		/* execute a P or PW command */
-DEFAULT	ExePrc();	/* execute a percent {%} command */
-DEFAULT	ExePW();	/* execute a PW command */
-DEFAULT	ExeQ();		/* execute a Q command */
-DEFAULT	ExeQes();	/* execute a question-mark (?) command */
-DEFAULT	ExeR();		/* execute an R command */
-DEFAULT	ExeRBr();	/* execute a right-bracket (]) command */
-DEFAULT	ExeRtP();	/* execute a right-parenthesis command */
-DEFAULT	ExeS();		/* execute an S command */
-DEFAULT	ExeSCl();	/* execute a semi-colon (;) command */
-DEFAULT	ExeT();		/* execute a T command */
-DEFAULT	ExeU();		/* execute a U command */
-DEFAULT	ExeUnd();	/* execute an underbar (_) command */
-DEFAULT	ExeUsc();	/* execute control-_ command */
-DEFAULT	ExeV();		/* execute a V command */
-DEFAULT	ExeW();		/* execute a W command */
-DEFAULT	ExeX();		/* execute a X command */
-DEFAULT	ExeY();		/* execute a Y command */
-DEFAULT	ExeZ();		/* execute a Z command */
-DEFAULT	FindES();	/* find end of string */
-DEFAULT	FindQR();	/* find a q-register index */
-DEFAULT	FlowEC();	/* flow to end of conditional */
-DEFAULT	FlowEE();	/* flow to | or ' */
-DEFAULT	FlowEL();	/* flow to end of loop */
-DEFAULT	GetAra();	/* get m,n area */
-DEFAULT	GetNmA();	/* get numeric argument */
-DEFAULT	IncCBP();	/* increment CBfPtr */
+integer	ExeA();		/* execute an A command */
+integer	ExeAtS();	/* execute an at-sign (@) command */
+integer	ExeB();		/* execute a B command */
+integer	ExeBar();	/* execute a bar (|) command */
+integer	ExeBSl();	/* execute a backslash (\) command */
+integer	ExeC();		/* execute a C command */
+integer	ExeCCC();	/* execute a control-^ command */
+integer	ExeCln();	/* execute a colon (:) command */
+integer	ExeCom();	/* execute a comma (,) command */
+integer	ExeCrt();	/* execute a caret (^) command */
+integer	ExeCSt();	/* execute a command string */
+integer	ExeCtA();	/* execute a control-A command */
+integer	ExeCtC();	/* execute a control-C command */
+integer	ExeCtD();	/* execute a control-D command */
+integer	ExeCtE();	/* execute a control-E command */
+integer	ExeCtI();	/* execute a control-I (tab) command */
+integer	ExeCtL();	/* execute a control-L (form feed) command */
+integer	ExeCtN();	/* execute a control-N command */
+integer	ExeCtO();	/* execute a control-O command */
+integer	ExeCtP();	/* execute a control-P command */
+integer	ExeCtQ();	/* execute a control-Q command */
+integer	ExeCtR();	/* execute a control-R command */
+integer	ExeCtS();	/* execute a control-S command */
+integer	ExeCtT();	/* execute a control-T command */
+integer	ExeCtU();	/* execute a control-U command */
+integer	ExeCtV();	/* execute a control-V command */
+integer	ExeCtW();	/* execute a control-W command */
+integer	ExeCtX();	/* execute a control-X command */
+integer	ExeCtY();	/* execute a control-Y command */
+integer	ExeCtZ();	/* execute a control-Z command */
+integer	ExeD();		/* execute a D command */
+integer	ExeDgt();	/* execute a digit command */
+integer	ExeDot();	/* execute a dot (.) command */
+integer	ExeDQu();	/* execute a double-quote (") command */
+integer	ExeE();		/* execute on of the E commands */
+integer	ExeEqu();	/* execute an equals-sign (=) command */
+integer	ExeEsc();	/* execute an ESCAPE command */
+integer	ExeExc();	/* execute an exclamation-mark (!) command */
+integer	ExeEY();	/* execute an EY command */
+integer	ExeF();		/* execute one of the F commands */
+integer	ExeFB();	/* execute an FB command */
+integer	ExeG();		/* execute a G command */
+integer	ExeGtr();	/* execute a greater-than (>) command */
+integer	ExeH();		/* execute an H command */
+integer	ExeI();		/* execute an I command */
+integer	ExeIll();	/* execute an "illegal" command */
+integer	ExeJ();		/* execute a J command */
+integer	ExeK();		/* execute a K command */
+integer	ExeK();		/* execute a K command */
+integer	ExeL();		/* execute an L command */
+integer	ExeLBr();	/* execute a left-bracket ([) command */
+integer	ExeLst();	/* execute a less-than (<) command */
+integer	ExeM();		/* execute an M command */
+integer	ExeN();		/* execute a N command */
+integer	ExeNul();	/* execute a null command */
+integer	ExeNYI();	/* "not yet implemented" function */
+integer	ExeO();		/* execute an O command */
+integer	ExeOpr();	/* execute a operator (+,-,*, etc.) command */
+integer	ExeP();		/* execute a P or PW command */
+integer	ExePrc();	/* execute a percent {%} command */
+integer	ExePW();	/* execute a PW command */
+integer	ExeQ();		/* execute a Q command */
+integer	ExeQes();	/* execute a question-mark (?) command */
+integer	ExeR();		/* execute an R command */
+integer	ExeRBr();	/* execute a right-bracket (]) command */
+integer	ExeRtP();	/* execute a right-parenthesis command */
+integer	ExeS();		/* execute an S command */
+integer	ExeSCl();	/* execute a semi-colon (;) command */
+integer	ExeT();		/* execute a T command */
+integer	ExeU();		/* execute a U command */
+integer	ExeUnd();	/* execute an underbar (_) command */
+integer	ExeUsc();	/* execute control-_ command */
+integer	ExeV();		/* execute a V command */
+integer	ExeW();		/* execute a W command */
+integer	ExeX();		/* execute a X command */
+integer	ExeY();		/* execute a Y command */
+integer	ExeZ();		/* execute a Z command */
+integer	FindES();	/* find end of string */
+integer	FindQR();	/* find a q-register index */
+integer	FlowEC();	/* flow to end of conditional */
+integer	FlowEE();	/* flow to | or ' */
+integer	FlowEL();	/* flow to end of loop */
+integer	GetAra();	/* get m,n area */
+integer	GetNmA();	/* get numeric argument */
+integer	IncCBP();	/* increment CBfPtr */
 void	Init();		/* initialize TECO-C */
-DEFAULT	InsStr();	/* insert string into edit buffer */
+integer	InsStr();	/* insert string into edit buffer */
 bool	IsRadx();	/* is the character in the radix set? */
 LONG	Ln2Chr();	/* convert line offset to character offset */
 void	MakDBf();	/* make digit buffer */
-DEFAULT	MakRom();	/* make room in q-register */
-DEFAULT	PopMac();	/* pop variables after macro call */
-DEFAULT	PshMac();	/* push variables for macro call */
-DEFAULT	PushEx();	/* push onto expression stack */
-DEFAULT	RdLine();	/* read a line */
-DEFAULT	RdPage();	/* read a page from a file */
+integer	MakRom();	/* make room in q-register */
+integer	PopMac();	/* pop variables after macro call */
+integer	PshMac();	/* push variables for macro call */
+integer	PushEx();	/* push onto expression stack */
+integer	RdLine();	/* read a line */
+integer	RdPage();	/* read a page from a file */
 void	ReadCS();	/* read command string */
-DEFAULT	Replac();	/* replace a string */
-DEFAULT	Search();	/* top level search */
-DEFAULT	SinglP();	/* execute a single P function */
-DEFAULT	SkpCmd();	/* skip a single command */
-DEFAULT	SrcLop();	/* search loop */
-DEFAULT	SSerch();	/* single search */
+integer	Replac();	/* replace a string */
+integer	Search();	/* top level search */
+integer	SinglP();	/* execute a single P function */
+integer	SkpCmd();	/* skip a single command */
+integer	SrcLop();	/* search loop */
+integer	SSerch();	/* single search */
 void	TAbort();	/* terminate TECO-C */
 void	TypBuf();	/* type a buffer on the terminal */
 void	TypESt();	/* type error string on terminal */
 void	UMinus();	/* handle unary minus */
-DEFAULT	WrPage();	/* write to output file */
+integer	WrPage();	/* write to output file */
 voidptr ZAlloc();	/* like standard malloc function */
 void	ZBell();	/* ring the terminal bell */
-DEFAULT ZChIn();	/* input a character from the terminal */
+integer ZChIn();	/* input a character from the terminal */
 LONG	ZClnEG();	/* execute special :EG command */
 void	ZClnUp();	/* cleanup for TECO-C abort */
 #if DEBUGGING || CONSISTENCY_CHECKING
@@ -660,28 +660,28 @@ ULONG	Zcp2ul();	/* convert charptr to unsigned long */
 void	ZDoCmd();	/* terminate and pass command string to OS */
 void	ZDspBf();	/* output a buffer to the terminal */
 void	ZDspCh();	/* display a character */
-DEFAULT	ZExCtB();	/* execute a ^B command */
-DEFAULT	ZExCtH();	/* execute a ^H command */
-DEFAULT	ZExeEJ();	/* execute an EJ command */
+integer	ZExCtB();	/* execute a ^B command */
+integer	ZExCtH();	/* execute a ^H command */
+integer	ZExeEJ();	/* execute an EJ command */
 void	ZExit();	/* terminate TECO-C */
 void	ZFree();	/* like standard free() function */
-DEFAULT	ZFrSrc();	/* forward search to match 1st character */
+integer	ZFrSrc();	/* forward search to match 1st character */
 void	ZHelp();	/* display a help message */
 void	ZIClos();	/* close input file */
 void	ZOClDe();	/* close and delete output file */
 void	ZOClos();	/* close output file */
-DEFAULT	ZOpInp();	/* open input file */
-DEFAULT ZOpOut();	/* open output file */
+integer	ZOpInp();	/* open input file */
+integer ZOpOut();	/* open output file */
 void	ZPrsCL();	/* parse the command line */
-DEFAULT	ZPWild();	/* preset the wildcard lookup filespec */
+integer	ZPWild();	/* preset the wildcard lookup filespec */
 voidptr	ZRaloc();	/* re-allocate memory*/
-DEFAULT	ZRdLin();	/* read a line */
+integer	ZRdLin();	/* read a line */
 void	ZScrOp();	/* do a screen operation */
-DEFAULT	ZSetTT();	/* set a terminal parameter */
-DEFAULT	ZSWild();	/* search for next wildcard filename */
+integer	ZSetTT();	/* set a terminal parameter */
+integer	ZSWild();	/* search for next wildcard filename */
 void	ZTrmnl();	/* open terminal input and output */
 void	ZVrbos();	/* display verbose form of an error message */
-DEFAULT	ZWrBfr();	/* write line to file */
+integer	ZWrBfr();	/* write line to file */
 #endif
 #if CURSES
 void Scope();

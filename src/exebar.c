@@ -13,7 +13,7 @@
 #include "deferr.h"		/* define identifiers for error messages */
 
 
-DEFAULT ExeBar()		/* execute | (vertical bar) command */
+integer ExeBar()		/* execute | (vertical bar) command */
 {
 	DBGFEN(1,"ExeBar",NULL);
 

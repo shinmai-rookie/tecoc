@@ -13,7 +13,7 @@ Tecoc.c.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtP()		/* execute a ^P (control-P) command */
+integer ExeCtP()		/* execute a ^P (control-P) command */
 {
 #if DEBUGGING
 	if (DbgDsp() == FAILURE) {

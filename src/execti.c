@@ -12,7 +12,7 @@ is equivilent to the I command, except the <TAB> is inserted as well.
 #include "defext.h"		/* define external global variables */
 #include "dchars.h"		/* define identifiers for characters */
 
-DEFAULT ExeCtI()			/* execute control-I (tab) command */
+integer ExeCtI()			/* execute control-I (tab) command */
 {
 	DBGFEN(1,"ExeCtI",NULL);
 

@@ -13,7 +13,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeCCC()		/* execute a control-^ command */
+integer ExeCCC()		/* execute a control-^ command */
 {
 	DBGFEN(1,"ExeCCC",NULL);
 

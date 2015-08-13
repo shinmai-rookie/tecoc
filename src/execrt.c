@@ -15,10 +15,10 @@ caret-A.
 #include "chmacs.h"		/* define character processing macros */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeCrt()		/* execute a ^ (caret) command */
+integer ExeCrt()		/* execute a ^ (caret) command */
 {
 	unsigned char TmpChr;
-	static DEFAULT (*FCAray[])(void) = {
+	static integer (*FCAray[])(void) = {
 		/* ^A*/ ExeCtA,   /* ^B*/ ZExCtB,   /* ^C*/ ExeCtC,
 		/* ^D*/ ExeCtD,   /* ^E*/ ExeCtE,   /* ^F*/ ExeNYI,
 		/* ^G*/ ExeIll,   /* ^H*/ ZExCtH,   /*TAB*/ ExeCtI,

@@ -157,7 +157,7 @@ void ZBell(VVOID)
 
 *****************************************************************************/
 
-DEFAULT ZChIn(NoWait)			/* input a character from terminal */
+integer ZChIn(NoWait)			/* input a character from terminal */
 bool NoWait;				/* return immediately? */
 {
 	char Charac;
@@ -165,11 +165,11 @@ bool NoWait;				/* return immediately? */
 
 	if (LastLF) {
 		LastLF = false;
-		return (DEFAULT)LINEFD;
+		return (integer)LINEFD;
 	}
 	if (read(fileno(stdin), &Charac, 1) != 1) {
 		if (GotCtC || SupGotCtC)
-			return (DEFAULT)CTRL_C;
+			return (integer)CTRL_C;
 		if (!GotCtC) {
 			ZErMsg();
 			ErrMsg(ERR_URC);
@@ -180,7 +180,7 @@ bool NoWait;				/* return immediately? */
 	GotCtC = false;
 	if (Charac == CRETRN) {
 		LastLF = true;
-		return (DEFAULT)CRETRN;
+		return (integer)CRETRN;
 	}
 	if (EtFlag & ET_BKSP_IS_DEL) {
 		if (Charac == DELETE) {
@@ -189,7 +189,7 @@ bool NoWait;				/* return immediately? */
 			Charac = DELETE;
 		}
 	}
-	return (DEFAULT)Charac;
+	return (integer)Charac;
 }
 
 /*****************************************************************************
@@ -239,8 +239,8 @@ using a file (ugh) to save the name of the last-file-edited.  The file is
 stored in /tmp so it gets deleted when the system boots.
 *****************************************************************************/
 	LONG ZClnEG(                    /* execute special :EG command */
-				DEFAULT EGWhat,         /* what to get/set/clear: MEM, LIB, etc. */
-				DEFAULT EGOper,         /* operation: get, set or clear */
+				integer EGWhat,         /* what to get/set/clear: MEM, LIB, etc. */
+				integer EGOper,         /* operation: get, set or clear */
 				charptr TxtPtr)         /* if setting,  value to set */
 	{
 		char    *cp=NULL;       /* environment variable name */
@@ -425,7 +425,7 @@ current date encoded in the following way:
 
 *****************************************************************************/
 
-DEFAULT ZExCtB()			/* return current date */
+integer ZExCtB()			/* return current date */
 {
 	time_t clockt;
 	struct tm *time_of_day;
@@ -453,7 +453,7 @@ current time encoded in the following way:
 
 *****************************************************************************/
 
-DEFAULT ZExCtH()			/* return current time */
+integer ZExCtH()			/* return current time */
 {
 	time_t clockt;
 	struct tm *time_of_day;
@@ -495,7 +495,7 @@ characteristics.  It returns:
 
 *****************************************************************************/
 
-DEFAULT ZExeEJ()			/* execute an EJ command */
+integer ZExeEJ()			/* execute an EJ command */
 {
 	DBGFEN(1,"ZExeEJ",NULL);
 	if (EStTop == EStBot) {			/* if no numeric argument */
@@ -531,7 +531,7 @@ DEFAULT ZExeEJ()			/* execute an EJ command */
 *****************************************************************************/
 
 void ZExit(estat)		/* terminate TECO-C */
-DEFAULT estat;
+integer estat;
 {
 	ZClnUp();
 	exit(estat);
@@ -585,7 +585,7 @@ bool	Prompt;		/* enter interactive help mode? */
 *****************************************************************************/
 
 void ZIClos(IfIndx)			/* close input file */
-DEFAULT	IfIndx;				/* index into IFiles array */
+integer	IfIndx;				/* index into IFiles array */
 {
 	DBGFEN(2,"ZIClos",NULL);
 
@@ -613,7 +613,7 @@ DEFAULT	IfIndx;				/* index into IFiles array */
 *****************************************************************************/
 
 void ZOClDe(OfIndx)			/* close and delete output file */
-DEFAULT	OfIndx;				/* index into OFiles array */
+integer	OfIndx;				/* index into OFiles array */
 {
 	DBGFEN(2,"ZOClDe",NULL);
 
@@ -647,7 +647,7 @@ when an output stream is defined.  It must
 *****************************************************************************/
 
 void ZOClos(OfIndx)		/* close output file */
-DEFAULT	OfIndx;			/* index into OFiles array */
+integer	OfIndx;			/* index into OFiles array */
 {
 	int ver;
 	char TmpFsp[FILENAME_MAX];
@@ -808,8 +808,8 @@ name,  as you can only have one dot in MS-DOS file names.
 
 *****************************************************************************/
 
-DEFAULT ZOpInp(IfIndx, EIFile, RepFNF)
-DEFAULT IfIndx;			/* index into file data block array IFiles */
+integer ZOpInp(IfIndx, EIFile, RepFNF)
+integer IfIndx;			/* index into file data block array IFiles */
 bool	EIFile;			/* is it a macro file (hunt for it) */
 bool RepFNF;			/* report "file not found" error? */
 {
@@ -902,8 +902,8 @@ character following the last character of the file name.
  * by this routine.
  */
 
-DEFAULT ZOpOut(OfIndx, RepErr, Backup)		/* open output file */
-DEFAULT	OfIndx;				/* output file indicator */
+integer ZOpOut(OfIndx, RepErr, Backup)		/* open output file */
+integer	OfIndx;				/* output file indicator */
 bool RepErr;				/* report errors? */
 bool Backup;				/* TAA Added */
 {
@@ -1114,7 +1114,7 @@ wildcard matches.
 *****************************************************************************/
 /* Rewritten 05/04 by TAA */
 
-DEFAULT ZPWild()		/* preset the wildcard lookup filename */
+integer ZPWild()		/* preset the wildcard lookup filename */
 {
 	int result,i;
 /*
@@ -1164,15 +1164,15 @@ or sets IsEofI[] to true if the end of file is encountered.
 
 *****************************************************************************/
 
-DEFAULT ZRdLin(ibuf, ibuflen, IfIndx, retlen)
+integer ZRdLin(ibuf, ibuflen, IfIndx, retlen)
 charptr ibuf;			/* where to put string */
 ptrdiff_t ibuflen;		/* max length of ibuf */
 int IfIndx;			/* index into IFiles[] */
-DEFAULT *retlen;		/* returned length of string */
+integer *retlen;		/* returned length of string */
 {
 	int character;		/* the last character read */
-	DEFAULT shortBuf;	/* max size to read, 32767 or ibuflen */
-	DEFAULT charsLeft;	/* number of characters left */
+	integer shortBuf;	/* max size to read, 32767 or ibuflen */
+	integer charsLeft;	/* number of characters left */
 	FILE *fp;		/* input stream pointer to read from */
 	char *iBuf;		/* non-huge pointer into IBf for speed */
 
@@ -1183,7 +1183,7 @@ DEFAULT *retlen;		/* returned length of string */
 	DbgFEn(3,DbgFNm,DbgSBf);
 #endif
 
-	shortBuf = (ibuflen > 32767) ? 32767 : (DEFAULT) ibuflen;
+	shortBuf = (ibuflen > 32767) ? 32767 : (integer) ibuflen;
 	charsLeft = shortBuf;
 	fp = IFiles[IfIndx];
 	iBuf = (char *) ibuf;
@@ -1294,9 +1294,9 @@ parameters that TECO can set are
 
 *****************************************************************************/
 
-DEFAULT ZSetTT(TTWhat, TTVal)	/* tell operating system we set the term. */
-DEFAULT TTWhat;		/* what terminal parameter to set */
-DEFAULT TTVal;		/* what to set it to */
+integer ZSetTT(TTWhat, TTVal)	/* tell operating system we set the term. */
+integer TTWhat;		/* what terminal parameter to set */
+integer TTVal;		/* what to set it to */
 {
 	return ExeNYI();
 }
@@ -1318,7 +1318,7 @@ function.
 
 *****************************************************************************/
 /* Rewritten 05/04 by TAA */
-DEFAULT ZSWild()		/* search for next wildcard filename */
+integer ZSWild()		/* search for next wildcard filename */
 {
 	int filename_length;
 
@@ -1496,8 +1496,8 @@ buffer to be output.
 
 *****************************************************************************/
 
-DEFAULT ZWrBfr(OfIndx, BfrBeg, BfrEnd)
-DEFAULT OfIndx;			/* index into OFiles array */
+integer ZWrBfr(OfIndx, BfrBeg, BfrEnd)
+integer OfIndx;			/* index into OFiles array */
 charptr BfrBeg;			/* address of output buffer beginning */
 charptr BfrEnd;			/* address of output buffer end */
 {

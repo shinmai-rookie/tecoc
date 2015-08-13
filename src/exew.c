@@ -35,15 +35,15 @@ extern int skiprefresh;
 #endif
 
 #if USE_PROTOTYPES
-static DEFAULT VGetW(void);
-static DEFAULT VSetW(void);
-static DEFAULT VDoW(void);
+static integer VGetW(void);
+static integer VSetW(void);
+static integer VDoW(void);
 #endif
 
 #include "dscren.h"		/* define screen identifiers */
 #include <string.h>		/* prototype for strlen() */
 
-static DEFAULT VGetW()		/* execute an n:W command */
+static integer VGetW()		/* execute an n:W command */
 {
     DBGFEN(1,"VGetW",NULL);
     DBGFEX(1,DbgFNm,"PushEx()");
@@ -64,7 +64,7 @@ static DEFAULT VGetW()		/* execute an n:W command */
 
 
 
-static DEFAULT VSetW()		/* execute an m,n:W command */
+static integer VSetW()		/* execute an m,n:W command */
 {
     DBGFEN(1,"VSetW",NULL);
 
@@ -95,37 +95,37 @@ static DEFAULT VSetW()		/* execute an m,n:W command */
 		ZDspBf("\t11\t= VT200 in VT200 mode\r\n", 27);
 		ZDspBf("\t12\t= VT200 in ANSI (VT100) mode\r\n", 34);
 		ZDspBf("\t13\t= VT200 in VT52 mode\r\n", 26);
-		CrType = (DEFAULT)MArgmt;
+		CrType = (integer)MArgmt;
 		return FAILURE;
 	    }
-	    CrType = (DEFAULT)MArgmt;
+	    CrType = (integer)MArgmt;
 	    break;
 	case 1:
 	    if (MArgmt < 1) {
 		ErrMsg(ERR_ARG);
 		return FAILURE;
 	    }
-	    if (ZSetTT(TTWIDTH, (DEFAULT)MArgmt) == FAILURE)
+	    if (ZSetTT(TTWIDTH, (integer)MArgmt) == FAILURE)
 		return FAILURE;
-	    HtSize = (DEFAULT)MArgmt;
+	    HtSize = (integer)MArgmt;
 	    break;
 	case 2:
 	    if (MArgmt < 1) {
 		ErrMsg(ERR_ARG);
 		return FAILURE;
 	    }
-	    if (ZSetTT(TTHEIGHT, (DEFAULT)MArgmt) == FAILURE)
+	    if (ZSetTT(TTHEIGHT, (integer)MArgmt) == FAILURE)
 		return FAILURE;
-	    VtSize = (DEFAULT)MArgmt;
+	    VtSize = (integer)MArgmt;
 	    break;
 	case 3:
-	    SeeAll = (DEFAULT)MArgmt;
+	    SeeAll = (integer)MArgmt;
 	    break;
 	case 4:
-	    MrkFlg = (DEFAULT)MArgmt;
+	    MrkFlg = (integer)MArgmt;
 	    break;
 	case 5:
-	    HldFlg = (DEFAULT)MArgmt;
+	    HldFlg = (integer)MArgmt;
 	    break;
 	case 6:
 #if CURSES
@@ -134,21 +134,21 @@ static DEFAULT VSetW()		/* execute an m,n:W command */
 				? (scope_start - (GapBeg - EBfBeg)) + GapEnd
 				: EBfBeg + scope_start;
 #else
-	    TopDot = (DEFAULT)MArgmt;
+	    TopDot = (integer)MArgmt;
 #endif
 	    break;
 	case 7:
-	    ScroLn = (DEFAULT)MArgmt;
+	    ScroLn = (integer)MArgmt;
 #if CURSES
 	    Scope(ScroLn);
 #endif
 	    break;
 #if CURSES
 	case 8:
-	    SpcMrk = (DEFAULT)MArgmt;
+	    SpcMrk = (integer)MArgmt;
 	    break;
 	case 9:
-	    KeyPad = (DEFAULT)MArgmt;
+	    KeyPad = (integer)MArgmt;
 	    break;
 #endif
     } /* end of switch */
@@ -158,7 +158,7 @@ static DEFAULT VSetW()		/* execute an m,n:W command */
 }
 
 
-static DEFAULT VDoW()		/* execute an nW command */
+static integer VDoW()		/* execute an nW command */
 {
     DBGFEN(1,"VDoW",NULL);
 
@@ -212,7 +212,7 @@ static DEFAULT VDoW()		/* execute an nW command */
 
 
 
-DEFAULT ExeW()			/* execute an W command */
+integer ExeW()			/* execute an W command */
 {
 	DBGFEN(1,"ExeW",NULL);
 

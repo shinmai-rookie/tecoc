@@ -31,7 +31,7 @@
 #include "deferr.h"		/* define identifiers for error messages */
 #include "chmacs.h"		/* define character processing macros */
 
-DEFAULT ExeDQu()		/* execute a " (double quote) command */
+integer ExeDQu()		/* execute a " (double quote) command */
 {
 	unsigned char RelExp;			/* relational expression */
 

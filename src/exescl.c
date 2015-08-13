@@ -15,7 +15,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeSCl()			/* execute semi-colon command */
+integer ExeSCl()			/* execute semi-colon command */
 {
 #if DEBUGGING
 	static char *DbgFNm = "ExeSCl";

@@ -11,7 +11,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeCtV()		/* execute a ^V (control-V) command */
+integer ExeCtV()		/* execute a ^V (control-V) command */
 {
 	DBGFEN(1,"ExeCtV",NULL);
 

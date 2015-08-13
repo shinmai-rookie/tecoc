@@ -54,35 +54,35 @@
 #include "deferr.h"		/* define identifiers for error messages */
 
 #if USE_PROTOTYPES
-static DEFAULT DoEI(DEFAULT IfIndx);
-static DEFAULT ExeEA(void);
-static DEFAULT ExeEB(void);
-static DEFAULT ExeEC(void);
-static DEFAULT ExeED(void);
-static DEFAULT ExeEF(void);
-static DEFAULT ExeEG(void);
-static DEFAULT ExeEH(void);
-static DEFAULT ExeEI(void);
-static DEFAULT ExeEK(void);
-static DEFAULT ExeEN(void);
-static DEFAULT ExeEO(void);
-static DEFAULT ExeEP(void);
-static DEFAULT ExeEPr(void);
-static DEFAULT ExeEQ(void);
-static DEFAULT ExeER(void);
-static DEFAULT ExeES(void);
-static DEFAULT ExeET(void);
-static DEFAULT ExeEU(void);
-static DEFAULT ExeEUn(void);
-static DEFAULT ExeEV(void);
-static DEFAULT ExeEW(void);
-static DEFAULT ExeEX(void);
-static DEFAULT ExeEZ(void);
-static DEFAULT GetWha(charptr TxtPtr, ptrdiff_t TxtLen);
-static DEFAULT OpnEI(DEFAULT EInd);
-static DEFAULT OpnInp(DEFAULT IfIndx, bool EIFile, bool RepFNF);
-static DEFAULT OpnOut(DEFAULT OfIndx, bool RepErr, bool Backup);
-static DEFAULT ReadEI(DEFAULT IfIndx, charptr *ZBfPtr, charptr *EscPtr);
+static integer DoEI(DEFAULT IfIndx);
+static integer ExeEA(void);
+static integer ExeEB(void);
+static integer ExeEC(void);
+static integer ExeED(void);
+static integer ExeEF(void);
+static integer ExeEG(void);
+static integer ExeEH(void);
+static integer ExeEI(void);
+static integer ExeEK(void);
+static integer ExeEN(void);
+static integer ExeEO(void);
+static integer ExeEP(void);
+static integer ExeEPr(void);
+static integer ExeEQ(void);
+static integer ExeER(void);
+static integer ExeES(void);
+static integer ExeET(void);
+static integer ExeEU(void);
+static integer ExeEUn(void);
+static integer ExeEV(void);
+static integer ExeEW(void);
+static integer ExeEX(void);
+static integer ExeEZ(void);
+static integer GetWha(charptr TxtPtr, ptrdiff_t TxtLen);
+static integer OpnEI(DEFAULT EInd);
+static integer OpnInp(DEFAULT IfIndx, bool EIFile, bool RepFNF);
+static integer OpnOut(DEFAULT OfIndx, bool RepErr, bool Backup);
+static integer ReadEI(DEFAULT IfIndx, charptr *ZBfPtr, charptr *EscPtr);
 #endif
 
 charptr ZBfBeg;
@@ -99,12 +99,12 @@ the file name.
 
 *****************************************************************************/
 
-static DEFAULT OpnInp(IfIndx, EIFile, RepFNF)
-DEFAULT	IfIndx;				/* output file indicator */
+static integer OpnInp(IfIndx, EIFile, RepFNF)
+integer	IfIndx;				/* output file indicator */
 bool	EIFile;				/* is it a macro file? */
 bool    RepFNF;				/* report "file not found" error? */
 {
-    DEFAULT status;
+    integer status;
 
     DBGFEN(2,"OpnInp",NULL);
 
@@ -139,8 +139,8 @@ following the last character of the file name.
 *****************************************************************************/
 
 
-static DEFAULT OpnOut(OfIndx, RepErr, Backup)
-DEFAULT	OfIndx;				/* output file indicator */
+static integer OpnOut(OfIndx, RepErr, Backup)
+integer	OfIndx;				/* output file indicator */
 bool RepErr;				/* report errors? */
 bool Backup;				/* create backup? TAA Added */
 {
@@ -176,7 +176,7 @@ bool Backup;				/* create backup? TAA Added */
 
 *****************************************************************************/
 
-static DEFAULT ExeEA()			/* execute an EA command */
+static integer ExeEA()			/* execute an EA command */
 {
 	DBGFEN(1,"ExeEA",NULL);
 
@@ -199,10 +199,10 @@ static DEFAULT ExeEA()			/* execute an EA command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEB()			/* execute an EB command */
+static integer ExeEB()			/* execute an EB command */
 {
 	bool	RepFNF;			/* report "file not found" ? */
-	DEFAULT	status;			/* OpnInp() status */
+	integer	status;			/* OpnInp() status */
 
 	DBGFEN(1,"ExeEB",NULL);
 
@@ -256,7 +256,7 @@ static DEFAULT ExeEB()			/* execute an EB command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEC()			/* execute an EC command */
+static integer ExeEC()			/* execute an EC command */
 {
 	DBGFEN(1,"ExeEC",NULL);
 
@@ -331,7 +331,7 @@ static DEFAULT ExeEC()			/* execute an EC command */
 
 *****************************************************************************/
 
-static DEFAULT ExeED()			/* execute an ED command */
+static integer ExeED()			/* execute an ED command */
 {
 	DBGFEN(1,"ExeED",NULL);
 	DBGFEX(1,DbgFNm,"DoFlag(&EdFlag)");
@@ -348,7 +348,7 @@ static DEFAULT ExeED()			/* execute an ED command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEF()			/* execute an EF command */
+static integer ExeEF()			/* execute an EF command */
 {
 	DBGFEN(1,"ExeEF",NULL);
 
@@ -383,7 +383,7 @@ other, system-dependent functions may be defined.  See the ZClnEG function.
 
 *****************************************************************************/
 
-static DEFAULT GetWha(TxtPtr, TxtLen)	/* get "what to operate on" */
+static integer GetWha(TxtPtr, TxtLen)	/* get "what to operate on" */
 charptr TxtPtr;				/* string to parse */
 ptrdiff_t TxtLen;			/* length of string */
 {
@@ -439,9 +439,9 @@ ptrdiff_t TxtLen;			/* length of string */
 
 #define GBFSIZE 256
 
-static DEFAULT ExeEG()		/* perform operating system function */
+static integer ExeEG()		/* perform operating system function */
 {
-    DEFAULT EGWhat;		/* what to operate on: INI, VTE, etc. */
+    integer EGWhat;		/* what to operate on: INI, VTE, etc. */
     unsigned char GBfBeg[GBFSIZE];
     charptr GBfPtr;
     ptrdiff_t GBfLen;
@@ -455,7 +455,7 @@ static DEFAULT ExeEG()		/* perform operating system function */
 
     GBfLen = GBfPtr - GBfBeg;
     if (CmdMod & COLON) {			/* if it's :EG */
-        DEFAULT EGOper = GET_VAL;		/* get, set or clear */
+        integer EGOper = GET_VAL;		/* get, set or clear */
 	charptr TmpPtr;
 	CmdMod &= ~COLON;			/* clear colon flag */
 	EGWhat = GetWha(GBfBeg,GBfLen);
@@ -501,7 +501,7 @@ static DEFAULT ExeEG()		/* perform operating system function */
 
 *****************************************************************************/
 
-static DEFAULT ExeEH()			/* execute an EH command */
+static integer ExeEH()			/* execute an EH command */
 {
 	DBGFEN(1,"ExeEH",NULL);
 	DBGFEX(1,DbgFNm,"DoFlag()");
@@ -519,12 +519,12 @@ encountered.
 
 *****************************************************************************/
 
-static DEFAULT ReadEI(IfIndx, ZBfPtr, EscPtr)
-DEFAULT	IfIndx;		/* index into IFiles array */
+static integer ReadEI(IfIndx, ZBfPtr, EscPtr)
+integer	IfIndx;		/* index into IFiles array */
 charptr	*ZBfPtr;	/* returned ptr to end of EI string (+1) */
 charptr *EscPtr;	/* returned ptr to $$ in EI string  (+1) */
 {
-	DEFAULT		line_len;
+	integer		line_len;
 	charptr		NewBuf;
 	SIZE_T		NewSiz;
 	bool		previous_char_was_escape;
@@ -626,8 +626,8 @@ As soon as one of these forms is found and opened,  this function returns.
 
 *****************************************************************************/
 
-static DEFAULT OpnEI(EInd)	/* open an EI file */
-DEFAULT EInd;
+static integer OpnEI(EInd)	/* open an EI file */
+integer EInd;
 {
 #ifdef OPNEI_FINISHED
 	if (OpnInp(EInd, false, true) == SUCCESS)
@@ -660,12 +660,12 @@ execute the text.
 
 *****************************************************************************/
 
-static DEFAULT DoEI(IfIndx)	/* do an EI command */
-DEFAULT	IfIndx;			/* index into IFiles array */
+static integer DoEI(IfIndx)	/* do an EI command */
+integer	IfIndx;			/* index into IFiles array */
 {
     charptr ZBfPtr;		/* pointer to end of command string in ZBf */
     charptr EscPtr;		/* ptr into ZBf past second $ of $$ pair */
-    DEFAULT status;		/* return status of ExeCSt() */
+    integer status;		/* return status of ExeCSt() */
 
     DBGFEN(1,"DoEI",NULL);
 
@@ -749,9 +749,9 @@ memory will always be freed.
  * When EIIndx equals EIFL-1,  no EI files are open.
  */
 
-static DEFAULT EIIndx = EIFL-1;
+static integer EIIndx = EIFL-1;
 
-static DEFAULT ExeEI()			/* execute an EI command */
+static integer ExeEI()			/* execute an EI command */
 {
     int	status;
 
@@ -811,7 +811,7 @@ static DEFAULT ExeEI()			/* execute an EI command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEK()			/* execute an EK command */
+static integer ExeEK()			/* execute an EK command */
 {
 	DBGFEN(1,"ExeEK",NULL);
 
@@ -836,7 +836,7 @@ static DEFAULT ExeEK()			/* execute an EK command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEN()			/* execute an EN command */
+static integer ExeEN()			/* execute an EN command */
 {
 	DBGFEN(1,"ExeEN",NULL);
 
@@ -900,7 +900,7 @@ numbers less than 100.
 
 *****************************************************************************/
 
-static DEFAULT ExeEO()			/* execute an EO command */
+static integer ExeEO()			/* execute an EO command */
 {
 	return ((EStTop > EStBot)		/* is it nEO ? */
 	    ? ExeNYI()				/* ...yes, not supported */
@@ -917,7 +917,7 @@ static DEFAULT ExeEO()			/* execute an EO command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEP()			/* execute an EP command */
+static integer ExeEP()			/* execute an EP command */
 {
 	DBGFEN(1,"ExeEP",NULL);
 
@@ -939,7 +939,7 @@ static DEFAULT ExeEP()			/* execute an EP command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEPr()			/* execute an E% command */
+static integer ExeEPr()			/* execute an E% command */
 {
 	bool RepErr;			/* report errors? */
 
@@ -1014,13 +1014,13 @@ It then copies the text to a q-register.
 
 *****************************************************************************/
 
-static DEFAULT ExeEQ()			/* execute an EQ command */
+static integer ExeEQ()			/* execute an EQ command */
 {
 	ptrdiff_t	FSize;		/* file size */
 	LONG		SvFFPg;		/* saved FFPage value */
-	DEFAULT		SvCrIn;		/* saved CurInp value */
+	integer		SvCrIn;		/* saved CurInp value */
 	ptrdiff_t	SvEbSz;		/* saved edit buffer size */
-	DEFAULT		Status;
+	integer		Status;
 
 	DBGFEN(1,"ExeEQ",NULL);
 
@@ -1111,10 +1111,10 @@ exeeqdone:
 	:ERfilespec$	ER, return status
 *****************************************************************************/
 
-static DEFAULT ExeER()			/* execute an ER command */
+static integer ExeER()			/* execute an ER command */
 {
 	bool	RepFNF;			/* report "file not found" errors? */
-	DEFAULT	status;
+	integer	status;
 
 	DBGFEN(1,"ExeER",NULL);
 
@@ -1166,7 +1166,7 @@ static DEFAULT ExeER()			/* execute an ER command */
 
 *****************************************************************************/
 
-static DEFAULT ExeES()			/* execute an ES command */
+static integer ExeES()			/* execute an ES command */
 {
 	DBGFEN(1,"ExeES",NULL);
 	DBGFEX(1,DbgFNm,"DoFlag(&EsFlag)");
@@ -1183,9 +1183,9 @@ static DEFAULT ExeES()			/* execute an ES command */
 
 *****************************************************************************/
 
-static DEFAULT ExeET()			/* execute an ET command */
+static integer ExeET()			/* execute an ET command */
 {
-        DEFAULT status;
+        integer status;
         WORD TmpET;
 
 	DBGFEN(1,"ExeET",NULL);
@@ -1237,7 +1237,7 @@ static DEFAULT ExeET()			/* execute an ET command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEU()			/* execute an EU command */
+static integer ExeEU()			/* execute an EU command */
 {
 	DBGFEN(1,"ExeEU",NULL);
 	DBGFEX(1,DbgFNm,"DoFlag(&EuFlag)");
@@ -1254,7 +1254,7 @@ static DEFAULT ExeEU()			/* execute an EU command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEUn()			/* execute an E_ command */
+static integer ExeEUn()			/* execute an E_ command */
 {
 	DBGFEN(1,"ExeEUn",NULL);
 
@@ -1296,7 +1296,7 @@ static DEFAULT ExeEUn()			/* execute an E_ command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEV()			/* execute an EV command */
+static integer ExeEV()			/* execute an EV command */
 {
 	DBGFEN(1,"ExeEV",NULL);
 	DBGFEX(1,DbgFNm,"DoFlag()");
@@ -1314,7 +1314,7 @@ static DEFAULT ExeEV()			/* execute an EV command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEW()			/* execute an EW command */
+static integer ExeEW()			/* execute an EW command */
 {
 	bool RepErr;			/* report errors? */
 
@@ -1365,7 +1365,7 @@ static DEFAULT ExeEW()			/* execute an EW command */
 
 *****************************************************************************/
 
-static DEFAULT ExeEX()			/* execute an EX command */
+static integer ExeEX()			/* execute an EX command */
 {
 	DBGFEN(1,"ExeEX",NULL);
 
@@ -1387,7 +1387,7 @@ that contains bits specific to the operating system we're using.
 
 *****************************************************************************/
 
-static DEFAULT ExeEZ()			/* execute an EZ command */
+static integer ExeEZ()			/* execute an EZ command */
 {
 	DBGFEN(1,"ExeEZ",NULL);
 	DBGFEX(1,DbgFNm,"DoFlag(&EZFlag)");
@@ -1403,10 +1403,10 @@ It uses the character following the "E" to index into a table of functions.
 
 *****************************************************************************/
 
-DEFAULT	ExeE()				/* execute an E command */
+integer	ExeE()				/* execute an E command */
 {
 	unsigned char TmpChr;
-	static DEFAULT (*FEAray[])(void) = {
+	static integer (*FEAray[])(void) = {
 		/* A */ ExeEA,    /* B */ ExeEB,
 		/* C */ ExeEC,    /* D */ ExeED,
 		/* E */ ExeIll,   /* F */ ExeEF,

@@ -19,7 +19,7 @@
 #include "dchars.h"		/* define identifiers for characters */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeEqu()		/* execute an = (equals sign) comand */
+integer ExeEqu()		/* execute an = (equals sign) comand */
 {
 	DBGFEN(1,"ExeEqu",NULL);
 

@@ -12,7 +12,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeY()                          /* Y command */
+integer ExeY()                          /* Y command */
 {
 	DBGFEN(1,"ExeY",NULL);
 

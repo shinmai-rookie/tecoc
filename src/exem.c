@@ -12,9 +12,9 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeM()			/* execute an M command */
+integer ExeM()			/* execute an M command */
 {
-    DEFAULT status;
+    integer status;
 	bool islocal;
 
     DBGFEN(1,"ExeM",NULL);

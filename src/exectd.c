@@ -11,7 +11,7 @@ command sets the radix to decimal.
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtD()		/* execute a ^D (control-D) command */
+integer ExeCtD()		/* execute a ^D (control-D) command */
 {
 	DBGFEN(1,"ExeCtD",NULL);
 

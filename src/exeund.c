@@ -11,7 +11,7 @@
 #include "defext.h"		/* define external global variables */
 #include "deferr.h"		/* define identifiers for error messages */
 
-DEFAULT ExeUnd()		/* execute a _ (underscore) command */
+integer ExeUnd()		/* execute a _ (underscore) command */
 {
 	DBGFEN(1,"ExeUnd",NULL);
 

@@ -12,7 +12,7 @@
 #include "tecoc.h"		/* define general identifiers */
 #include "defext.h"		/* define external global variables */
 
-DEFAULT ExeCtQ()		/* execute a ^Q (control-Q) command */
+integer ExeCtQ()		/* execute a ^Q (control-Q) command */
 {
 	DBGFEN(1,"ExeCtQ",NULL);
 

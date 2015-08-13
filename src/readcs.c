@@ -151,10 +151,10 @@ static unsigned char FirstChar()
 {
     bool		ImdCmd;		/* true if it's '?' or '*' or '/' */
     unsigned char	LclStr[2];	/* local string for * processing */
-    DEFAULT		Status;		/* return value for FindQR() */
+    integer		Status;		/* return value for FindQR() */
     charptr		TCBfPt;		/* temporary holder of CBfPtr */
     charptr		TCStEn;		/* temporary holder of CStEnd */
-    DEFAULT		TmpChr;		/* temporary character */
+    integer		TmpChr;		/* temporary character */
     ptrdiff_t		TmpSiz;
 #if CURSES
     chtype 		curses_char;
@@ -268,7 +268,7 @@ l1:	getyx(stdscr,yy,xx);
 			TCStEn = CStEnd;		/* save CStEnd */
 			LclStr[0] = (unsigned char)TmpChr;
 			CBfPtr = &LclStr[0];
-			if (TmpChr == (DEFAULT)'.') {
+			if (TmpChr == (integer)'.') {
 			    LclStr[1] = (unsigned char)ZChIn(false);
 			    EchoIt((unsigned char)TmpChr);
 			    CStEnd = &LclStr[1];
