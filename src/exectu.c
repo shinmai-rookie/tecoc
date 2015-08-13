@@ -117,7 +117,7 @@ integer ExeCtU()		/* execute a ^U (control-U) command */
 /*
  * Increase the size of the text area by 1 character
  */
-		if (MakRom((SIZE_T) 1) == FAILURE) {
+		if (MakRom((size_t) 1) == FAILURE) {
 			DBGFEX(1,DbgFNm,"FAILURE, MakRom() failed");
 			return FAILURE;
 		}
@@ -142,7 +142,7 @@ integer ExeCtU()		/* execute a ^U (control-U) command */
 /*
  * make room for the string
  */
-			if (MakRom((SIZE_T)TmpSiz) == FAILURE) {
+			if (MakRom((size_t)TmpSiz) == FAILURE) {
 				DBGFEX(1,DbgFNm,"FAILURE, MakRom() failed");
 				return FAILURE;
 			}
@@ -150,7 +150,7 @@ integer ExeCtU()		/* execute a ^U (control-U) command */
 /*
  * Append the string to the Q-register text
  */
-			MEMMOVE(QR->End_P1, ArgPtr, (SIZE_T)TmpSiz);
+			MEMMOVE(QR->End_P1, ArgPtr, (size_t)TmpSiz);
 			QR->End_P1 += TmpSiz;
 		}
 	}

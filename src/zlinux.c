@@ -114,7 +114,7 @@ and re-allocate, respectively,  the memory allocated by this function.
 *****************************************************************************/
 
 voidptr ZAlloc(MemSize)		/* allocate memory */
-SIZE_T MemSize;
+size_t MemSize;
 {
 	return (voidptr)malloc(MemSize);
 }
@@ -292,7 +292,7 @@ stored in /tmp so it gets deleted when the system boots.
 void ZCpyBl(Destin, Source, Length)
 charptr Destin;
 charptr Source;
-SIZE_T Length;
+size_t Length;
 {
 	if (Source < Destin) {
 		Source += Length;
@@ -308,10 +308,10 @@ SIZE_T Length;
 }
 
 #if DEBUGGING
-ULONG Zcp2ul(cp)		/* convert charptr to ULONG */
+unsigned long Zcp2ul(cp)		/* convert charptr to ULONG */
 voidptr cp;
 {
-	return (ULONG)(cp);
+	return (unsigned long)(cp);
 }
 #endif
 
@@ -389,7 +389,7 @@ in the buffer.
 
 void ZDspBf(buffer, length)		/* output a buffer to terminal */
 charptr buffer;
-SIZE_T length;
+size_t length;
 {
 	if (write(fileno(stdout), buffer, length) == -1) {
 		puts("Unable to write to terminal in function ZDspBf");
@@ -1003,7 +1003,7 @@ char *argv[];
 {
 	int i;
 	char TmpBuf[256];
-	SIZE_T	line_len;
+	size_t	line_len;
 	char *cmd;
 
 	DBGFEN(2,"ZPrsCL",NULL);
@@ -1070,7 +1070,7 @@ char *argv[];
  */
 
 	QR = &QRgstr[34];			/* 34 = q-register Y */
-	if (MakRom((SIZE_T)CLPARS_LEN) == FAILURE) {
+	if (MakRom((size_t)CLPARS_LEN) == FAILURE) {
 		DBGFEX(2,DbgFNm,"MakRom(CLPARS_LEN) failed, calling exit()");
 		ZExit(EXIT_FAILURE);
 	}
@@ -1149,7 +1149,7 @@ integer ZPWild()		/* preset the wildcard lookup filename */
 
 voidptr ZRaloc(OldBlk, NewSiz)		/* re-allocate memory */
 voidptr OldBlk;
-SIZE_T NewSiz;
+size_t NewSiz;
 {
 	return (voidptr)realloc(OldBlk, NewSiz);
 }

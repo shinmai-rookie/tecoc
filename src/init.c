@@ -38,7 +38,7 @@ static void MemIni()
  * edit buffer resides.
  */
 
-	TmpMem = (charptr)ZAlloc((SIZE_T)(4*1024));
+	TmpMem = (charptr)ZAlloc((size_t)(4*1024));
 
 /*
  * allocate memory for the digit buffer.  It needs to be big enough to hold
@@ -66,7 +66,7 @@ static void MemIni()
  * allocate memory for the filename buffer
  */
 
-	FBfBeg = FBfPtr = (charptr)ZAlloc((SIZE_T)FILENAME_MAX);
+	FBfBeg = FBfPtr = (charptr)ZAlloc((size_t)FILENAME_MAX);
 	if (FBfBeg == NULL) {
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
@@ -82,7 +82,7 @@ static void MemIni()
  * allocate memory for the command buffer
  */
 
-	CBfBeg = (charptr)ZAlloc((SIZE_T)CBFINIT);
+	CBfBeg = (charptr)ZAlloc((size_t)CBFINIT);
 	if (CBfBeg == NULL) {
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
@@ -98,7 +98,7 @@ static void MemIni()
  * allocate memory for the search string buffer
  */
 
-	SBfBeg = SBfPtr = (charptr)ZAlloc((SIZE_T)SBFINIT);
+	SBfBeg = SBfPtr = (charptr)ZAlloc((size_t)SBFINIT);
 	if (SBfBeg == NULL) {
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING
@@ -114,7 +114,7 @@ static void MemIni()
  * allocate memory for the edit buffer and input buffer
  */
 
-	EBfBeg = GapBeg = (charptr)ZAlloc((SIZE_T)EBFINIT + (SIZE_T)IBFINIT);
+	EBfBeg = GapBeg = (charptr)ZAlloc((size_t)EBFINIT + (size_t)IBFINIT);
 	if (EBfBeg == NULL) {
 		ErrMsg(ERR_MEM);		/* MEM = memory overflow */
 #if DEBUGGING

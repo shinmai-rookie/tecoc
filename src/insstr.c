@@ -27,8 +27,8 @@ static integer expand_gap(length)
 ptrdiff_t length;			/* amount of gap room needed */
 #endif
 {
-    SIZE_T TmpSiz;
-    SIZE_T NewSiz;
+    size_t TmpSiz;
+    size_t NewSiz;
     charptr NewBeg;
 
     DBGFEN(3,"expand_gap",NULL);
@@ -43,7 +43,7 @@ ptrdiff_t length;			/* amount of gap room needed */
     TmpSiz = IBfEnd-EBfEnd;
     if (TmpSiz > IBFMIN) {
 	TmpSiz -= IBFMIN;
-	MEMMOVE(GapEnd+1+TmpSiz, GapEnd+1, (SIZE_T)(EBfEnd-GapEnd));
+	MEMMOVE(GapEnd+1+TmpSiz, GapEnd+1, (size_t)(EBfEnd-GapEnd));
 	GapEnd += TmpSiz;
 	EBfEnd += TmpSiz;
     }
@@ -80,7 +80,7 @@ ptrdiff_t length;			/* amount of gap room needed */
  * down the amount we expanded the edit buffer (TmpSiz), then update the
  * pointers again.
  */
-	MEMMOVE(GapEnd+1+TmpSiz, GapEnd+1, (SIZE_T)(EBfEnd - GapEnd));
+	MEMMOVE(GapEnd+1+TmpSiz, GapEnd+1, (size_t)(EBfEnd - GapEnd));
 	GapEnd += TmpSiz;
 	EBfEnd += TmpSiz;
 	IBfEnd += TmpSiz;
@@ -117,7 +117,7 @@ ptrdiff_t length;
  * Copy the new text into the edit buffer gap,  and adjust GapBeg to make the
  * text part of the edit buffer.
  */
-	MEMMOVE(GapBeg, string, (SIZE_T)length);
+	MEMMOVE(GapBeg, string, (size_t)length);
 	GapBeg += length;
 
 	DBGFEX(3,DbgFNm,"SUCCESS");

@@ -23,8 +23,8 @@ order the string so much that I made the base 8 and 16 code use it too.
 
 
 #if USE_PROTOTYPES
-static void DoHex(ULONG n);
-static void DoOct(ULONG n);
+static void DoHex(unsigned long n);
+static void DoOct(unsigned long n);
 static void DoNeg(long n);
 #endif
 
@@ -32,7 +32,7 @@ static char digits[] = "0123456789ABCDEF";
 
 
 static void DoHex(n)
-ULONG n;
+unsigned long n;
 {
     if (n != 0) {
         DoHex(n >> 4);
@@ -42,7 +42,7 @@ ULONG n;
 
 
 static void DoOct(n)
-ULONG n;
+unsigned long n;
 {
     if (n != 0) {
         DoOct(n >> 3);
@@ -77,7 +77,7 @@ void MakDBf(Binary, NRadix)	/* make digit buffer (DBfBeg) */
 long Binary;			/* binary number to be converted */
 integer NRadix;			/* radix to be used: 8, 10 or 16 */
 {
-        ULONG TmpBin;
+        unsigned long TmpBin;
 
 	DBfPtr = DBfBeg;		/* initialize digit buffer ptr */
 	if (Binary == 0) {		/* simple case? */

@@ -45,14 +45,14 @@ integer ExeLBr()				/* execute [ command */
 	QR = &QStack[QStTop];
 	TmpSiz = TmpQRp->End_P1 - TmpQRp->Start;
 	if (TmpSiz > 0) {
-		if (MakRom((SIZE_T)TmpSiz) == FAILURE) {
+		if (MakRom((size_t)TmpSiz) == FAILURE) {
 			QR = TmpQRp;
 			--QStTop;
 
 			DBGFEX(1,DbgFNm,"MakRom() FAILURE");
 			return FAILURE;
 		}
-		MEMMOVE(QR->Start, TmpQRp->Start, (SIZE_T) TmpSiz);
+		MEMMOVE(QR->Start, TmpQRp->Start, (size_t) TmpSiz);
 		QR->End_P1 = QR->Start + TmpSiz;
 	}
 	QR->Number = TmpQRp->Number;

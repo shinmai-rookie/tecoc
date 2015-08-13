@@ -36,7 +36,6 @@ typedef char bool;
 
 typedef int             integer;	/* signed, at least 16 bits */
 typedef	short		WORD;		/* 16 bits signed */
-typedef unsigned long	ULONG;		/* 32 bits unsigned */
 
 #define FOREVER		for(;;)		/* Infinite loop declaration */
 
@@ -223,50 +222,50 @@ and repeat counts), and NULL.
 
 #if defined(unix) || defined(UNKNOWN) || defined(AMIGA) && !defined(ULTRIX)
 
-#if sun
-#ifdef SUNOS4_0
+#  if sun
+#    ifdef SUNOS4_0
 typedef int	ptrdiff_t;	/* not in /sys/types.h yet */
-#endif
-#include <sys/types.h>		/* size_t (and maybe ptrdiff_t) */
-#else /* sun */
-#ifdef LINUX
-#define ptrdiff_t int
-#else
+#    endif
+#    include <sys/types.h>		/* size_t (and maybe ptrdiff_t) */
+#  else /* sun */
+#    if defined(LINUX) || defined (__linux__)
+#      include <stddef.h>
+#    else
 typedef int	ptrdiff_t;
-typedef ULONG	size_t;
-#endif
-#endif /* sun */
+typedef unsigned long	size_t;
+#    endif
+#  endif /* sun */
 
-#ifdef AMIGA
-#define NULL 0L
-#else
-#ifdef LINUX
-#ifndef NULL
-#define NULL (void *)0
-#endif
-#else
-#define NULL 0
-#endif
-#endif
+#  ifdef AMIGA
+#    define NULL 0L
+#  else
+#    if defined(LINUX) || defined(__linux__)
+#      ifndef NULL
+#        define NULL (void *)0
+#      endif
+#    else
+#      define NULL 0
+#    endif
+#  endif
 
-#else
-#include <stddef.h>		/* define ptrdiff_t, size_t and NULL */
+#else    /* defined(unix) || defined(UNKNOWN) || defined(AMIGA) && !defined(ULTRIX) */
+#  include <stddef.h>		/* define ptrdiff_t, size_t and NULL */
 #endif
 
 /*****************************************************************************
-	Define SIZE_T,  which on most machines will be the same as size_t.
+	Define size_t,  which on most machines will be the same as size_t.
 There are problems (as usual) on the IBM PC.  In various places,  TECO-C
 subtracts two pointers and puts the resulting value in a variable of type
-SIZE_T.  Under Turbo C,  size_t is 16 bits,  which won't work,  so we
-use unsigned long for SIZE_T for TURBO C.
+size_t.  Under Turbo C,  size_t is 16 bits,  which won't work,  so we
+use unsigned long for size_t for TURBO C.
 *****************************************************************************/
 
 #if (defined(__TURBOC__) && !TC_SMALL_DATA && !defined(WIN32)) || defined(__POWERC)
-typedef ULONG SIZE_T;		/* PCs suck */
+#  define size_t unsigned long		/* PCs suck */
+#elif defined(LINUX) || defined (__linux__)
+#  include <stddef.h>
 #elif defined(unix)
-typedef unsigned int SIZE_T;	/* override their size_t, which is "int" */
-#else
-typedef size_t SIZE_T;		/* use size_t as defined above */
+#  define size_t unsigned int
 #endif
 
 /*****************************************************************************
@@ -276,8 +275,6 @@ EXTERNV used only for GotCtC, this means "extern volatile" for compilers that
 	support the "volatile" keyword.
     Edit: not needed: if the compiler doesn't accept "volatile", it is defined
         as nothing, so "extern volatile" becomes "extern"
-volatile used only for GotCtC, this means "volatile" for compilers that
-	support the "volatile" keyword.
 VVOID	if the compiler supports the keyword "void",  then this should be
 	defined as such,  else it should be meaningless.  It would be nice
 	to use "VOID" instead of "VVOID",  but the damn curses.h file defines
@@ -523,7 +520,7 @@ extern void ZCpyBl();
 
 #elif defined(__TURBOC__) || defined(__POWERC)
 
-extern void ZCpyBl(charptr dest, charptr source, SIZE_T len);
+extern void ZCpyBl(charptr dest, charptr source, size_t len);
 #define MEMMOVE(dest,source,len) ZCpyBl((dest),(source),(len))
 
 #else
@@ -597,7 +594,7 @@ for everyone else.
 *****************************************************************************/
 
 #if !defined(_Cdecl)
-#define _Cdecl /**/
+#  define _Cdecl /**/
 #endif
 
 
@@ -606,21 +603,21 @@ for everyone else.
 *****************************************************************************/
 
 #if defined(unix)
-#define EZ_NO_VER	  1	/* do not do VMS style versions */
-#define EZ_ARROW	  8	/* */
-#define EZ_AUDIO_BEEP	  16	/* (CURSES only) on = beep , off = flash */
-#define EZ_WIN_LINE	  32	/* (CURSES only) line between windows */
-#define EZ_FF		  128	/* do not stop read on FF */
-#define EZ_UNIXNL	  256	/* use Unix-style newline terminators */
-#define EZ_VT100GRAPHICS  512
-#define EZ_BTEE		  2048	/* use BTEE instead of DIAMOND */
-#define EZ_INVCR	  8192	/* don't show CR in scope - closer to */
+#  define EZ_NO_VER	  1	/* do not do VMS style versions */
+#  define EZ_ARROW	  8	/* */
+#  define EZ_AUDIO_BEEP	  16	/* (CURSES only) on = beep , off = flash */
+#  define EZ_WIN_LINE	  32	/* (CURSES only) line between windows */
+#  define EZ_FF		  128	/* do not stop read on FF */
+#  define EZ_UNIXNL	  256	/* use Unix-style newline terminators */
+#  define EZ_VT100GRAPHICS  512
+#  define EZ_BTEE		  2048	/* use BTEE instead of DIAMOND */
+#  define EZ_INVCR	  8192	/* don't show CR in scope - closer to */
 				/* TECO-11, but really not as good in */
 				/* my opinion (Mark Henderson) */
-#if defined(LINUX)
-#define EZ_NO_STRIP    16384 /* Don't strip the extension */
-#endif
+#  if defined(LINUX) || defined (__linux__)
+#    define EZ_NO_STRIP    16384 /* Don't strip the extension */
+#  endif
 #elif defined(AMIGA)
-#define EZ_FF		128	/* do not stop read on FF */
-#define EZ_UNIXNL	256	/* use Unix-style newline terminators */
+#  define EZ_FF		128	/* do not stop read on FF */
+#  define EZ_UNIXNL	256	/* use Unix-style newline terminators */
 #endif

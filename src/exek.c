@@ -48,11 +48,11 @@ integer ExeK()			/* execute a K command */
 				HowFar = (GapBeg-1) - AraEnd;
 				GapBeg -= HowFar;
 				GapEnd -= HowFar;
-				MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)HowFar);
+				MEMMOVE(GapEnd+1, GapBeg, (size_t)HowFar);
 				GapBeg = AraBeg;
 			} else {
 				HowFar = AraBeg - (GapEnd+1);
-				MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)HowFar);
+				MEMMOVE(GapBeg, GapEnd+1, (size_t)HowFar);
 				GapBeg += HowFar;
 				GapEnd = AraEnd;
 			}

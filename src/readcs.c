@@ -285,8 +285,8 @@ l1:	getyx(stdscr,yy,xx);
 			    }
 			    TmpSiz = (CStEnd-CStBeg) + 1;
 			    if (TmpSiz > 0) {
-				if (MakRom((SIZE_T)TmpSiz) != FAILURE) {
-				    MEMMOVE(QR->Start,CStBeg,(SIZE_T)TmpSiz);
+				if (MakRom((size_t)TmpSiz) != FAILURE) {
+				    MEMMOVE(QR->Start,CStBeg,(size_t)TmpSiz);
 				    QR->End_P1 = QR->Start + TmpSiz;
 				}
 			    }
@@ -540,7 +540,7 @@ void ReadCS()
 			    	ZScrOp(SCR_EEL);
 			    }
 			HowFar = Ln2Chr((long)1);
-			MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)HowFar);
+			MEMMOVE(GapBeg, GapEnd+1, (size_t)HowFar);
 			GapBeg += HowFar;
 			GapEnd += HowFar;
 			if (EvFlag) {
@@ -593,7 +593,7 @@ void ReadCS()
 			HowFar = Ln2Chr(-1L);
 			GapBeg += HowFar;
 			GapEnd += HowFar;
-			MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)-HowFar);
+			MEMMOVE(GapEnd+1, GapBeg, (size_t)-HowFar);
 			if (EvFlag) {
 			    DoEvEs(EvFlag);
 			} else {

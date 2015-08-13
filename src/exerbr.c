@@ -58,11 +58,11 @@ integer ExeRBr()                /* execute ] command */
 			QR->Start = QR->End_P1 = NULL;
 		}
 	} else {
-		if (MakRom((SIZE_T)TmpSiz) == FAILURE) { /* adjust QR space */
+		if (MakRom((size_t)TmpSiz) == FAILURE) { /* adjust QR space */
 			DBGFEX(1,DbgFNm,"FAILURE");
 			return FAILURE;
 		}
-		MEMMOVE(QR->Start, TmpQRp->Start, (SIZE_T)TmpSiz);
+		MEMMOVE(QR->Start, TmpQRp->Start, (size_t)TmpSiz);
 		QR->End_P1 = QR->Start + TmpSiz;
 	}
 	QR->Number = TmpQRp->Number;

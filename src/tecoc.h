@@ -399,7 +399,7 @@ void	MakDBf(			/* make digit buffer */
 	long Binary,		/* binary number to be converted */
 	integer NRadix);	/* radix to be used: 8, 10 or 16 */
 integer	MakRom(			/* make room in q-register */
-	SIZE_T Amount);		/* how much room to make */
+	size_t Amount);		/* how much room to make */
 integer	PopMac(void);		/* pop variables after macro call */
 integer	PshMac(			/* push variables for macro call */
 	charptr Start,		/* start of new command string */
@@ -433,7 +433,7 @@ integer	WrPage(			/* write to output file */
 	charptr OBfEnd,		/* address of output buffer end */
 	long AddFF);		/* -1 means add form feed, 0 means don't */
 voidptr ZAlloc(			/* like standard malloc function */
-	SIZE_T MemSiz);
+	size_t MemSiz);
 void	ZBell(void);		/* ring the terminal bell */
 integer ZChIn(			/* input a character from the terminal */
 	bool	NoWait);	/* return immediately? */
@@ -443,7 +443,7 @@ long	ZClnEG(			/* execute special :EG command */
 	charptr TxtPtr);	/* if setting,  value to set */
 void	ZClnUp(void);		/* cleanup for TECO-C abort */
 #if DEBUGGING || CONSISTENCY_CHECKING
-ULONG	Zcp2ul(			/* convert voidptr to unsigned long */
+unsigned long	Zcp2ul(			/* convert voidptr to unsigned long */
 	voidptr cp);
 #endif
 void	ZDoCmd(			/* terminate and pass command string to OS */
@@ -451,7 +451,7 @@ void	ZDoCmd(			/* terminate and pass command string to OS */
 	charptr GBfPtr);	
 void	ZDspBf(			/* output a buffer to the terminal */
 	charptr buffer,
-	SIZE_T length);
+	size_t length);
 void	ZDspCh(			/* display a character */
 	char Charac);
 integer	ZExCtB(void);		/* execute a ^B command */
@@ -487,7 +487,7 @@ void	ZPrsCL(			/* parse the command line */
 integer	ZPWild(void);		/* preset the wildcard lookup filespec */
 voidptr	ZRaloc(			/* re-allocate memory*/
 	voidptr OldBlk,
-	SIZE_T NewSiz);
+	size_t NewSiz);
 integer ZRdLin(			/* read a line */
 	charptr ibuf,		/* where to put string */
 	ptrdiff_t ibuflen,	/* max length of buf */
@@ -655,7 +655,7 @@ integer ZChIn();	/* input a character from the terminal */
 long	ZClnEG();	/* execute special :EG command */
 void	ZClnUp();	/* cleanup for TECO-C abort */
 #if DEBUGGING || CONSISTENCY_CHECKING
-ULONG	Zcp2ul();	/* convert charptr to unsigned long */
+unsigned long	Zcp2ul();	/* convert charptr to unsigned long */
 #endif
 void	ZDoCmd();	/* terminate and pass command string to OS */
 void	ZDspBf();	/* output a buffer to the terminal */

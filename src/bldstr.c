@@ -147,7 +147,7 @@ DoCtE(charptr EndArg, charptr XBfEnd)        /* do a control-E */
                 DBGFEX(2, DbgFNm, "FAILURE");
                 return FAILURE;
             }
-            MEMMOVE(BBfPtr, BufBeg, (SIZE_T)(BufPtr - BufBeg));
+            MEMMOVE(BBfPtr, BufBeg, (size_t)(BufPtr - BufBeg));
             BBfPtr += BufPtr-BufBeg;
         }
         else
@@ -171,7 +171,7 @@ DoCtE(charptr EndArg, charptr XBfEnd)        /* do a control-E */
                 DBGFEX(2,DbgFNm,"FAILURE");
                 return FAILURE;
             }
-            MEMMOVE(BBfPtr, QR->Start, (SIZE_T)(QR->End_P1 - QR->Start));
+            MEMMOVE(BBfPtr, QR->Start, (size_t)(QR->End_P1 - QR->Start));
             BBfPtr += QR->End_P1 - QR->Start;
         }
     }

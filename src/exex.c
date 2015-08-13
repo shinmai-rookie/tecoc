@@ -51,18 +51,18 @@ integer ExeX()			/* execute an X command */
 	if ((CmdMod & MARGIS) == '\0') {	/* if it's nXq (not m,nXq) */
 		NArgmt = Ln2Chr(NArgmt);
 		if (NArgmt > 0) {
-			if (MakRom((SIZE_T)NArgmt) == FAILURE) {
+			if (MakRom((size_t)NArgmt) == FAILURE) {
 				DBGFEX(1,DbgFNm,"FAILURE, MakRom() failed");
 				return FAILURE;
 			}
-			MEMMOVE(QR->End_P1, GapEnd+1, (SIZE_T)NArgmt);
+			MEMMOVE(QR->End_P1, GapEnd+1, (size_t)NArgmt);
 			QR->End_P1 += NArgmt;
 		} else if (NArgmt < 0) {
-			if (MakRom((SIZE_T)-NArgmt) == FAILURE) {
+			if (MakRom((size_t)-NArgmt) == FAILURE) {
 				DBGFEX(1,DbgFNm,"FAILURE, MakRom() failed");
 				return FAILURE;
 			}
-			MEMMOVE(QR->End_P1, GapBeg+NArgmt, (SIZE_T)-NArgmt);
+			MEMMOVE(QR->End_P1, GapBeg+NArgmt, (size_t)-NArgmt);
 			QR->End_P1 -= NArgmt;
 		}
 	} else if (NArgmt != MArgmt) {		/* else (it's m,nXq) */
@@ -74,27 +74,27 @@ integer ExeX()			/* execute an X command */
 		if ((AraBeg < GapBeg) && (AraEnd > GapEnd)) {
 			TmpSiz = (GapBeg-AraBeg) + (AraEnd-GapEnd);
 			if (TmpSiz > 0) {
-				if (MakRom((SIZE_T)TmpSiz) == FAILURE) {
+				if (MakRom((size_t)TmpSiz) == FAILURE) {
 					DBGFEX(1,DbgFNm,"FAILURE, MakRom() failed");
 					return FAILURE;
 				}
 				MEMMOVE(QR->End_P1,
 					AraBeg,
-					(SIZE_T)(GapBeg - AraBeg));
+					(size_t)(GapBeg - AraBeg));
 				QR->End_P1 += GapBeg-AraBeg;
 				MEMMOVE(QR->End_P1,
 					GapEnd+1,
-					(SIZE_T)(AraEnd - GapEnd));
+					(size_t)(AraEnd - GapEnd));
 				QR->End_P1 += AraEnd-GapEnd;
 			}
 		} else {			/* else area is contiguous */
 			TmpSiz = (AraEnd - AraBeg) + 1;
 			if (TmpSiz > 0) {
-				if (MakRom((SIZE_T)TmpSiz) == FAILURE) {
+				if (MakRom((size_t)TmpSiz) == FAILURE) {
 					DBGFEX(1,DbgFNm,"FAILURE, MakRom() failed");
 					return FAILURE;
 				}
-				MEMMOVE(QR->End_P1, AraBeg, (SIZE_T)TmpSiz);
+				MEMMOVE(QR->End_P1, AraBeg, (size_t)TmpSiz);
 				QR->End_P1 += TmpSiz;
 			}
 		}

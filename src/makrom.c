@@ -25,7 +25,7 @@ is used as the destination of the new text.
 #include "deferr.h"		/* define identifiers for error messages */
 
 integer MakRom(Amount)		/* make room in q-register */
-SIZE_T Amount;			/* how much additional room to make */
+size_t Amount;			/* how much additional room to make */
 {
 	ptrdiff_t	OldSiz;		/* old size of text area */
 	charptr		NewBlk;		/* new text area */

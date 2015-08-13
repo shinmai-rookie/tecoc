@@ -65,7 +65,7 @@ long AddFF;			/* add form feed: -1 is true, 0 is FALSE */
 
 	if ((OBfBeg < GapBeg) && (OBfEnd > GapEnd)) {	/* shuffle? */
 		Shuffl = OBfEnd - GapEnd;
-		MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)Shuffl);
+		MEMMOVE(GapBeg, GapEnd+1, (size_t)Shuffl);
 		OBfEnd = (GapBeg + Shuffl) - 1;
 	} else {
 		Shuffl = 0;			/* 0 indicates no shuffle */
@@ -114,7 +114,7 @@ long AddFF;			/* add form feed: -1 is true, 0 is FALSE */
  */
 
 	if (Shuffl) {
-		MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)Shuffl);
+		MEMMOVE(GapEnd+1, GapBeg, (size_t)Shuffl);
 	}
 
 	DBGFEX(2,DbgFNm,NULL);

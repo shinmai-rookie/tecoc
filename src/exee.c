@@ -526,7 +526,7 @@ charptr *EscPtr;	/* returned ptr to $$ in EI string  (+1) */
 {
 	integer		line_len;
 	charptr		NewBuf;
-	SIZE_T		NewSiz;
+	size_t		NewSiz;
 	bool		previous_char_was_escape;
 	charptr		TmpPtr;
 
@@ -1071,7 +1071,7 @@ static integer ExeEQ()			/* execute an EQ command */
  * Make room in the q-register.
  */
 	FSize = EBfEnd - (EBfBeg + SvEbSz + (GapEnd - GapBeg));
-	if (MakRom((SIZE_T)FSize) == FAILURE) {
+	if (MakRom((size_t)FSize) == FAILURE) {
 		Status = FAILURE;
 		goto exeeqdone;
 	}
@@ -1081,7 +1081,7 @@ static integer ExeEQ()			/* execute an EQ command */
  */
 	MEMMOVE(QR->Start,
 		EBfBeg + SvEbSz + 1 + (GapEnd - GapBeg),
-		(SIZE_T)FSize);
+		(size_t)FSize);
 	QR->End_P1 = QR->Start + FSize;
 
 	Status = SUCCESS;

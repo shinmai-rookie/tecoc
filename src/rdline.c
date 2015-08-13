@@ -30,8 +30,8 @@ static void expand_ibf(EBfFul)
 bool *EBfFul;			/* indicates edit buffer full */
 #endif
 {
-    SIZE_T	TmpSiz;
-    SIZE_T	NewSiz;
+    size_t	TmpSiz;
+    size_t	NewSiz;
     charptr	NewBeg;
 
     DBGFEN(3,"expabd_ibf",NULL);
@@ -46,7 +46,7 @@ bool *EBfFul;			/* indicates edit buffer full */
     TmpSiz = GapEnd-GapBeg+1;
     if (TmpSiz > GAPMIN) {
 	TmpSiz -= GAPMIN;
-	MEMMOVE(GapEnd+1-TmpSiz, GapEnd+1, (SIZE_T)(EBfEnd-GapEnd));
+	MEMMOVE(GapEnd+1-TmpSiz, GapEnd+1, (size_t)(EBfEnd-GapEnd));
 	GapEnd -= TmpSiz;
 	EBfEnd -= TmpSiz;
     }

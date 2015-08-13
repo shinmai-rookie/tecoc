@@ -28,13 +28,13 @@ integer ExeL()			/* execute L command */
 
 	HowFar = Ln2Chr(NArgmt);
 	if (HowFar > 0) {
-		MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)HowFar);
+		MEMMOVE(GapBeg, GapEnd+1, (size_t)HowFar);
 		GapBeg += HowFar;
 		GapEnd += HowFar;
 	} else if (HowFar < 0) {
 		GapBeg += HowFar;
 		GapEnd += HowFar;
-		MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)-HowFar);
+		MEMMOVE(GapEnd+1, GapBeg, (size_t)-HowFar);
 	}
 
 	CmdMod = '\0';

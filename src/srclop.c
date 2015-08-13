@@ -62,7 +62,7 @@ static integer DoFBFC()		/* search loop */
 	    Shuffl = AraEnd - GapEnd;
 	    GapBeg -= Shuffl;
 	    GapEnd -= Shuffl;
-	    MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)Shuffl);
+	    MEMMOVE(GapEnd+1, GapBeg, (size_t)Shuffl);
 	}
 
 /*
@@ -104,14 +104,14 @@ static integer DoFBFC()		/* search loop */
     if (Matchd) {				/* if search succeeded */
 	if (EBPtr2 >= GapEnd) {			/* if match after gap */
 	    HowFar = EBPtr2 - GapEnd;
-	    MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)HowFar);
+	    MEMMOVE(GapBeg, GapEnd+1, (size_t)HowFar);
 	    GapBeg += HowFar;
 	    GapEnd += HowFar;
 	} else {
 	    HowFar = (GapBeg-1) - EBPtr2;
 	    GapBeg -= HowFar;
 	    GapEnd -= HowFar;
-	    MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)HowFar);
+	    MEMMOVE(GapEnd+1, GapBeg, (size_t)HowFar);
 	}
     } else {					/* else search failed */
 
@@ -122,7 +122,7 @@ static integer DoFBFC()		/* search loop */
  */
 
 	if (Shuffl != 0) {		/* if buffer was shuffled */
-	    MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)Shuffl);
+	    MEMMOVE(GapBeg, GapEnd+1, (size_t)Shuffl);
 	    GapBeg += Shuffl;
 	    GapEnd += Shuffl;
 	}
@@ -288,14 +288,14 @@ integer SrcLop()		/* search loop */
 	} else {				/* else not FK */
 	    if ((SIncrm == 1) || (EBPtr2 > GapEnd)) {
 		HowFar = EBPtr2 - GapEnd;
-		MEMMOVE(GapBeg, GapEnd+1, (SIZE_T)HowFar);
+		MEMMOVE(GapBeg, GapEnd+1, (size_t)HowFar);
 		GapBeg += HowFar;
 		GapEnd += HowFar;
 	    } else {
 		HowFar = (GapBeg-1) - EBPtr2;
 		GapBeg -= HowFar;
 		GapEnd -= HowFar;
-		MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)HowFar);
+		MEMMOVE(GapEnd+1, GapBeg, (size_t)HowFar);
 	    }
 	}
     } else {					/* else search failed */
@@ -303,7 +303,7 @@ integer SrcLop()		/* search loop */
 	    HowFar = GapBeg - EBfBeg;
 	    GapBeg -= HowFar;
 	    GapEnd -= HowFar;
-	    MEMMOVE(GapEnd+1, GapBeg, (SIZE_T)HowFar);
+	    MEMMOVE(GapEnd+1, GapBeg, (size_t)HowFar);
 	}
     }
 
