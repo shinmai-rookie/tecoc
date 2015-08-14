@@ -997,8 +997,10 @@ baseline version as of Fall Decus Symposium, Anaheim
 
 
 10-August-2015 to XX-August-2015 version 147
-0. Removed VVOID; changed it to void (if not accepted by the compiler, `void'
-   is defined as `')
-1. Same as (0) with GLOBAL
+
+0. Removed VVOID; changed it to void (if it isn't accepted by the compiler,
+   `void' is defined as `')
+1. Same as (0) with GLOBAL, LONG, SIZE_T, EXTERN and EXTERNV
 2. Some changes to makefile
 3. General formatting changes
+4. Changed DEFAULT to int (which is at least 16-bit long always)
